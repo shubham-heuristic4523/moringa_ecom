@@ -8,8 +8,10 @@ use App\Http\Controllers\Api\PasswordController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\OtpController;
 
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/verify-registration-otp', [OtpController::class, 'verifyRegistrationOtp']);
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -98,3 +100,7 @@ Route::prefix('categories')->group(function () {
     Route::delete('/{id}', [CategoryController::class, 'destroy']);
 
 });
+Route::post(
+    '/verify-registration-otp',
+    [OtpController::class, 'verifyRegistrationOtp']
+);
