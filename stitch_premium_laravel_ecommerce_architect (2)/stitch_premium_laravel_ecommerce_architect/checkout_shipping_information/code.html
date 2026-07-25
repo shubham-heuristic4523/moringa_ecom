@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout - LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#584237",
+                      "inverse-on-surface": "#edf0ff",
+                      "on-error": "#ffffff",
+                      "primary-container": "#f97316",
+                      "on-secondary-container": "#007230",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "surface-container-low": "#f1f3ff",
+                      "on-tertiary-fixed": "#001e2f",
+                      "secondary-container": "#7cf994",
+                      "primary-fixed": "#ffdbca",
+                      "on-tertiary-fixed-variant": "#004c6e",
+                      "background": "#f9f9ff",
+                      "on-primary-fixed-variant": "#783200",
+                      "surface-variant": "#dce2f7",
+                      "secondary": "#006e2d",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#e0c0b1",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#d3daef",
+                      "on-secondary-fixed-variant": "#005320",
+                      "secondary-fixed-dim": "#62df7d",
+                      "primary-fixed-dim": "#ffb690",
+                      "inverse-surface": "#293040",
+                      "tertiary-fixed-dim": "#89ceff",
+                      "tertiary-container": "#09a4e8",
+                      "on-primary-fixed": "#341100",
+                      "surface-tint": "#9d4300",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#003650",
+                      "surface-container": "#e9edff",
+                      "tertiary-fixed": "#c9e6ff",
+                      "tertiary": "#006591",
+                      "surface-container-high": "#e1e8fd",
+                      "surface": "#f9f9ff",
+                      "on-primary-container": "#582200",
+                      "outline": "#8c7164",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#dce2f7",
+                      "secondary-fixed": "#7ffc97",
+                      "inverse-primary": "#ffb690",
+                      "on-secondary-fixed": "#002109",
+                      "on-background": "#141b2b",
+                      "on-surface": "#141b2b",
+                      "primary": "#9d4300"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "5xl": "48px",
+                      "xl": "20px",
+                      "base": "8px",
+                      "4xl": "40px",
+                      "container-max": "1440px",
+                      "7xl": "80px",
+                      "3xl": "32px",
+                      "md": "12px",
+                      "8xl": "96px",
+                      "gutter": "24px",
+                      "6xl": "64px",
+                      "2xl": "24px",
+                      "sm": "8px",
+                      "lg": "16px"
+              },
+              "fontFamily": {
+                      "h4": [
+                              "Geist"
+                      ],
+                      "body-sm": [
+                              "Geist"
+                      ],
+                      "body-default": [
+                              "Geist"
+                      ],
+                      "button": [
+                              "Geist"
+                      ],
+                      "nav": [
+                              "Geist"
+                      ],
+                      "h2": [
+                              "Geist"
+                      ],
+                      "h1": [
+                              "Geist"
+                      ],
+                      "h5": [
+                              "Geist"
+                      ],
+                      "caption": [
+                              "Geist"
+                      ],
+                      "h6": [
+                              "Geist"
+                      ],
+                      "display": [
+                              "Geist"
+                      ],
+                      "body-lg": [
+                              "Geist"
+                      ],
+                      "h3": [
+                              "Geist"
+                      ],
+                      "h1-mobile": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "h4": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-default": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "button": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "nav": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h2": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h5": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h6": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h3": [
+                              "30px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .input-field {
+            @apply w-full h-[44px] px-lg bg-surface border border-outline-variant rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-shadow duration-200;
+        }
+        .input-label {
+            @apply block mb-xs text-body-sm font-body-sm font-medium text-on-surface-variant;
+        }
+      </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-default antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Minimalist Header -->
+<header class="w-full bg-surface border-b border-outline-variant/30 h-[80px] flex items-center justify-center sticky top-0 z-50">
+<div class="font-display text-h3 font-bold text-on-surface tracking-tight">LUXE</div>
+</header>
+<main class="flex-grow w-full max-w-[1200px] mx-auto px-gutter py-5xl md:py-7xl grid grid-cols-1 lg:grid-cols-12 gap-5xl lg:gap-7xl">
+<!-- Left Column: Form Steps -->
+<div class="lg:col-span-7 flex flex-col gap-4xl">
+<!-- Progress Indicator -->
+<nav aria-label="Progress" class="mb-2xl">
+<ol class="flex items-center" role="list">
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-primary"></div>
+</div>
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary hover:bg-surface-tint transition-colors" href="#">
+<span class="material-symbols-outlined text-on-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+<span class="sr-only">Information</span>
+</a>
+</li>
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-outline-variant/50"></div>
+</div>
+<a aria-current="step" class="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary bg-surface" href="#">
+<span aria-hidden="true" class="h-2.5 w-2.5 rounded-full bg-primary"></span>
+<span class="sr-only">Shipping</span>
+</a>
+</li>
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-outline-variant/50"></div>
+</div>
+<a class="group relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-outline-variant bg-surface hover:border-on-surface-variant transition-colors" href="#">
+<span class="sr-only">Payment</span>
+</a>
+</li>
+<li class="relative">
+<a class="group relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-outline-variant bg-surface hover:border-on-surface-variant transition-colors" href="#">
+<span class="sr-only">Review</span>
+</a>
+</li>
+</ol>
+<div class="flex justify-between w-full max-w-[280px] sm:max-w-[420px] mt-sm">
+<span class="text-caption font-caption text-primary font-medium">Information</span>
+<span class="text-caption font-caption text-primary font-medium">Shipping</span>
+<span class="text-caption font-caption text-on-surface-variant">Payment</span>
+<span class="text-caption font-caption text-on-surface-variant">Review</span>
+</div>
+</nav>
+<div class="flex flex-col gap-xl">
+<div class="flex justify-between items-baseline mb-lg">
+<h1 class="text-h4 font-h4 text-on-surface">Shipping Information</h1>
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+                        Already have an account? <a class="text-primary hover:underline font-medium" href="#">Log in</a>
+</div>
+</div>
+<!-- Form -->
+<form class="space-y-xl">
+<!-- Contact -->
+<div class="space-y-xl border-b border-outline-variant/30 pb-3xl">
+<h2 class="text-h6 font-h6 text-on-surface">Contact</h2>
+<div>
+<label class="input-label" for="email">Email address</label>
+<input class="input-field" id="email" name="email" placeholder="you@example.com" type="email" value="guest@example.com"/>
+</div>
+<div class="flex items-center gap-sm mt-md">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary/20 bg-surface" id="offers" type="checkbox"/>
+<label class="text-body-sm font-body-sm text-on-surface-variant" for="offers">Email me with news and offers</label>
+</div>
+</div>
+<!-- Shipping Address -->
+<div class="space-y-xl pt-lg">
+<h2 class="text-h6 font-h6 text-on-surface">Shipping Address</h2>
+<div>
+<label class="input-label" for="country">Country/Region</label>
+<select class="input-field appearance-none bg-no-repeat bg-right pr-10" id="country" name="country" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%238c7164%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 12px center;">
+<option>United States</option>
+<option>Canada</option>
+<option>United Kingdom</option>
+</select>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div>
+<label class="input-label" for="first-name">First name</label>
+<input class="input-field" id="first-name" name="first-name" type="text"/>
+</div>
+<div>
+<label class="input-label" for="last-name">Last name</label>
+<input class="input-field" id="last-name" name="last-name" type="text"/>
+</div>
+</div>
+<div>
+<label class="input-label" for="address">Address</label>
+<input class="input-field" id="address" name="address" placeholder="123 Luxury Ave" type="text"/>
+</div>
+<div>
+<label class="input-label" for="apartment">Apartment, suite, etc. (optional)</label>
+<input class="input-field" id="apartment" name="apartment" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+<div class="md:col-span-1">
+<label class="input-label" for="city">City</label>
+<input class="input-field" id="city" name="city" type="text"/>
+</div>
+<div class="md:col-span-1">
+<label class="input-label" for="state">State</label>
+<select class="input-field appearance-none" id="state" name="state">
+<option>Select</option>
+<option>NY</option>
+<option>CA</option>
+</select>
+</div>
+<div class="md:col-span-1">
+<label class="input-label" for="zip">ZIP code</label>
+<input class="input-field" id="zip" name="zip" type="text"/>
+</div>
+</div>
+<div>
+<label class="input-label" for="phone">Phone</label>
+<input class="input-field" id="phone" name="phone" placeholder="(555) 555-5555" type="tel"/>
+</div>
+</div>
+<div class="pt-3xl flex items-center justify-between">
+<a class="text-body-sm font-body-sm text-primary hover:underline flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+                            Return to Information
+                        </a>
+<button class="bg-primary hover:bg-surface-tint text-on-primary font-button text-button h-[44px] px-3xl rounded-lg transition-colors duration-200 shadow-sm flex items-center gap-sm" type="button">
+                            Continue to Payment
+                            <span class="material-symbols-outlined text-[18px]">lock</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="lg:col-span-5 relative">
+<!-- Sticky container for desktop -->
+<div class="sticky top-[112px] bg-surface rounded-xl border border-outline-variant/30 p-3xl shadow-sm">
+<h2 class="text-h5 font-h5 text-on-surface mb-2xl pb-md border-b border-outline-variant/30">Order Summary</h2>
+<!-- Items list -->
+<div class="space-y-2xl mb-3xl max-h-[400px] overflow-y-auto pr-sm">
+<!-- Item 1 -->
+<div class="flex gap-lg">
+<div class="w-20 h-24 bg-surface-container-low rounded-lg border border-outline-variant/20 relative flex-shrink-0 overflow-hidden">
+<span class="absolute -top-2 -right-2 bg-on-surface text-surface text-caption font-caption w-6 h-6 rounded-full flex items-center justify-center z-10">1</span>
+<img class="w-full h-full object-cover" data-alt="A minimalist overhead view of a sleek, premium leather minimalist wallet in dark brown, resting on a clean off-white studio surface with soft, diffused lighting and sharp subtle shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfGbsr5IxyesAn6HscCO8JiOBFzNy-FSku5XAnyLxQy3OD3EqKuRUCV3n3tGbn29JIYCYnr3fNWblhNdsBnyjraGRrwxGIwI4M7WpV9XPIfKyG2FCqwD_yRLogZ3Zq8lunZ2we0lLLs9SVy4sVpePkDvfvXZHMNmAAG7uXGqNYJls4rxpN8zN8ye_cEvSSBx-0CZue-c-vYwLKi3iDw7xiIY4TD-vpaQhUd0hY4EoHWtOq2kuTshgx83acJWSqb7Z1_FerhSAbNGw"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-xs">
+<div>
+<h3 class="text-body-default font-body-default font-medium text-on-surface">The Minimalist Wallet</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Saddle Brown</p>
+</div>
+<div class="text-body-default font-body-default font-semibold text-on-surface">$120.00</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-lg">
+<div class="w-20 h-24 bg-surface-container-low rounded-lg border border-outline-variant/20 relative flex-shrink-0 overflow-hidden">
+<span class="absolute -top-2 -right-2 bg-on-surface text-surface text-caption font-caption w-6 h-6 rounded-full flex items-center justify-center z-10">2</span>
+<img class="w-full h-full object-cover" data-alt="A detailed macro shot of a sophisticated matte black ceramic coffee tumbler with a brushed steel rim, set against a pristine white background, showcasing high-end industrial design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0JMxWd6YCaByEWZc3mrge8uZSV1Qv-ydKxSVKWsghtMfNWFU38xAV5Jd2sSxXsgGoQhZhz9P5uE6RBdNCDFPupLW8BG_FVWyeD074e-4OQhVse_AJB4NyGcaB3lwX7l0WXROJnpbUwqB4B1nMAP_rCavTN8ukVG5CtzdJt-Ek8foJt_8NjGP9ovxi5cEjGThfpzbJe0TIZmsEzplMCz1TBNVQVIzMBrAKsjah60E4JS6pL-VyZ43UVpGIcHeEfd2uTFieubiai00"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-xs">
+<div>
+<h3 class="text-body-default font-body-default font-medium text-on-surface">Ceramic Tumbler</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Matte Black</p>
+</div>
+<div class="text-body-default font-body-default font-semibold text-on-surface">$90.00 <span class="text-body-sm text-on-surface-variant font-normal line-through ml-xs">$110.00</span></div>
+</div>
+</div>
+</div>
+<!-- Discount Code -->
+<div class="flex gap-md mb-3xl pt-2xl border-t border-outline-variant/30">
+<input class="input-field flex-grow" placeholder="Discount code or gift card" type="text"/>
+<button class="bg-surface-container-high hover:bg-surface-variant text-on-surface font-button text-button h-[44px] px-lg rounded-lg border border-outline-variant/50 transition-colors">Apply</button>
+</div>
+<!-- Totals -->
+<div class="space-y-md text-body-sm font-body-sm text-on-surface-variant pb-2xl border-b border-outline-variant/30">
+<div class="flex justify-between">
+<span>Subtotal</span>
+<span class="font-medium text-on-surface">$210.00</span>
+</div>
+<div class="flex justify-between">
+<span>Shipping</span>
+<span class="font-medium text-on-surface">Calculated at next step</span>
+</div>
+<div class="flex justify-between">
+<span>Estimated Tax</span>
+<span class="font-medium text-on-surface">$16.80</span>
+</div>
+</div>
+<div class="flex justify-between items-end mt-2xl">
+<span class="text-h6 font-h6 text-on-surface">Total</span>
+<span class="text-h4 font-h4 text-on-surface"><span class="text-body-sm font-body-sm text-on-surface-variant mr-xs">USD</span>$226.80</span>
+</div>
+<div class="mt-xl flex items-center justify-center gap-xs text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+                    Secure Checkout Guarantee
+                </div>
+</div>
+</div>
+</main>
+</body></html>

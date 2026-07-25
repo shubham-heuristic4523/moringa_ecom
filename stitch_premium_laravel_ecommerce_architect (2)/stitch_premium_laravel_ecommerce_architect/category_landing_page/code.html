@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lifestyle Collections - LUXE Ecommerce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb690",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb690",
+                        "on-secondary-fixed-variant": "#005320",
+                        "on-surface": "#141b2b",
+                        "surface-container-low": "#f1f3ff",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#293040",
+                        "background": "#f9f9ff",
+                        "surface-container-high": "#e1e8fd",
+                        "tertiary": "#006591",
+                        "surface-tint": "#9d4300",
+                        "surface-container-highest": "#dce2f7",
+                        "on-tertiary-fixed": "#001e2f",
+                        "outline-variant": "#e0c0b1",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#ffdbca",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d3daef",
+                        "surface-bright": "#f9f9ff",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-container": "#003650",
+                        "inverse-on-surface": "#edf0ff",
+                        "on-primary-container": "#582200",
+                        "on-background": "#141b2b",
+                        "secondary-fixed-dim": "#62df7d",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#7cf994",
+                        "on-secondary-fixed": "#002109",
+                        "surface-container": "#e9edff",
+                        "secondary": "#006e2d",
+                        "surface-variant": "#dce2f7",
+                        "on-secondary-container": "#007230",
+                        "on-primary-fixed": "#341100",
+                        "secondary-fixed": "#7ffc97",
+                        "on-surface-variant": "#584237",
+                        "tertiary-container": "#09a4e8",
+                        "primary": "#9d4300",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#8c7164",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#783200",
+                        "primary-container": "#f97316"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "16px",
+                        "5xl": "48px",
+                        "4xl": "40px",
+                        "base": "8px",
+                        "2xl": "24px",
+                        "container-max": "1440px",
+                        "xl": "20px",
+                        "8xl": "96px",
+                        "7xl": "80px",
+                        "gutter": "24px",
+                        "6xl": "64px",
+                        "xs": "4px",
+                        "md": "12px",
+                        "sm": "8px",
+                        "3xl": "32px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Geist"],
+                        "display": ["Geist"],
+                        "h3": ["Geist"],
+                        "h1-mobile": ["Geist"],
+                        "button": ["Geist"],
+                        "body-default": ["Geist"],
+                        "h6": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "h4": ["Geist"],
+                        "body-sm": ["Geist"],
+                        "h2": ["Geist"],
+                        "h5": ["Geist"],
+                        "nav": ["Geist"],
+                        "h1": ["Geist"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "h3": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "h1-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-default": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h6": ["16px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h4": ["24px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h2": ["36px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "h5": ["20px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                        "nav": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: var(--color-background, #FFFDF8); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+        
+        /* Subtle Tonal Shadows */
+        .shadow-ambient-sm { box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 16px -4px rgba(0, 0, 0, 0.02); }
+        .shadow-ambient-md { box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05), 0 8px 24px -4px rgba(0, 0, 0, 0.03); }
+        .shadow-ambient-lg { box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06), 0 16px 48px -8px rgba(0, 0, 0, 0.04); }
+        
+        /* Smooth interactions */
+        .transition-lux { transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-scale:hover { transform: scale(1.02); }
+        
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-default antialiased selection:bg-primary-container selection:text-on-primary-container flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md docked full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<!-- Navigation Links (Left) -->
+<nav class="hidden md:flex gap-3xl">
+<a class="text-on-surface-variant dark:text-surface-variant font-nav text-nav uppercase tracking-wider hover:text-primary transition-colors duration-200" href="#">Shop</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary font-nav text-nav uppercase tracking-wider hover:text-primary transition-colors duration-200 py-1" href="#">Collections</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-nav text-nav uppercase tracking-wider hover:text-primary transition-colors duration-200" href="#">New Arrivals</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-nav text-nav uppercase tracking-wider hover:text-primary transition-colors duration-200" href="#">Sale</a>
+</nav>
+<!-- Brand Logo (Center) -->
+<a class="font-display text-h4 font-bold text-on-surface dark:text-inverse-on-surface tracking-widest absolute left-1/2 -translate-x-1/2" href="#">
+                LUXE
+            </a>
+<!-- Trailing Icon Actions (Right) -->
+<div class="flex items-center gap-2xl text-primary dark:text-primary-fixed-dim">
+<button aria-label="shopping_bag" class="hover:text-primary transition-colors duration-200 hover:scale-110 active:scale-95 flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button aria-label="favorite" class="hover:text-primary transition-colors duration-200 hover:scale-110 active:scale-95 flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button aria-label="person" class="hover:text-primary transition-colors duration-200 hover:scale-110 active:scale-95 flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col w-full pb-8xl">
+<!-- Large Hero Banner: Lifestyle Collections -->
+<section class="relative w-full h-[716px] min-h-[600px] overflow-hidden">
+<div class="absolute inset-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover object-center transition-transform duration-1000 hover:scale-105" data-alt="A cinematic, wide-angle lifestyle shot of a modern, sophisticated living space or upscale travel scenario. High-end minimal luxury aesthetic with soft, natural diffused light pouring through large windows. The scene features premium materials like leather, polished wood, and matte ceramics. A subtle, warm off-white (#FFFDF8) and muted terracotta (#9D4300) color palette creates a serene, aspirational mood, perfectly aligning with the 'Precise Luxury' design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuv91GS4iqA_y6J5F4fEdCH-mskj1g3k2qioMCitafeL59lLpXh_0Kz3ewjfpZgGQTtsM_JoFOrpeMncGEaoMQ7AyMjp5_DJCn0DArBeF2dzs1magWm11mSVWDbYv8W6DoFKcfhgQV0SvPeqIbbSwumVqFM3rvrB1VAARpFg_uzoacSwHLzMg2W8BAy6nGjWiJQu13mjRGtX5RAT-mbHTlWtOTs2fZVtnnsAQ8_A0EiNM4Zy-exuQdbPeyhPmrV1-N_2dMXrd2E3o"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/60 via-on-background/20 to-transparent mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-gutter max-w-3xl mx-auto">
+<span class="font-caption text-caption uppercase tracking-widest text-surface-container-lowest/80 mb-md">Curated Edits</span>
+<h1 class="font-display text-display text-surface-container-lowest mb-lg drop-shadow-lg">Lifestyle Collections</h1>
+<p class="font-body-lg text-body-lg text-surface-container-lowest/90 mb-4xl max-w-xl text-balance">
+                    Discover meticulously crafted essentials designed for every facet of your life. Uncompromising quality meets refined utility.
+                </p>
+<button class="bg-surface-container-lowest text-on-background font-button text-button px-4xl py-lg rounded-full hover:bg-primary hover:text-on-primary transition-lux shadow-ambient-lg flex items-center gap-sm">
+                    Explore Now
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Main Content Canvas -->
+<div class="max-w-container-max mx-auto w-full px-gutter md:px-3xl mt-8xl flex flex-col gap-8xl">
+<!-- Featured Subcategory Bento Grid -->
+<section class="flex flex-col gap-3xl">
+<div class="flex items-end justify-between border-b border-outline-variant/30 pb-lg">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Curated Realms</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Select your aesthetic journey.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg md:gap-2xl h-auto md:h-[500px]">
+<!-- Bento Item 1: Travel (Large) -->
+<a class="group relative overflow-hidden rounded-xl md:col-span-2 h-[300px] md:h-full shadow-ambient-sm hover:shadow-ambient-md transition-lux border border-outline-variant/20 bg-surface" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-lux group-hover:scale-105" data-alt="A pristine, minimalist arrangement of premium leather travel luggage and sleek, modern travel accessories. Photographed from a slightly elevated angle against a soft, off-white studio background. The lighting is crisp and even, highlighting the meticulous craftsmanship and textures. The composition feels spacious and aspirational, utilizing a palette of deep browns, soft creams, and subtle metallic accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOi_YR6XphJU5G7jteJU37-p3mU9xlmTmdwtsE0fpg4dH5WMcIhsuniWOVmGj-wBruRHmH8p33XRidH_iV3jWisagS_kaauRqlJW_NSx36qMfa3NV23ix0miB9cWF8XuWxWn_uSTR3F1T-E3KKAEZsFK6fsexcruF9YbDtOHPVokxCTOckFkVs2x1N0jgUbsb9fpk3ifMgJOm_s39hXEHGtpo508E8n_ziPVy2loZNRSdcY9kfilRb1fSW470DCPHB7JZdmC55nLw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/50 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-3xl w-full flex justify-between items-end">
+<div>
+<h3 class="font-h3 text-h3 text-surface-container-lowest">The Travel Edit</h3>
+<p class="font-body-sm text-body-sm text-surface-container-lowest/80 mt-xs">Elevated transit essentials.</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest/20 backdrop-blur flex items-center justify-center text-surface-container-lowest group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined">flight_takeoff</span>
+</div>
+</div>
+</a>
+<div class="flex flex-col gap-lg md:gap-2xl md:col-span-1 h-full">
+<!-- Bento Item 2: Office -->
+<a class="group relative overflow-hidden rounded-xl h-[250px] md:h-[calc(50%-12px)] shadow-ambient-sm hover:shadow-ambient-md transition-lux border border-outline-variant/20 bg-surface" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-lux group-hover:scale-105" data-alt="A highly organized, aesthetically pleasing modern workspace desk flat-lay. Features a sleek metallic laptop, a matte black notebook, and a ceramic coffee cup placed meticulously on an expansive warm off-white surface. The lighting implies natural morning sunlight casting soft, long shadows. The color palette focuses on deep charcoals, bright whites, and subtle hints of warm terracotta (#9D4300)." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYPN7SKdGBdL0V6Z9zgkN3JWq3QYHSZqbhHzZINoTFGdp5EKW0tnXYBcr3Ag_A2j3Jb815ZkWxkdqFO-__EiCwO03SN38TmVkuAEyzM-QqfYLsc2G3EVD5qhjyV48Y8TgEroKKxqjNQs2bxypsJt5aRGTyrxN5kK_SahK4Rwf92opfa87xKmT_AynkbByL3sUF5DJarFMd513tzUowTThnbjKU5f1uBcM3kh52LVZznSujcqrfJRr-HcINFT4Bx-r6PbUmwukRUHE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/50 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-2xl w-full flex justify-between items-end">
+<div>
+<h4 class="font-h4 text-h4 text-surface-container-lowest">Modern Office</h4>
+</div>
+<span class="material-symbols-outlined text-surface-container-lowest">laptop_mac</span>
+</div>
+</a>
+<!-- Bento Item 3: Weekend -->
+<a class="group relative overflow-hidden rounded-xl h-[250px] md:h-[calc(50%-12px)] shadow-ambient-sm hover:shadow-ambient-md transition-lux border border-outline-variant/20 bg-surface" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-lux group-hover:scale-105" data-alt="A tranquil weekend lifestyle scene showing a comfortable linen armchair with a soft, chunky knit throw blanket casually draped over it. Next to it, a small sleek side table holds a stack of premium art books and a glowing minimal lamp. The atmosphere is quiet and restorative, bathed in soft, warm late-afternoon light. The color scheme is predominantly neutral off-whites with soft beige and muted green undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX6bmVowCv7SxtbPyhD17n183bEs7PnjOYW2EeCYxbcFCwv8v3o73eIsiOtid3FaF-DbfJjPno2q0ePgD0jeMtIRtrQ2W_ynpISF19LDj2yNtShLzAZdWB8uyhWgNlzIgg5GxVS_twGqwcfjEGP8Z3YNZRrjNneH2As1rnZ3CWQJ-WPudq4l5Kjprm2T32Wm5MZlqcjqhp9R6kJkf0OeKm_bGKQKfGRgwItS__pdt97TQazlOOtzj5KtjwVZXUueL5rSxUiSKruas"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/50 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-2xl w-full flex justify-between items-end">
+<div>
+<h4 class="font-h4 text-h4 text-surface-container-lowest">Weekend Leisure</h4>
+</div>
+<span class="material-symbols-outlined text-surface-container-lowest">weekend</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+    {{DATA:COMPONENTS:COMPONENTS_3}}
+
+
+</body></html>
