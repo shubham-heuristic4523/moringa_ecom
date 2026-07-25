@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apex Automatic Watch - Lightbox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#dce2f7",
+                        "on-tertiary-fixed": "#001e2f",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-surface-variant": "#584237",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-container-high": "#e1e8fd",
+                        "on-primary-container": "#582200",
+                        "primary-fixed": "#ffdbca",
+                        "on-secondary-fixed": "#002109",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#f97316",
+                        "on-background": "#141b2b",
+                        "outline": "#8c7164",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb690",
+                        "on-secondary-container": "#007230",
+                        "inverse-surface": "#293040",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-container": "#7cf994",
+                        "secondary-fixed": "#7ffc97",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "on-surface": "#141b2b",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9ff",
+                        "surface-container": "#e9edff",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#e0c0b1",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "surface-tint": "#9d4300",
+                        "surface-container-low": "#f1f3ff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#006591",
+                        "on-tertiary-container": "#003650",
+                        "on-primary-fixed": "#341100",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#006e2d",
+                        "on-primary-fixed-variant": "#783200",
+                        "inverse-primary": "#ffb690",
+                        "tertiary-container": "#09a4e8",
+                        "surface-dim": "#d3daef",
+                        "primary": "#9d4300",
+                        "surface-variant": "#dce2f7",
+                        "secondary-fixed-dim": "#62df7d",
+                        "on-secondary-fixed-variant": "#005320"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "12px",
+                        "8xl": "96px",
+                        "5xl": "48px",
+                        "container-max": "1440px",
+                        "xl": "20px",
+                        "6xl": "64px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "4xl": "40px",
+                        "lg": "16px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "7xl": "80px",
+                        "3xl": "32px",
+                        "2xl": "24px"
+                    },
+                    "fontFamily": {
+                        "h6": ["Geist"],
+                        "button": ["Geist"],
+                        "h3": ["Geist"],
+                        "body-sm": ["Geist"],
+                        "body-default": ["Geist"],
+                        "display": ["Geist"],
+                        "caption": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "h5": ["Geist"],
+                        "nav": ["Geist"],
+                        "h2": ["Geist"],
+                        "h4": ["Geist"],
+                        "h1-mobile": ["Geist"],
+                        "h1": ["Geist"]
+                    },
+                    "fontSize": {
+                        "h6": ["16px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "button": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "h3": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-default": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h5": ["20px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "nav": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "h2": ["36px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h4": ["24px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Geist', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+        
+        /* Lightbox specific overrides */
+        .lightbox-bg { background-color: rgba(20, 27, 43, 0.95); } /* Near black overlay */
+        .glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen w-screen overflow-hidden flex flex-col antialiased">
+<!-- Main Lightbox Container -->
+<main class="lightbox-bg fixed inset-0 z-50 flex flex-col text-inverse-on-surface w-full h-full">
+<!-- Top Toolbar -->
+<header class="flex justify-between items-center p-gutter w-full absolute top-0 z-10 glass-panel border-t-0 border-l-0 border-r-0">
+<div class="font-h5 text-h5 font-bold tracking-tight text-white">Apex Automatic</div>
+<div class="flex items-center gap-lg">
+<button aria-label="Share" class="p-sm rounded-full hover:bg-white/10 transition-colors text-white">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button aria-label="Close Lightbox" class="p-sm rounded-full hover:bg-white/10 transition-colors text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</header>
+<!-- Main Image Area -->
+<div class="flex-1 relative flex items-center justify-center overflow-hidden cursor-zoom-in group" id="main-image-container">
+<!-- High Res Image Placeholder -->
+<img alt="Apex Automatic Watch Close-up" class="max-w-full max-h-full object-contain transition-transform duration-300 ease-in-out" data-alt="A highly detailed, extreme macro photograph of a luxury automatic watch dial. The lighting is dramatic and precise, highlighting the intricate brushed metal textures, luminescent hands, and the exposed mechanical movement beneath the sapphire crystal. The overall aesthetic is dark, premium, and sophisticated, focusing entirely on the technical precision of the timepiece against a deeply shadowed background." id="main-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMtq3xeIdTSENt-2dd5b4t6Zc-Va0OiiVonWMuMV-L3L2fFGLeYltph_NblT47hCGCL-i3IQg_W7I_YvT5MWwx0x07uQBZKnP55SLhHyOUnzsPK3MHb0Tcg_t1VHDAFc-nT_OUQhj4k-3W_TD_r2p2Eikc47X4qrOj6_91WniDFwd2SwO3MnaQbOA5sg14sNCeZutBIqflqRPCJV3TlB7bPepcQ4QYXvVelNoNcCYYjdmGMUi_TwVQoa5NexJgskNVnOfK92GMxV0"/>
+<!-- Overlay Controls (appear on hover) -->
+<div class="absolute inset-y-0 left-gutter flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button aria-label="Previous Image" class="p-md rounded-full glass-panel hover:bg-white/20 text-white transition-colors">
+<span class="material-symbols-outlined text-[32px]">chevron_left</span>
+</button>
+</div>
+<div class="absolute inset-y-0 right-gutter flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button aria-label="Next Image" class="p-md rounded-full glass-panel hover:bg-white/20 text-white transition-colors">
+<span class="material-symbols-outlined text-[32px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Bottom Control Bar -->
+<div class="w-full absolute bottom-0 z-10 flex flex-col items-center pb-gutter glass-panel border-b-0 border-l-0 border-r-0">
+<!-- Zoom Controls -->
+<div class="flex items-center gap-md py-md text-white/70">
+<button class="p-sm rounded hover:text-white transition-colors"><span class="material-symbols-outlined text-[20px]">remove</span></button>
+<div class="w-48 h-1 bg-white/20 rounded-full relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-1/3 bg-white"></div>
+</div>
+<button class="p-sm rounded hover:text-white transition-colors"><span class="material-symbols-outlined text-[20px]">add</span></button>
+<div class="w-px h-6 bg-white/20 mx-md"></div>
+<button aria-label="Toggle Fullscreen" class="p-sm rounded hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">fullscreen</span>
+</button>
+</div>
+<!-- Thumbnail Strip -->
+<div class="flex gap-md px-gutter overflow-x-auto max-w-container-max mx-auto pb-sm scrollbar-hide">
+<!-- Thumbnail 1 (Active) -->
+<button class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border-2 border-white ring-2 ring-white/20 transition-all">
+<img class="w-full h-full object-cover" data-alt="A close-up photograph of a luxury watch dial showing the hour and minute hands. The shot is well-lit, highlighting the textured surface of the dial and the polished indices." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7kzDn_NJiErswnK0XqhE6GEVO21jMc3dnwG2sNQcuWcUzQs25JR25rAgSCJfiIZecuUZC7yTh-clMzahLeQbj2LutOxupB5VFabcyBV2qd6Z58o4st7MTNOyNG4bD6-OLQgSDj4VdFWuaFMKHrJyV86AiIxawUdILAlUgceJGuaL3cV2_DXRHQQ6wPhQqeZqCcCrZTHbdk9OwEv7IJiT6KN3WlfKWHWSXw0O0wvrimkm5UMD3Xzl4lJ2TexN1swPbQDYj5dHxouA"/>
+</button>
+<!-- Thumbnail 2 -->
+<button class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent opacity-50 hover:opacity-100 transition-all">
+<img class="w-full h-full object-cover" data-alt="A detailed macro shot of a watch movement seen through an exhibition case back. Gears, jewels, and the oscillating weight are visible in crisp focus against a dark, moody background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhqIqweyMD40YQvNVubj1Qi4n7T_jJhjyBeHoB3XtKH3T2GbqRaR_T6S0J5QmJSXnZKVtISKekvxWOkSMsYuw0ZYLvmPqCnV177UR22-pdnZYBKuHBeRJjt69-cey212DnIPMvJUtZrpZZ-YLkbfwt9QAk0JvRuXJcq9mz_ceE9oy9fsYFnuuoEuwNXCBwnaZMG0DK-cXBUygaUVDUS83ievHMVk4Wxq-26SgTdRNy4X-T99hC9LLvx47fwO9dVZTpdvkyiHlmN7M"/>
+</button>
+<!-- Thumbnail 3 -->
+<button class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent opacity-50 hover:opacity-100 transition-all">
+<img class="w-full h-full object-cover" data-alt="A sharp profile view of a luxury watch case, highlighting the brushed steel finish, the knurled crown, and the slight dome of the crystal. The lighting creates strong, sleek highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC01hViQMP53SlJ25mf30g9kYqaZiuF12G1nqea_QUlEXhHEFWvWrfCeTPf_OHPBBZG0PFRqpUYOKh0sEL2dTyq_6KcxnU2sijKt3_XpWw91baaxp3QcY6b0fQlM4wjg7XRLjXpecoOi8H80_aKPqbUv4_uvkN6qsQcfdPWWsSTU4mn9r3faear42nlCertNQ1ci4nOcbZb8XgCkKxCxTU94bt1rPUsvbNgYijlxpd3qRUR1RR7wG6NUKvfheAOUs8xdFinuHM6das"/>
+</button>
+<!-- Thumbnail 4 -->
+<button class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent opacity-50 hover:opacity-100 transition-all">
+<img class="w-full h-full object-cover" data-alt="A high-contrast photograph of a watch clasp and bracelet resting on a dark surface. The focus is on the precision engineering of the deployment clasp mechanism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSWHnt56RG7cSzPZxo2_cjOXXLvrz6SFedIcH5BqOCyVklmQUSEagGXnMpdErvwwD7qJzgI5f5EA_EUf3A6xD00P530mLyMnENgeLSYrwlMOdIPyO5vb1d-G59YKY7W6V6S5m2M4854CkcjCXOhno0SCjGA6FCqXf-Ywk2oOS4BfVy4EyZJrIJB_afTH3YDTGdVzg724Fzzzx877efrRaPa2U6caXlHQhd5-RSkn2Tbwd5VGBxoYbzRCa_z1pa4Dmo8wA_X8WWOmk"/>
+</button>
+<!-- Thumbnail 5 -->
+<button class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent opacity-50 hover:opacity-100 transition-all">
+<img class="w-full h-full object-cover" data-alt="An atmospheric shot of the luxury watch glowing in the dark, showcasing the bright luminescent paint on the hands and hour markers against a completely black background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIiUQqzpdHZVJSCA2zjF9sULLCKru5ADKUF_Tqf5wbZII3AKjYSBoX5DLAElKkrgvQU6pq8aZOVXRahrC2SL_YgCYBgwrBPJd4eZnGDSaoedc0frr7BIBF0w9kRIzZwi83kshxElci-aXDXhk29jSkB_2dtsdsq6vBmDqtPteMeDT5mVumGN9MGMpTsMuNjuf6IuTaHeTll1RRgIexosVcMQcfy6UnNLBvZUNppi0n2X3gBOyXnYZkfLAh-GfTndisogrFCWLJdwI"/>
+</button>
+</div>
+</div>
+</main>
+<script>
+        // Simple zoom interaction
+        const mainImage = document.getElementById('main-image');
+        const container = document.getElementById('main-image-container');
+        let isZoomed = false;
+
+        container.addEventListener('click', () => {
+            isZoomed = !isZoomed;
+            if (isZoomed) {
+                mainImage.style.transform = 'scale(2)';
+                container.style.cursor = 'zoom-out';
+            } else {
+                mainImage.style.transform = 'scale(1)';
+                container.style.cursor = 'zoom-in';
+            }
+        });
+
+        // Add CSS to hide scrollbar for thumbnail strip
+        document.head.insertAdjacentHTML("beforeend", `<style>
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+            .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>`)
+    </script>
+</body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmation - LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#584237",
+                        "inverse-on-surface": "#edf0ff",
+                        "on-error": "#ffffff",
+                        "primary-container": "#f97316",
+                        "on-secondary-container": "#007230",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-low": "#f1f3ff",
+                        "on-tertiary-fixed": "#001e2f",
+                        "secondary-container": "#7cf994",
+                        "primary-fixed": "#ffdbca",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "background": "#f9f9ff",
+                        "on-primary-fixed-variant": "#783200",
+                        "surface-variant": "#dce2f7",
+                        "secondary": "#006e2d",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e0c0b1",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d3daef",
+                        "on-secondary-fixed-variant": "#005320",
+                        "secondary-fixed-dim": "#62df7d",
+                        "primary-fixed-dim": "#ffb690",
+                        "inverse-surface": "#293040",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "tertiary-container": "#09a4e8",
+                        "on-primary-fixed": "#341100",
+                        "surface-tint": "#9d4300",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#003650",
+                        "surface-container": "#e9edff",
+                        "tertiary-fixed": "#c9e6ff",
+                        "tertiary": "#006591",
+                        "surface-container-high": "#e1e8fd",
+                        "surface": "#f9f9ff",
+                        "on-primary-container": "#582200",
+                        "outline": "#8c7164",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#dce2f7",
+                        "secondary-fixed": "#7ffc97",
+                        "inverse-primary": "#ffb690",
+                        "on-secondary-fixed": "#002109",
+                        "on-background": "#141b2b",
+                        "on-surface": "#141b2b",
+                        "primary": "#9d4300"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "5xl": "48px",
+                        "xl": "20px",
+                        "base": "8px",
+                        "4xl": "40px",
+                        "container-max": "1440px",
+                        "7xl": "80px",
+                        "3xl": "32px",
+                        "md": "12px",
+                        "8xl": "96px",
+                        "gutter": "24px",
+                        "6xl": "64px",
+                        "2xl": "24px",
+                        "sm": "8px",
+                        "lg": "16px"
+                    },
+                    "fontFamily": {
+                        "h4": ["Geist"],
+                        "body-sm": ["Geist"],
+                        "body-default": ["Geist"],
+                        "button": ["Geist"],
+                        "nav": ["Geist"],
+                        "h2": ["Geist"],
+                        "h1": ["Geist"],
+                        "h5": ["Geist"],
+                        "caption": ["Geist"],
+                        "h6": ["Geist"],
+                        "display": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "h3": ["Geist"],
+                        "h1-mobile": ["Geist"]
+                    },
+                    "fontSize": {
+                        "h4": ["24px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-default": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "button": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "nav": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "h2": ["36px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "h5": ["20px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h6": ["16px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-default text-body-default">
+<!-- TopNavBar (Nav Shell Suppressed for Transactional Intent) -->
+<!-- As per instructions: "Automatic Suppression: You MUST exclude the navigation shell if the page intent is: Linear/Transactional: Login, Sign-up, Onboarding, Checkout, or "Success/Confirmation" splash screens." -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md docked full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto w-full">
+<div class="font-display text-h4 font-bold text-on-surface dark:text-inverse-on-surface uppercase tracking-wider">LUXE</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center pt-8xl pb-8xl px-gutter max-w-container-max mx-auto w-full gap-8xl">
+<!-- Success Hero Section -->
+<section class="flex flex-col items-center text-center max-w-2xl mx-auto space-y-3xl">
+<!-- Animation Placeholder -->
+<div class="w-32 h-32 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="space-y-md">
+<h1 class="font-h1 text-h1 text-on-surface">Thank you for your order!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your order has been successfully placed and is being processed.</p>
+<div class="inline-block bg-surface px-lg py-sm rounded-lg border border-outline-variant/30 mt-xl">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Order ID: </span>
+<span class="font-h6 text-h6 text-on-surface">#LX-88291</span>
+</div>
+</div>
+</section>
+<!-- Order Details -->
+<section class="w-full max-w-4xl bg-surface border border-outline-variant/30 rounded-xl shadow-sm p-4xl grid grid-cols-1 md:grid-cols-3 gap-4xl">
+<div class="space-y-sm">
+<h3 class="font-h6 text-h6 text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+                    Estimated Delivery
+                </h3>
+<p class="font-body-default text-body-default text-on-surface-variant">Oct 24 - Oct 26</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">Standard Shipping</p>
+</div>
+<div class="space-y-sm">
+<h3 class="font-h6 text-h6 text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                    Shipping Address
+                </h3>
+<p class="font-body-default text-body-default text-on-surface-variant">123 Luxury Lane<br/>Suite 400<br/>Beverly Hills, CA 90210</p>
+</div>
+<div class="space-y-sm">
+<h3 class="font-h6 text-h6 text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+                    Payment Method
+                </h3>
+<p class="font-body-default text-body-default text-on-surface-variant flex items-center gap-sm">
+                    Visa ending in 4242
+                </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">Total: $1,250.00</p>
+</div>
+</section>
+<!-- CTAs -->
+<section class="flex flex-col sm:flex-row gap-xl justify-center w-full">
+<button class="bg-primary text-on-primary font-button text-button px-3xl py-md rounded-lg hover:bg-surface-tint transition-colors duration-200 shadow-sm flex items-center justify-center gap-sm">
+                Track Order
+            </button>
+<button class="bg-surface text-on-surface border border-outline-variant font-button text-button px-3xl py-md rounded-lg hover:bg-background transition-colors duration-200 shadow-sm flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">download</span>
+                Download Invoice
+            </button>
+<button class="bg-transparent text-primary font-button text-button px-3xl py-md rounded-lg hover:bg-primary-container/10 transition-colors duration-200 flex items-center justify-center">
+                Continue Shopping
+            </button>
+</section>
+<!-- Recommended Products -->
+<section class="w-full max-w-container-max mx-auto mt-5xl">
+<h2 class="font-h4 text-h4 text-on-surface mb-4xl text-center">You might also like</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Product 1 -->
+<div class="group cursor-pointer">
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 aspect-[3/4] relative mb-md border border-outline-variant/30">
+<img alt="Product Image" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="A premium minimalist leather tote bag in rich camel brown, set against a pristine off-white background with soft, diffused studio lighting highlighting the elegant texture and precise stitching. The aesthetic is clean, luxurious, and highly professional, fitting a high-end e-commerce editorial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjFuuebGDwUNbBSi2CJO73DVLwGMQfCXA59r9_vllAHyiGltvoOEpIobE7K_oWhEiJat_-fRQ66nZsvHoV8L2ne15wp03VZQa1YVdSL9ubPMWJCiNp7pUMvizYH1KEe73d-ucntPYyZ45q1chppFQxb_MpwCq0ZeexLpRGR21jcv6gNWbbcfDsVQe4qSTVRGWO0TF0ROVzJhir3CiI_k6kPvXsVWpPnonp5GTUIfsppARLQ-7eoyOhANX53WzkYtsyUPIoF-v0ztI"/>
+</div>
+<h3 class="font-body-default text-body-default text-on-surface group-hover:text-primary transition-colors">Classic Leather Tote</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">$350.00</p>
+</div>
+<!-- Product 2 -->
+<div class="group cursor-pointer">
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 aspect-[3/4] relative mb-md border border-outline-variant/30">
+<img alt="Product Image" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="A sleek, modern ceramic vase with a matte finish in a muted sage green, standing on a slightly textured linen surface. The lighting is soft and natural, casting a gentle, elongated shadow that emphasizes minimalism and sophisticated interior design suitable for a premium brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGfOazJ4OuGT8A4FTMUGlP2km40ZKAlsIkVxx3yrXlYxjo7wj4znsGrJn_-lTBPV3eH5x77UdCoypbWjVwxf2_f8OPNtymc-ZmU50vhk9Aj4AUjgN8LpQtSkLCS795r0e0apufwgYI-Nd7x7KBKWkT-7j6xpKo20m_u4_GN7UsAEEAWA9bB7cT-dQFVu4m2h6ncI6AzkMXfDPWHQIF12aVUb1faEwvCYmlpPDuSc4-E_npKUO4TkQd7AOoQlzGbiOTy48US1HH6X0"/>
+</div>
+<h3 class="font-body-default text-body-default text-on-surface group-hover:text-primary transition-colors">Minimalist Ceramic Vase</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">$120.00</p>
+</div>
+<!-- Product 3 -->
+<div class="group cursor-pointer">
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 aspect-[3/4] relative mb-md border border-outline-variant/30">
+<img alt="Product Image" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="A high-end automatic wristwatch featuring a minimalist silver dial and a deep navy blue leather strap, showcased on a smooth slate gray surface. The lighting is crisp and precise, catching the subtle reflections of the glass and metal, exuding technical precision and quiet luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB56mzz5RSMmttgQhWgzN3sukCl5UzE9sJImhXm4V0unfBsgG2zzGRNELSZW8TbYbN1liltDm9Q61rUlywfDVJ_S7zpYck95OQOH_Gbk5-_xJR9lmWGWeZsTMp8ezO0Cpo0BXAnbEljEG7lu0mVRZJL-LSfg713yYkNTRZeYcShO8aTDYWWVkjMwRqALRb46g8jIwoGglxbgjsnhhIm-EJ1kaBFXFf_e21Nc1y9NDWHAAmemPS5A5HGDrnCzhqq6rycsW3Ah9lh_zc"/>
+</div>
+<h3 class="font-body-default text-body-default text-on-surface group-hover:text-primary transition-colors">Chronograph Watch</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">$850.00</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface full-width mt-8xl border-t border-outline-variant w-full py-6xl px-gutter grid grid-cols-1 md:grid-cols-4 gap-3xl max-w-container-max mx-auto shadow-[none]">
+<div>
+<div class="font-h5 text-h5 text-on-surface mb-md">LUXE</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 LUXE Ecommerce. All rights reserved.</p>
+</div>
+<div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface mb-sm">Legal</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Privacy Policy</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface mb-sm">Support</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Shipping Info</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Contact Us</a></li>
+</ul>
+</div>
+</footer>
+</body></html>

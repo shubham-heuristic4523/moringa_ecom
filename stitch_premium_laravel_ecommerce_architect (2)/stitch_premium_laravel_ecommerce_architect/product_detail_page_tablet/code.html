@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apex Automatic Watch - LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#dce2f7",
+                        "on-tertiary-fixed": "#001e2f",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-surface-variant": "#584237",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-container-high": "#e1e8fd",
+                        "on-primary-container": "#582200",
+                        "primary-fixed": "#ffdbca",
+                        "on-secondary-fixed": "#002109",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#f97316",
+                        "on-background": "#141b2b",
+                        "outline": "#8c7164",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb690",
+                        "on-secondary-container": "#007230",
+                        "inverse-surface": "#293040",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-container": "#7cf994",
+                        "secondary-fixed": "#7ffc97",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "on-surface": "#141b2b",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9ff",
+                        "surface-container": "#e9edff",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#e0c0b1",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "surface-tint": "#9d4300",
+                        "surface-container-low": "#f1f3ff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#006591",
+                        "on-tertiary-container": "#003650",
+                        "on-primary-fixed": "#341100",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#006e2d",
+                        "on-primary-fixed-variant": "#783200",
+                        "inverse-primary": "#ffb690",
+                        "tertiary-container": "#09a4e8",
+                        "surface-dim": "#d3daef",
+                        "primary": "#9d4300",
+                        "surface-variant": "#dce2f7",
+                        "secondary-fixed-dim": "#62df7d",
+                        "on-secondary-fixed-variant": "#005320"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "12px",
+                        "8xl": "96px",
+                        "5xl": "48px",
+                        "container-max": "1440px",
+                        "xl": "20px",
+                        "6xl": "64px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "4xl": "40px",
+                        "lg": "16px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "7xl": "80px",
+                        "3xl": "32px",
+                        "2xl": "24px"
+                    },
+                    "fontFamily": {
+                        "h6": ["Geist"],
+                        "button": ["Geist"],
+                        "h3": ["Geist"],
+                        "body-sm": ["Geist"],
+                        "body-default": ["Geist"],
+                        "display": ["Geist"],
+                        "caption": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "h5": ["Geist"],
+                        "nav": ["Geist"],
+                        "h2": ["Geist"],
+                        "h4": ["Geist"],
+                        "h1-mobile": ["Geist"],
+                        "h1": ["Geist"]
+                    },
+                    "fontSize": {
+                        "h6": ["16px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "button": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "h3": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-default": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h5": ["20px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "nav": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "h2": ["36px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h4": ["24px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-default text-body-default bg-background">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto w-full transition-all duration-300">
+<div class="flex items-center gap-gutter">
+<span class="font-display text-h4 font-bold text-on-surface dark:text-inverse-on-surface">LUXE</span>
+<nav class="hidden md:flex gap-gutter items-center h-full">
+<a class="font-nav text-nav uppercase tracking-wider text-primary dark:text-primary-fixed-dim border-b-2 border-primary hover:text-primary transition-colors duration-200 py-4 h-full flex items-center" href="#">Shop</a>
+<a class="font-nav text-nav uppercase tracking-wider text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200 py-4 h-full flex items-center" href="#">Collections</a>
+<a class="font-nav text-nav uppercase tracking-wider text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200 py-4 h-full flex items-center" href="#">New Arrivals</a>
+<a class="font-nav text-nav uppercase tracking-wider text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200 py-4 h-full flex items-center" href="#">Sale</a>
+</nav>
+</div>
+<div class="flex items-center gap-lg text-primary dark:text-primary-fixed-dim">
+<button class="hover:text-primary transition-colors duration-200 flex items-center justify-center p-sm rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="hover:text-primary transition-colors duration-200 flex items-center justify-center p-sm rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="hover:text-primary transition-colors duration-200 flex items-center justify-center p-sm rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content: Product Detail (Tablet Focused) -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-3xl pb-8xl md:pb-3xl flex flex-col gap-5xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5xl lg:gap-7xl items-start">
+<!-- Gallery Stack -->
+<div class="flex flex-col gap-md sticky top-2xl">
+<div class="w-full aspect-square bg-surface-container rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm relative group cursor-crosshair">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-end, close-up macro product shot of a luxury automatic watch with a silver stainless steel band and a deep blue sunburst dial. The lighting is precise and dramatic, highlighting the metallic reflections and the intricate details of the watch hands and indices. The background is a stark, minimal light-mode studio environment. Professional luxury e-commerce aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTbFmkwbryLHnsFU-HXqZUfWBI259KD5SFjOljSi06y4PHW4alZueIUHCKiPb1QCYbXYNPLgIGDZMw4sLI2zCtjPaCaqX9NWIArSk2xTaBd9iLvvQonPwScgjT4FpDv19Qje4rbLJNOxDiQawqohzfQ7GJVSWLBfouXrIPihxL-mux-eXefL3G4vmMzgtNkH3NA3Z4yusnr53xw5l8ev01KYwyLHu44tS089GfH-MWZ_mfhQ9lR29vfqiDkOFJHyCzCF4T3SzQ6LQ"/>
+<button class="absolute top-md right-md bg-surface/80 backdrop-blur p-sm rounded-full shadow-sm text-on-surface-variant hover:text-primary transition-colors z-10">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+</div>
+<!-- Thumbnails (Horizontal scroll on tablet) -->
+<div class="flex gap-md overflow-x-auto hide-scrollbar snap-x snap-mandatory py-xs w-full">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container rounded-lg border-2 border-primary cursor-pointer overflow-hidden snap-start">
+<img class="w-full h-full object-cover" data-alt="A high-end, close-up macro product shot of a luxury automatic watch with a silver stainless steel band and a deep blue sunburst dial. Front facing angle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT6ENBc6atwWfF9xnXIURuXrzBT4lBi5Pfq6J49sxtwlSCcGseyXqGb16T_i4yqAjgO_8NF-wOm7dwomYffdG2wU7ecM5byPPZ5yqTx4dENA0w-aZYWSikoqRQ1YCgo0TQYsikh3cDvfQx1sApLLrnE45RuSaOfTGjP-mvmvVQ0mGuLRYJWcq-KJiJifwvzTUv9LieCr19kXJGSh0oRYYujU_xufh7BzWYNw42SiIpNrRf_W4OcaxLXBCNhwXoknSAMR9Y8lyIcbw"/>
+</div>
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container rounded-lg border border-outline-variant/30 hover:border-outline cursor-pointer transition-colors overflow-hidden snap-start opacity-70 hover:opacity-100">
+<img class="w-full h-full object-cover" data-alt="A side profile product shot of a luxury automatic watch showing the intricate crown and the thickness of the case. Light mode studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASHDZyfwsWj91dDM_ocZe17KAiPeRvy4JfF07H0-O05_FbhrmKKUfnk0sWBjUFNxeql7pEPGeWQe9jCfa5Hqpy31q4953t-_tpoRJnR7h0BORbn6QUCR187jvI4-HjyVOweR7oTqVHBJcCCdUnA_S9CcvABBnPB3r7247zIejVLuuoXL603bMBKhagnCc26bKppqxLGRoBrNEV0yB5oitWuwebAbwV51OzmeOa4O86AZJYDepF4FcIeBiJawo3YCEGyeREGpxmnq4"/>
+</div>
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container rounded-lg border border-outline-variant/30 hover:border-outline cursor-pointer transition-colors overflow-hidden snap-start opacity-70 hover:opacity-100">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of the open case back of an automatic watch, revealing the complex internal mechanical movement, gears, and rotor. Precision luxury vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsEFheGNk472wfN5GY7fVXT5chezvifMJITCDQRJCGNWTSOOwPEKSMEAI7lK6fs8rvXbYXTAe-HlfB0tuNiKO7AiexeJRYLNRtIlII6cqOfV134EcH42-PA4hcac6DJLrHNF4w3u-G3YYeFCpXfnYB1IC7cKgC91ermJ2unsA_WCP1RmExKx7GJHOnI3SESDMgq26RlAyntWfiyteaVp-3qY3YK4XHXpVFM_rzm53ivZ8F8zERDSgxOG8mxYz79WO3d7D_8-LRS4o"/>
+</div>
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container rounded-lg border border-outline-variant/30 hover:border-outline cursor-pointer transition-colors overflow-hidden snap-start opacity-70 hover:opacity-100">
+<img class="w-full h-full object-cover" data-alt="The luxury watch resting elegantly on a textured, premium leather surface in a bright, minimal setting to demonstrate scale and context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARKSyBe2v334e2PnI85DY2Bxr1IherHvmJU_yRBJyhxFr0JxUGkFVWXq0pXnK-dfk2WHbyXOT0gGxJIL1WltgNQKiOh7q0kG0i7NtV2OoynCUMx4hYHFGDg5dW0jw8454J0jujD-yUW74gHv8dY-YyPb3ffoZcdyvNb8CX2bs36feMTNIUf3YvhrIpXiwrQszLfm8e8zrl8ccUVFYfj2CWi9IPGH7K4oSUrs4xH4YAlTWec6s_tjMmvUPZEZR_PfRAXuNGSq9pfcQ"/>
+</div>
+</div>
+</div>
+<!-- Product Details -->
+<div class="flex flex-col gap-3xl max-w-[600px] mx-auto md:mx-0 w-full">
+<!-- Header Info -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<span class="font-body-sm text-body-sm text-on-surface-variant uppercase tracking-widest">Timepieces</span>
+<div class="flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star_half</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-xs">(128)</span>
+</div>
+</div>
+<h1 class="font-h2 text-h2 text-on-surface tracking-tight">Apex Automatic</h1>
+<p class="font-h4 text-h4 text-primary font-medium mt-xs">$1,250.00</p>
+<p class="font-body-default text-body-default text-on-surface-variant leading-relaxed mt-md">
+                        Engineered for precision and designed with undeniable presence. The Apex Automatic features a sophisticated self-winding movement housed in a surgical-grade stainless steel case. Water-resistant to 100m, it transitions seamlessly from the boardroom to the open sea.
+                    </p>
+</div>
+<!-- Variants: Dial Color -->
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-end">
+<span class="font-h6 text-h6 text-on-surface">Dial Color</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Midnight Blue</span>
+</div>
+<div class="flex gap-lg">
+<button aria-label="Midnight Blue" class="w-12 h-12 rounded-full border-2 border-primary bg-[#1A2C42] shadow-sm flex items-center justify-center focus:outline-none">
+</button>
+<button aria-label="Arctic White" class="w-12 h-12 rounded-full border border-outline-variant/50 hover:border-outline bg-[#E5E5E5] shadow-sm flex items-center justify-center focus:outline-none transition-colors">
+</button>
+<button aria-label="Obsidian Black" class="w-12 h-12 rounded-full border border-outline-variant/50 hover:border-outline bg-[#1E1E1E] shadow-sm flex items-center justify-center focus:outline-none transition-colors">
+</button>
+</div>
+</div>
+<!-- Variants: Strap -->
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-end">
+<span class="font-h6 text-h6 text-on-surface">Strap Option</span>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<button class="flex flex-col items-center justify-center p-md border-2 border-primary rounded-lg bg-surface shadow-sm focus:outline-none text-center min-h-[64px]">
+<span class="font-button text-button text-on-surface">Steel Bracelet</span>
+<span class="font-caption text-caption text-on-surface-variant mt-xs">Included</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md border border-outline-variant/30 hover:border-outline rounded-lg bg-surface shadow-sm focus:outline-none transition-colors text-center min-h-[64px]">
+<span class="font-button text-button text-on-surface">Leather Band</span>
+<span class="font-caption text-caption text-on-surface-variant mt-xs">+$85.00</span>
+</button>
+</div>
+</div>
+<!-- Hidden on mobile, visible on desktop/tablet for add to cart -->
+<div class="hidden md:flex flex-col gap-md mt-lg pt-3xl border-t border-outline-variant/30">
+<div class="flex gap-md">
+<div class="flex items-center border border-outline-variant rounded-lg bg-surface overflow-hidden">
+<button class="px-md py-lg text-on-surface hover:bg-surface-container-low transition-colors w-12 flex items-center justify-center">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-body-default text-body-default font-medium w-8 text-center">1</span>
+<button class="px-md py-lg text-on-surface hover:bg-surface-container-low transition-colors w-12 flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<button class="flex-grow bg-primary hover:bg-primary/90 text-on-primary font-button text-button rounded-lg h-14 flex items-center justify-center gap-sm transition-colors shadow-sm">
+<span class="material-symbols-outlined">shopping_bag</span>
+                            Add to Cart - $1,250
+                        </button>
+</div>
+<div class="flex items-center justify-center gap-lg mt-sm font-caption text-caption text-on-surface-variant">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">local_shipping</span> Free Expedited Shipping</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">verified</span> 5-Year Warranty</span>
+</div>
+</div>
+<!-- Accordion Details -->
+<div class="flex flex-col border-t border-outline-variant/30 mt-lg">
+<button class="flex justify-between items-center py-lg border-b border-outline-variant/30 group">
+<span class="font-h6 text-h6 text-on-surface group-hover:text-primary transition-colors">Specifications</span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-hover:text-primary">expand_more</span>
+</button>
+<button class="flex justify-between items-center py-lg border-b border-outline-variant/30 group">
+<span class="font-h6 text-h6 text-on-surface group-hover:text-primary transition-colors">Shipping &amp; Returns</span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-hover:text-primary">expand_more</span>
+</button>
+<button class="flex justify-between items-center py-lg border-b border-outline-variant/30 group">
+<span class="font-h6 text-h6 text-on-surface group-hover:text-primary transition-colors">Care Instructions</span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-hover:text-primary">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Mobile/Tablet Bottom Action Bar (hidden on large desktop) -->
+<div class="md:hidden fixed bottom-16 left-0 w-full bg-surface/90 backdrop-blur-md border-t border-outline-variant/30 p-lg shadow-lg z-40 flex gap-md pb-safe">
+<button class="flex-grow bg-primary text-on-primary font-button text-button rounded-lg h-14 flex items-center justify-center gap-sm shadow-md active:scale-95 transition-transform">
+            Add to Cart - $1,250
+        </button>
+<button class="w-14 h-14 border border-outline-variant rounded-lg flex items-center justify-center text-on-surface bg-surface shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 pb-safe bg-surface dark:bg-inverse-surface border-t border-outline-variant/20 shadow-lg md:hidden z-50">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold font-caption text-caption w-full h-full active:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption w-full h-full active:bg-surface-container-high transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined">search</span>
+<span>Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption w-full h-full active:bg-surface-container-high transition-colors hover:text-primary relative" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-2 right-6 w-2 h-2 bg-primary rounded-full"></span>
+<span>Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption w-full h-full active:bg-surface-container-high transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Account</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant mt-8xl pt-6xl pb-3xl px-gutter md:pb-6xl">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-3xl">
+<div class="flex flex-col gap-md">
+<span class="font-h5 text-h5 text-on-surface font-display font-bold">LUXE</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[250px]">Defining modern elegance through precision engineering and timeless design.</p>
+</div>
+<div class="flex flex-col gap-md">
+<span class="font-h6 text-h6 text-on-surface">Legal</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-md">
+<span class="font-h6 text-h6 text-on-surface">Support</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Shipping Info</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Contact Us</a>
+</div>
+<div class="flex flex-col gap-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-auto">© 2024 LUXE Ecommerce. All rights reserved.</span>
+</div>
+</div>
+</footer>
+<script>
+        // Simple script to handle thumbnail clicks for gallery
+        document.addEventListener('DOMContentLoaded', () => {
+            const thumbnails = document.querySelectorAll('.overflow-x-auto > div');
+            const mainImage = document.querySelector('.aspect-square img');
+            
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    // Remove active state from all
+                    thumbnails.forEach(t => {
+                        t.classList.remove('border-2', 'border-primary', 'opacity-100');
+                        t.classList.add('border', 'border-outline-variant/30', 'opacity-70');
+                    });
+                    
+                    // Add active state to clicked
+                    thumb.classList.remove('border', 'border-outline-variant/30', 'opacity-70');
+                    thumb.classList.add('border-2', 'border-primary', 'opacity-100');
+                    
+                    // In a real app, we'd swap the src. Here we just simulate an interaction.
+                    mainImage.style.opacity = '0.5';
+                    setTimeout(() => {
+                        mainImage.style.opacity = '1';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+</body></html>
