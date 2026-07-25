@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Apex Automatic Watch - LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#dce2f7",
+                      "on-tertiary-fixed": "#001e2f",
+                      "tertiary-fixed": "#c9e6ff",
+                      "on-surface-variant": "#584237",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#edf0ff",
+                      "surface-container-high": "#e1e8fd",
+                      "on-primary-container": "#582200",
+                      "primary-fixed": "#ffdbca",
+                      "on-secondary-fixed": "#002109",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#f97316",
+                      "on-background": "#141b2b",
+                      "outline": "#8c7164",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#ffb690",
+                      "on-secondary-container": "#007230",
+                      "inverse-surface": "#293040",
+                      "surface-bright": "#f9f9ff",
+                      "secondary-container": "#7cf994",
+                      "secondary-fixed": "#7ffc97",
+                      "on-tertiary-fixed-variant": "#004c6e",
+                      "on-surface": "#141b2b",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "background": "#f9f9ff",
+                      "surface-container": "#e9edff",
+                      "surface": "#f9f9ff",
+                      "outline-variant": "#e0c0b1",
+                      "tertiary-fixed-dim": "#89ceff",
+                      "surface-tint": "#9d4300",
+                      "surface-container-low": "#f1f3ff",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#006591",
+                      "on-tertiary-container": "#003650",
+                      "on-primary-fixed": "#341100",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#006e2d",
+                      "on-primary-fixed-variant": "#783200",
+                      "inverse-primary": "#ffb690",
+                      "tertiary-container": "#09a4e8",
+                      "surface-dim": "#d3daef",
+                      "primary": "#9d4300",
+                      "surface-variant": "#dce2f7",
+                      "secondary-fixed-dim": "#62df7d",
+                      "on-secondary-fixed-variant": "#005320"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "12px",
+                      "8xl": "96px",
+                      "5xl": "48px",
+                      "container-max": "1440px",
+                      "xl": "20px",
+                      "6xl": "64px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "4xl": "40px",
+                      "lg": "16px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "7xl": "80px",
+                      "3xl": "32px",
+                      "2xl": "24px"
+              },
+              "fontFamily": {
+                      "h6": ["Geist"],
+                      "button": ["Geist"],
+                      "h3": ["Geist"],
+                      "body-sm": ["Geist"],
+                      "body-default": ["Geist"],
+                      "display": ["Geist"],
+                      "caption": ["Geist"],
+                      "body-lg": ["Geist"],
+                      "h5": ["Geist"],
+                      "nav": ["Geist"],
+                      "h2": ["Geist"],
+                      "h4": ["Geist"],
+                      "h1-mobile": ["Geist"],
+                      "h1": ["Geist"]
+              },
+              "fontSize": {
+                      "h6": ["16px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                      "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "h3": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-default": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "caption": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h5": ["20px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                      "nav": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "h2": ["36px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "h4": ["24px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "h1-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for horizontal scrolling */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-default min-h-screen pb-safe pb-[140px] md:pb-0">
+<!-- TopNavBar (Hidden on Mobile as per constraints, but requested in prompt. Since PDP is not a top level destination, it should ideally be suppressed or minimized, but requested explicitly. We'll render it hidden on mobile and visible md up for structural completeness, or a simplified back button header for mobile.) -->
+<!-- However, JSON requires exact transcription. We will render TopAppBar for web, and a custom back header for mobile PDP intent. -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md docked full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm hidden md:flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="font-display text-h4 font-bold text-on-surface dark:text-inverse-on-surface">LUXE</div>
+<nav class="flex gap-lg font-nav text-nav uppercase tracking-wider">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">Collections</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">New Arrivals</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">Sale</a>
+</nav>
+<div class="flex gap-md text-primary dark:text-primary-fixed-dim">
+<button class="hover:text-primary transition-colors duration-200"><span class="material-symbols-outlined">shopping_bag</span></button>
+<button class="hover:text-primary transition-colors duration-200"><span class="material-symbols-outlined">favorite</span></button>
+<button class="hover:text-primary transition-colors duration-200"><span class="material-symbols-outlined">person</span></button>
+</div>
+</header>
+<!-- Mobile Back Header -->
+<div class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 flex justify-between items-center h-16 px-lg md:hidden">
+<button aria-label="Go back" class="p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="font-h5 text-h5 font-bold text-on-surface">Apex Automatic</div>
+<button aria-label="Share" class="p-2 -mr-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">ios_share</span>
+</button>
+</div>
+<main class="w-full max-w-container-max mx-auto md:px-gutter md:py-5xl md:grid md:grid-cols-2 md:gap-5xl">
+<!-- Image Gallery (Mobile: Swipeable, Desktop: Grid/Sticky) -->
+<div class="relative w-full aspect-[4/5] md:aspect-square bg-surface-container-low overflow-hidden">
+<div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full w-full">
+<div class="snap-center shrink-0 w-full h-full relative">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a luxury automatic watch dial, focusing on the intricate mechanical gears, sweeping second hand, and luminous indices. The watch case is brushed steel, resting on a stark white textured background. Soft, diffused studio lighting highlights the precision engineering and premium materials. High-end product photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDpBpiuWfUDEXlRF8aU833Hl89YLiVpm7ru1HAf6YkvLi3pkmGPU0nOR_n9ePkNgaWTrh4wELL1bopiDmHK_mP7PlDlOABVSB3MzC2v7aI1-aA1vsLqWFp_kkG_onezdePwxXgWotnposokJhBsc6kd1XAWX0MXc4nQ_mG2FwQ7kXj0ymj_3dmayTAr8SrK9DzjlliCQQv5r7alBXnTx5ZkwqLy8kN0RGXBdQqSOae8XZCc1_JcLweEi5tHJ4ZkOaByFv0EG7aMLU"/>
+</div>
+<!-- Additional images would go here -->
+</div>
+<!-- Pagination Dots -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+<!-- Product Info Area -->
+<div class="px-lg py-3xl md:px-0 md:py-0 flex flex-col gap-2xl">
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<h1 class="font-h1-mobile text-h1-mobile md:font-h2 md:text-h2 text-on-surface">Apex Automatic Watch</h1>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<div class="flex">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">star_half</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">(128 Reviews)</span>
+</div>
+<div class="font-h3 text-h3 text-on-surface mt-sm">$595.00</div>
+</div>
+<div class="w-full h-px bg-outline-variant/30"></div>
+<!-- Selectors -->
+<div class="flex flex-col gap-xl">
+<!-- Color -->
+<div class="flex flex-col gap-sm">
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Color: <span class="font-normal text-on-surface-variant">Onyx Black</span></span>
+<div class="flex gap-md">
+<button aria-label="Onyx Black" class="w-10 h-10 rounded-full bg-[#1A1A1A] border-2 border-primary ring-2 ring-primary/20 shadow-sm"></button>
+<button aria-label="Gold" class="w-10 h-10 rounded-full bg-[#D4AF37] border-2 border-transparent hover:border-outline-variant shadow-sm transition-colors"></button>
+<button aria-label="Silver" class="w-10 h-10 rounded-full bg-[#C0C0C0] border-2 border-transparent hover:border-outline-variant shadow-sm transition-colors"></button>
+</div>
+</div>
+<!-- Size/Fit -->
+<div class="flex flex-col gap-sm">
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Strap Size</span>
+<div class="grid grid-cols-3 gap-md">
+<button class="py-3 border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface hover:bg-surface-container-high transition-colors">Small</button>
+<button class="py-3 border border-primary bg-primary-container/10 rounded-lg font-body-sm text-body-sm font-medium text-primary transition-colors">Medium</button>
+<button class="py-3 border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface hover:bg-surface-container-high transition-colors">Large</button>
+</div>
+</div>
+</div>
+<!-- Accordions -->
+<div class="flex flex-col border-t border-outline-variant/30 mt-md">
+<details class="group border-b border-outline-variant/30">
+<summary class="flex justify-between items-center font-h6 text-h6 text-on-surface py-lg cursor-pointer list-none">
+                        Description
+                        <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="font-body-sm text-body-sm text-on-surface-variant pb-lg pr-md leading-relaxed">
+                        Engineered for the modern minimalist. The Apex Automatic features a bespoke mechanical movement visible through a sapphire exhibition caseback. Crafted from surgical-grade stainless steel with a scratch-resistant face, it blends rugged durability with refined aesthetics.
+                    </div>
+</details>
+<details class="group border-b border-outline-variant/30">
+<summary class="flex justify-between items-center font-h6 text-h6 text-on-surface py-lg cursor-pointer list-none">
+                        Specifications
+                        <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="font-body-sm text-body-sm text-on-surface-variant pb-lg pr-md">
+<ul class="list-disc pl-5 space-y-1">
+<li>40mm Case Diameter</li>
+<li>Sapphire Crystal Glass</li>
+<li>100m Water Resistance</li>
+<li>42-Hour Power Reserve</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</main>
+<!-- Recommended Products -->
+<section class="w-full max-w-container-max mx-auto py-5xl px-lg md:px-gutter">
+<h2 class="font-h4 text-h4 text-on-surface mb-xl">You May Also Like</h2>
+<div class="flex overflow-x-auto hide-scrollbar gap-lg pb-md">
+<!-- Card 1 -->
+<div class="min-w-[160px] md:min-w-[240px] flex flex-col gap-sm cursor-pointer group">
+<div class="w-full aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist silver watch with a mesh strap resting against a clean, off-white architectural background. Subtle warm lighting. Professional product photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd1UNfRRaBKpyhQJ_1efsVASb5XA3Ai9Ez3ZlOV-AicGyDLQjOctAKYHkSAVpHcHixb0yf_xp950to0hGA_-C_kmd-K9Qa5pk5jW6T0nA02xzG8MCq6NLMqqx35QnRduIS9Z0Hq9hYPEfnXVLyl68WKSv7d726GzEGaAKL83aTLTYBZWTsHhRZ2oAYdyIfh1g6u7UOOiX4LSfd3fgOtoTCoJRHOmLwtLBawm7-5LLeDEjTSttZ5T9ZGOPKdkdnWdBuA8iZQkKbN3A"/>
+</div>
+<div>
+<h3 class="font-body-default text-body-default text-on-surface font-medium truncate">Zenith Minimal</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$395.00</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[160px] md:min-w-[240px] flex flex-col gap-sm cursor-pointer group">
+<div class="w-full aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A rugged diving watch with a navy blue dial and thick steel bezel, placed on a slate stone surface. Cool daylight lighting emphasizing durability and premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFJr6dP3TcPyRMhxD6DxUuNzs_yC_xcMtxTTcl9P2i8ELKbyh7fpeWtriuZhM896LHIYikj2dRkG86I03lvZ0bhSZ0YckfDrUH8P01DOg7fgM4_mLaH-EBW3ovGmLnKv8NogMR70cQpNGmwLwbBAqypAcAqp_806ea3y5dAVBl8QOogbz9A22klb5eateIUShsV6ZIwh3TaeRQI_gAwSeurjb9xYmOY82Njs7494kg0S55FpjvToNyvcndxV2-PiXZgAVGV7IwF-g"/>
+</div>
+<div>
+<h3 class="font-body-default text-body-default text-on-surface font-medium truncate">Mariner Pro</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$850.00</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="min-w-[160px] md:min-w-[240px] flex flex-col gap-sm cursor-pointer group">
+<div class="w-full aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A classic leather strap watch with a warm rose gold case and a clean white dial, presented on a soft linen cloth. Warm, inviting lighting. Luxury e-commerce style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbOJNzvq_V0dX3rhb1IJ0nRpAD5Srx0zNsx7OMjW1yY9MZBaMOIqLecSc06RFvO4TRoXfU04ZlUFwakN47Z3EOIYC5ZiuqRwPzy3MxDgBYaomSzPf7ke__rUjrTLXUP0dcoPpxr05Q8AmiXinNn2DRB09fbSUyHRlT4bYMY0kGVmtEcHDZ9czHf-lrBpTsuWKs7mpvLlVgYT1ZZb-dnX3wF_-rU50glK5_K2htqrlvO3OJgU3d0MT4NusLXXCCXT0s0cc0Zb79nko"/>
+</div>
+<div>
+<h3 class="font-body-default text-body-default text-on-surface font-medium truncate">Heritage Leather</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$250.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky Bottom CTA Bar (Mobile only, Desktop uses standard flow) -->
+<div class="fixed bottom-[64px] left-0 w-full bg-surface border-t border-outline-variant/20 p-md z-40 md:hidden shadow-[0_-4px_16px_rgba(0,0,0,0.05)]">
+<button class="w-full bg-primary text-on-primary font-button text-button h-[48px] rounded-lg flex items-center justify-center gap-sm active:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+            Add to Cart - $595.00
+        </button>
+</div>
+<!-- Desktop CTA (Hidden on mobile) -->
+<div class="hidden md:block fixed bottom-0 w-full bg-surface border-t border-outline-variant/20 py-md z-40 shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded"><img class="w-full h-full object-cover" data-alt="Thumbnail of the Apex Automatic Watch, black dial, steel case, clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtTeobJpNFxX6qMdcipxpagC1OqMOqhfnjVMKMFzAm7jHpvOhCwlQ1OlKRHac1JZG7NBuA-fCEK_E4yBLlqxUWqYdjs4-Jmn0_hyZ8lNzJ2MDi2ViDsFNmBNAI84EbsIXm-cx6tflsXgu9ax6pVY7iSaexQxhflp88WUtubjWHHlKWyDMfkghRDAo28zKqHLGrjsUBZQ_pKAwOakKxY6kVEnwXq7Z_0Y5808pKZJLG17Mqd7OMpI4-I2wiP92R4bVHjAsB4XztTeY"/></div>
+<div>
+<div class="font-h6 text-h6 text-on-surface">Apex Automatic</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">$595.00</div>
+</div>
+</div>
+<button class="bg-primary hover:bg-surface-tint text-on-primary font-button text-button h-[44px] px-3xl rounded-lg transition-colors">
+                Add to Cart
+            </button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="docked full-width bottom-0 fixed z-50 md:hidden border-t border-outline-variant/20 shadow-lg fixed bottom-0 left-0 w-full flex justify-around items-center h-16 pb-safe bg-surface dark:bg-inverse-surface">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption active:bg-surface-container-high transition-colors w-full h-full">
+<span class="material-symbols-outlined text-[24px] mb-[2px]">home</span>
+            Home
+        </button>
+<!-- Active Tab: Assuming Search or 'Shop' intent, but it's a PDP. No exact match, but 'Cart' is not active yet. 'Home' is default inactive. Let's leave all inactive as PDP is a deep link, or highlight Search if they are browsing. We will leave them all inactive style as per Semantic Mapping "Intent Fallback: ONLY use semantic intent... PROHIBIT lazy defaulting". Actually, 'Home' or none. Let's make none active to focus on content canvas, wait, JSON requires exact transcription of active state if it matches. It doesn't match perfectly. -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption active:bg-surface-container-high transition-colors w-full h-full">
+<span class="material-symbols-outlined text-[24px] mb-[2px]">search</span>
+            Search
+        </button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption active:bg-surface-container-high transition-colors w-full h-full relative">
+<span class="material-symbols-outlined text-[24px] mb-[2px]">shopping_cart</span>
+            Cart
+            <span class="absolute top-[8px] right-[24px] w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption active:bg-surface-container-high transition-colors w-full h-full">
+<span class="material-symbols-outlined text-[24px] mb-[2px]">person</span>
+            Account
+        </button>
+</nav>
+<script>
+        // Simple JS for variant selection visual feedback
+        document.addEventListener('DOMContentLoaded', () => {
+            const sizeBtns = document.querySelectorAll('.grid-cols-3 button');
+            sizeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    sizeBtns.forEach(b => {
+                        b.classList.remove('border-primary', 'bg-primary-container/10', 'text-primary', 'font-medium');
+                        b.classList.add('border-outline-variant', 'text-on-surface', 'hover:bg-surface-container-high');
+                    });
+                    btn.classList.add('border-primary', 'bg-primary-container/10', 'text-primary', 'font-medium');
+                    btn.classList.remove('border-outline-variant', 'text-on-surface', 'hover:bg-surface-container-high');
+                });
+            });
+        });
+    </script>
+</body></html>

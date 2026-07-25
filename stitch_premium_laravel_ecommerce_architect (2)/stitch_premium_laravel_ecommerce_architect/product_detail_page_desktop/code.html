@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apex Automatic Watch - LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#dce2f7",
+                        "on-tertiary-fixed": "#001e2f",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-surface-variant": "#584237",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-container-high": "#e1e8fd",
+                        "on-primary-container": "#582200",
+                        "primary-fixed": "#ffdbca",
+                        "on-secondary-fixed": "#002109",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#f97316",
+                        "on-background": "#141b2b",
+                        "outline": "#8c7164",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb690",
+                        "on-secondary-container": "#007230",
+                        "inverse-surface": "#293040",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-container": "#7cf994",
+                        "secondary-fixed": "#7ffc97",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "on-surface": "#141b2b",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9ff",
+                        "surface-container": "#e9edff",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#e0c0b1",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "surface-tint": "#9d4300",
+                        "surface-container-low": "#f1f3ff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#006591",
+                        "on-tertiary-container": "#003650",
+                        "on-primary-fixed": "#341100",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#006e2d",
+                        "on-primary-fixed-variant": "#783200",
+                        "inverse-primary": "#ffb690",
+                        "tertiary-container": "#09a4e8",
+                        "surface-dim": "#d3daef",
+                        "primary": "#9d4300",
+                        "surface-variant": "#dce2f7",
+                        "secondary-fixed-dim": "#62df7d",
+                        "on-secondary-fixed-variant": "#005320"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "12px",
+                        "8xl": "96px",
+                        "5xl": "48px",
+                        "container-max": "1440px",
+                        "xl": "20px",
+                        "6xl": "64px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "4xl": "40px",
+                        "lg": "16px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "7xl": "80px",
+                        "3xl": "32px",
+                        "2xl": "24px"
+                    },
+                    "fontFamily": {
+                        "h6": ["Geist"],
+                        "button": ["Geist"],
+                        "h3": ["Geist"],
+                        "body-sm": ["Geist"],
+                        "body-default": ["Geist"],
+                        "display": ["Geist"],
+                        "caption": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "h5": ["Geist"],
+                        "nav": ["Geist"],
+                        "h2": ["Geist"],
+                        "h4": ["Geist"],
+                        "h1-mobile": ["Geist"],
+                        "h1": ["Geist"]
+                    },
+                    "fontSize": {
+                        "h6": ["16px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "button": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "h3": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-default": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h5": ["20px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600" }],
+                        "nav": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "h2": ["36px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h4": ["24px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for gallery thumbnails */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Zoom effect on main image */
+        .zoom-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .zoom-container img {
+            transition: transform 0.3s ease;
+        }
+        .zoom-container:hover img {
+            transform: scale(1.5);
+            cursor: zoom-in;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="font-display text-h4 font-bold text-on-surface dark:text-inverse-on-surface">LUXE</div>
+<div class="hidden md:flex gap-2xl">
+<a class="font-nav text-nav uppercase tracking-wider text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">Shop</a>
+<a class="font-nav text-nav uppercase tracking-wider text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">Collections</a>
+<a class="font-nav text-nav uppercase tracking-wider text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-nav text-nav uppercase tracking-wider text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">Sale</a>
+</div>
+<div class="flex gap-lg text-primary dark:text-primary-fixed-dim">
+<button class="hover:scale-95 transition-transform"><span class="material-symbols-outlined">search</span></button>
+<button class="hover:scale-95 transition-transform"><span class="material-symbols-outlined">shopping_bag</span></button>
+<button class="hover:scale-95 transition-transform"><span class="material-symbols-outlined">favorite</span></button>
+<button class="hover:scale-95 transition-transform"><span class="material-symbols-outlined">person</span></button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-5xl">
+<!-- Breadcrumb -->
+<nav class="mb-5xl text-body-sm font-body-sm text-on-surface-variant flex items-center gap-sm">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Watches</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Premium</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-medium">Apex Automatic</span>
+</nav>
+<!-- Product PDP Top Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8xl items-start relative">
+<!-- Left Column: Gallery -->
+<div class="flex flex-col md:flex-row-reverse gap-gutter">
+<!-- Main Image -->
+<div class="flex-1 rounded-xl border border-outline-variant/30 bg-surface-container-low aspect-[4/5] zoom-container relative group">
+<img class="w-full h-full object-cover rounded-xl" data-alt="A pristine, highly detailed close-up of a luxury automatic watch with a brushed silver case, complex skeletal dial, and genuine leather strap. The watch is presented on a minimalist off-white surface under soft, diffused studio lighting that highlights the metallic textures and premium craftsmanship. The aesthetic is clean, modern, and perfectly aligned with a high-end e-commerce product detail page." id="mainImage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcRxZr-JxakeHmXiwHTkp0-vFoB51C2qCzNz-NvlWGREM6gQvUE3tIsEPvN0RwY4BbrWHJObmxtiyrVhenafBb2KsUr4sHq-nS34z3RAcHxea0xDnKVvwS7rhqtPgu7xodzPq7BcUfRccQZPYwodYTRFYEWwDKo9JCrcaM04lpRvI6U-F0pCkzSH1HKJU9e56LabTN8sFwc_NZRmMXGzFgDCpiuMhTVali2EYFT_ObW8eOka0n_bp7JbgkY3q8FTxV9WsN5vb5LYg"/>
+<div class="absolute top-md right-md bg-surface/80 backdrop-blur-sm rounded-full p-sm shadow-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+<span class="material-symbols-outlined text-on-surface text-[20px]">zoom_in</span>
+</div>
+</div>
+<!-- Thumbnails -->
+<div class="flex md:flex-col gap-md overflow-x-auto md:overflow-y-auto no-scrollbar pb-md md:pb-0 w-full md:w-24 shrink-0">
+<button class="w-24 h-24 rounded-lg border-2 border-primary bg-surface-container-low overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Front view of a luxury automatic watch with silver case and skeletal dial on a clean off-white background. Soft studio lighting. E-commerce aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjBaXaP_bg2K4jabCxF0wVZ71i-8XqdJ8K2gnKMB8Ul84qc8uqao4S6Nv7V9zFHheTVFocA55IYqhlgzJkdCng0M43Ll7ayHlziE1VAKo2icEIAuzce3gQXaCzfkqEVXucZuoBMJ-PaSERHhjFc4UWPBQ_dSRoh6MOyYjfsvvyjJV4wWXhmG4eBdLL8Grcgd85zVzfFo9NdVAELU_bhH1Wi-wyWdd5jnLr6x0PLlTxjv72rdvwSX4TzftaOGLLAG5aikU_AQA-D0c"/>
+</button>
+<button class="w-24 h-24 rounded-lg border border-outline-variant/30 hover:border-primary/50 transition-colors bg-surface-container-low overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Side profile view of a luxury automatic watch showing the crown detail and leather strap stitching. Minimalist off-white background. High-end e-commerce aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRqm7mLfvfSxpjuDlDTQK-fOhm33N6zx11Iko_1gYEftRzNIPmSrMlCkO3UFtxY2nrh1DVF-AxV6L7Y4sSOc48D-dgF3kodWUFGGbw36GM_ANDIGZhHsOJqjSqH8cgbVfg8LLvkkA0O8fXEJt648aTYOCI0PDrv6Q8zm7IpvO7B25jw9ZmWYoISMpXLo5e2Q0TG5w_nt9hKabNsflLHh8ISjfxxn9yLZPmUH7v932A5CDmsqVN0E0nfj_UtVu6L-FCalCFlSxu760"/>
+</button>
+<button class="w-24 h-24 rounded-lg border border-outline-variant/30 hover:border-primary/50 transition-colors bg-surface-container-low overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up detail of the automatic watch movement visible through the case back. Intricate gears and premium finishing. Minimalist off-white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXd6JZuIxIxY1Tv3fnyW2NxL4O8vs_UWDMS4_n9HE54HH2LolHWMDY1sxXtxlYcpduhpzsB_SXBJ9vT3YHZ4Pf3eRgGN0aFKnny0wxizOZGRi_HIGxH2BhXI9ibRD5NIFrbyOhviKtu6Oe1Q9vsCfjQGOU_Cw6HH2v1nqLzSK85hRRL8kh06lOExzJiXA1T1_dHDt6kLzdbpED-cwedRysKT7TTKoJtV8bh_TIz8TvKeGQONoAxO7p7aWvRb-TUuc-5QqqAB3PHyw"/>
+</button>
+<button class="w-24 h-24 rounded-lg border border-outline-variant/30 hover:border-primary/50 transition-colors bg-surface-container-low overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Lifestyle shot of a luxury automatic watch being worn on a wrist with a tailored suit sleeve visible. Soft ambient lighting, professional premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtIARIgGvXHmINMvNrhvHL6mwRyShRS3CcxkJKyRNkxZzpoRvdHla7oW0YpWPoBZ0XmSLoHbRyVb637lDcUepIOjOYtavb5Y0PcK0RIfJGDxQ6vrMlcpjApIxSopZ7IKItyuiADd_wT3NU_8zTj8a2kpkdazjZy-i4UVaWgbi2YAbYdeBlmGiMhNEFemR50DcE0ki2xL50__8JePWdbtBhyUXlezi2mAOBgbwLINVBxGz9UqvsrcZdvH8qKLAVIclu5xjRuIFLjo8"/>
+</button>
+</div>
+</div>
+<!-- Right Column: Product Info (Sticky on Desktop) -->
+<div class="lg:sticky lg:top-32 flex flex-col gap-3xl">
+<!-- Header Info -->
+<div class="flex flex-col gap-sm">
+<p class="font-button text-button text-primary uppercase tracking-widest">LUXE</p>
+<h1 class="font-h2 text-h2 text-on-surface">Apex Automatic Watch</h1>
+<div class="flex items-center justify-between">
+<p class="font-body-sm text-body-sm text-on-surface-variant">SKU: W-772</p>
+<div class="flex items-center gap-xs">
+<div class="flex text-primary">
+<span class="material-symbols-outlined fill text-[16px]">star</span>
+<span class="material-symbols-outlined fill text-[16px]">star</span>
+<span class="material-symbols-outlined fill text-[16px]">star</span>
+<span class="material-symbols-outlined fill text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star_half</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-xs">4.8 (124 reviews)</span>
+</div>
+</div>
+</div>
+<!-- Price & Description -->
+<div class="flex flex-col gap-lg">
+<div class="font-h3 text-h3 text-on-surface">$595.00</div>
+<p class="font-body-default text-body-default text-on-surface-variant leading-relaxed">
+                        Experience precision engineering with the Apex Automatic. Featuring a Japanese movement and sapphire crystal glass, designed for those who appreciate understated luxury.
+                    </p>
+</div>
+<hr class="border-outline-variant/20"/>
+<!-- Variants -->
+<div class="flex flex-col gap-3xl">
+<!-- Color -->
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-h6 text-h6 text-on-surface">Color</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Silver</span>
+</div>
+<div class="flex gap-md">
+<button aria-label="Silver" class="w-12 h-12 rounded-full bg-[#E5E7EB] border-2 border-primary relative overflow-hidden"></button>
+<button aria-label="Midnight" class="w-12 h-12 rounded-full bg-[#1F2937] border border-outline-variant/30 hover:border-outline transition-colors relative overflow-hidden"></button>
+<button aria-label="Rose Gold" class="w-12 h-12 rounded-full bg-[#B76E79] border border-outline-variant/30 hover:border-outline transition-colors relative overflow-hidden"></button>
+</div>
+</div>
+<!-- Size -->
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-h6 text-h6 text-on-surface">Size</span>
+<a class="font-body-sm text-body-sm text-primary hover:underline" href="#">Size Guide</a>
+</div>
+<div class="flex gap-md">
+<button class="flex-1 py-md border-2 border-primary rounded-lg font-button text-button text-on-surface text-center bg-surface-container-lowest">40mm</button>
+<button class="flex-1 py-md border border-outline-variant/30 rounded-lg font-button text-button text-on-surface-variant text-center hover:border-outline hover:bg-surface-container-lowest transition-all">42mm</button>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-md mt-lg">
+<div class="flex gap-md h-12">
+<!-- Quantity -->
+<div class="flex items-center justify-between border border-outline-variant/30 rounded-lg w-32 bg-surface-container-lowest">
+<button class="w-10 h-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">remove</span></button>
+<span class="font-button text-button text-on-surface">1</span>
+<button class="w-10 h-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+<!-- Add to Cart -->
+<button class="flex-1 bg-primary hover:bg-surface-tint text-on-primary font-button text-button rounded-lg transition-colors flex items-center justify-center gap-sm shadow-sm">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+                            Add to Cart
+                        </button>
+<!-- Wishlist -->
+<button class="w-12 h-12 border border-outline-variant/30 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all bg-surface-container-lowest">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<!-- Buy Now -->
+<button class="w-full h-12 border-2 border-on-surface text-on-surface hover:bg-on-surface hover:text-surface-container-lowest font-button text-button rounded-lg transition-colors shadow-sm">
+                        Buy It Now
+                    </button>
+</div>
+<!-- Trust Signals -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md mt-lg p-lg bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-[24px]">local_shipping</span>
+<div class="flex flex-col">
+<span class="font-h6 text-h6 text-on-surface text-[14px]">Free Shipping</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Delivers in 3-5 days</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-[24px]">assignment_return</span>
+<div class="flex flex-col">
+<span class="font-h6 text-h6 text-on-surface text-[14px]">30-Day Returns</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Hassle-free process</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 pb-safe bg-surface dark:bg-inverse-surface border-t border-outline-variant/20 shadow-lg z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption w-1/4 h-full active:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-xs">home</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold font-caption text-caption w-1/4 h-full active:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-xs">search</span>
+            Search
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption w-1/4 h-full active:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-xs">shopping_cart</span>
+            Cart
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant font-caption text-caption w-1/4 h-full active:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-xs">person</span>
+            Account
+        </a>
+</nav>
+<script>
+        // Simple zoom effect for main image
+        const zoomContainer = document.querySelector('.zoom-container');
+        const mainImg = document.getElementById('mainImage');
+        
+        zoomContainer.addEventListener('mousemove', (e) => {
+            const { left, top, width, height } = zoomContainer.getBoundingClientRect();
+            const x = (e.clientX - left) / width * 100;
+            const y = (e.clientY - top) / height * 100;
+            
+            mainImg.style.transformOrigin = `${x}% ${y}%`;
+        });
+    </script>
+</body></html>
