@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\PasswordController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\BrandController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\OtpController;
 use App\Http\Controllers\Api\Customer\CustomerController;
@@ -73,6 +74,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 
+//Gayatri
 Route::prefix('products')->group(function () {
 
     Route::get('/', [ProductController::class, 'index']);         
@@ -101,6 +103,23 @@ Route::prefix('categories')->group(function () {
     Route::delete('/{id}', [CategoryController::class, 'destroy']);
 
 });
+
+Route::prefix('brands')->group(function () {
+
+    Route::get('/', [BrandController::class, 'index']);
+
+    Route::post('/', [BrandController::class, 'store']);
+
+    Route::get('/{id}', [BrandController::class, 'show']);
+
+    Route::put('/{id}', [BrandController::class, 'update']);
+
+    Route::patch('/{id}', [BrandController::class, 'update']);
+
+    Route::delete('/{id}', [BrandController::class, 'destroy']);
+
+});
+
 Route::post(
     '/verify-registration-otp',
     [OtpController::class, 'verifyRegistrationOtp']
