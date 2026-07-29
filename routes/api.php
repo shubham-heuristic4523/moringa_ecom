@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\WishlistController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\OtpController;
+use App\Http\Controllers\Api\Customer\CustomerController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-registration-otp', [OtpController::class, 'verifyRegistrationOtp']);
@@ -140,3 +141,19 @@ Route::post(
     '/verify-registration-otp',
     [OtpController::class, 'verifyRegistrationOtp']
 );
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::get('/customer/profile', [CustomerController::class, 'index']);
+
+});
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::get('/customer/profile', [CustomerController::class, 'getProfile']);
+
+    Route::put('/customer/profile', [CustomerController::class, 'updateProfile']);
+    Route::post('/customer/address',[CustomerController::class,'storeAddress']);
+    Route::get('/customer/addresses', [CustomerController::class, 'listAddresses']);
+    Route::get('/customer/address/{id}', [CustomerController::class, 'getAddress']); 
+    Route::put('/customer/address/{id}', [CustomerController::class, 'updateAddress']);                                                    
+    Route::delete('/customer/address/{id}', [CustomerController::class, 'deleteAddress']);
+});

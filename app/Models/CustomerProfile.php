@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Models\Customer;
-use App\Models\User;
+namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -23,7 +23,7 @@ class CustomerProfile extends Model
         'profile_completed' => 'boolean',
     ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
