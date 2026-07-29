@@ -132,11 +132,13 @@ class OtpController extends Controller
 
             // Create User
             $user = User::create([
-                'name' => $pending->name,
-                'email' => $pending->email,
-                'password' => $pending->password,
-                'email_verified_at' => now(),
-            ]);
+            'name'              => $pending->name,
+            'email'             => $pending->email,
+            'password'          => $pending->password,
+            'role'              => 'user',
+            'status'            => 'active',
+            'email_verified_at' => now(),
+        ]);
 
             // Link OTP to user (optional)
             $otp->update([

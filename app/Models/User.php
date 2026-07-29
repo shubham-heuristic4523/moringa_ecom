@@ -39,4 +39,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(CustomerProfile::class);
     }
+        public function customerAddresses()
+    {
+        return $this->hasMany(CustomerAddress::class);
+    }
 }
