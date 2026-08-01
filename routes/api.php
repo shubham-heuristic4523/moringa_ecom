@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\PasswordController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\WishlistController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\OtpController;
 use App\Http\Controllers\Api\Customer\CustomerController;
@@ -119,6 +120,22 @@ Route::prefix('brands')->group(function () {
     Route::patch('/{id}', [BrandController::class, 'update']);
 
     Route::delete('/{id}', [BrandController::class, 'destroy']);
+
+});
+
+Route::prefix('wishlists')->group(function () {
+
+    Route::get('/', [WishlistController::class, 'index']);
+
+    Route::post('/', [WishlistController::class, 'store']);
+
+    Route::get('/{id}', [WishlistController::class, 'show']);
+
+    Route::put('/{id}', [WishlistController::class, 'update']);
+
+    Route::patch('/{id}', [WishlistController::class, 'update']);
+
+    Route::delete('/{id}', [WishlistController::class, 'destroy']);
 
 });
 
