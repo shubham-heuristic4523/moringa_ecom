@@ -1,0 +1,59 @@
+{{-- resources/views/layouts/app.blade.php --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('title', 'Dashboard') | I Am Moringa Admin</title>
+
+    {{-- Google Fonts: Fraunces (display/organic serif) + Plus Jakarta Sans (body/UI) --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    {{-- Font Awesome 6 --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    {{-- Compiled Tailwind + JS via Vite --}}
+    @vite(['resources/css/admin.css', 'resources/js/sidebar.js', 'resources/js/navbar.js'])
+
+    @stack('styles')
+</head>
+
+{{--
+    data-sidebar="expanded"  -> toggled to "collapsed" by sidebar.js
+    data-theme="light"       -> toggled to "dark" by navbar.js
+    Both live on <body> so any component can style off them via
+    body[data-sidebar="collapsed"] / body[data-theme="dark"] in admin.css
+--}}
+<body
+    class="font-body antialiased bg-cream text-forest-950 selection:bg-moringa-200 selection:text-forest-900"
+    data-sidebar="expanded"
+    data-theme="light"
+>
+    {{-- Soft ambient backdrop: a faint botanical gradient, not a solid flat fill --}}
+    <div class="admin-backdrop" aria-hidden="true"></div>
+
+    <div class="admin-shell">
+
+        @include('partials.sidebar')
+
+        <div class="admin-main">
+
+            @include('partials.navbar')
+
+            <main class="admin-content" id="main-content">
+                <div class="admin-content-inner animate-fade-in">
+                    @yield('content')
+                    {{ $slot ?? '' }}
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    @stack('scripts')
+</body>
+</html>
