@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\BrandController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\OtpController;
 use App\Http\Controllers\Api\Customer\CustomerController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\Admin\OrderController as AdminOrderController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-registration-otp', [OtpController::class, 'verifyRegistrationOtp']);
@@ -139,4 +141,31 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/customer/address/{id}', [CustomerController::class, 'getAddress']); 
     Route::put('/customer/address/{id}', [CustomerController::class, 'updateAddress']);                                                    
     Route::delete('/customer/address/{id}', [CustomerController::class, 'deleteAddress']);
+});
+
+Route::middleware('auth:sanctum')->prefix('orders')->group(function () {
+
+    Route::get('/', [OrderController::class, 'index']);
+
+    Route::post('/', [OrderController::class, 'store']);
+
+    Route::get('/{id}', [OrderController::class, 'show']);
+
+    Route::post('/{id}/cancel', [OrderController::class, 'cancel']);
+
+});
+
+Route::middleware(['auth:sanctum', 'role:user,admin'])->prefix('admin/orders')->group(function () {
+
+    Route::get('/', [AdminOrderController::class, 'index']);
+
+    Route::post('/', [AdminOrderController::class, 'store']);
+
+    Route::get('/{id}', [AdminOrderController::class, 'show']);
+
+    Route::put('/{id}', [AdminOrderController::class, 'update']);
+    Route::patch('/{id}', [AdminOrderController::class, 'update']);
+
+    Route::delete('/{id}', [AdminOrderController::class, 'destroy']);
+
 });
