@@ -95,9 +95,6 @@ Route::get('/test-mail', function () {
     return 'Mail Sent';
 });
 
-<<<<<<< HEAD
 Route::get('/test-view', function () {
     return view('components.navigation.admin-sidebar', ['message' => 'This is a test message.']);
 });
-=======
->>>>>>> ad2070541beb5fcbae5c0885b66bddaf5aa35664
