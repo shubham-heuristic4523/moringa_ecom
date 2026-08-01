@@ -94,3 +94,4 @@ Route::get('/test-mail', function () {
     Mail::raw('Laravel Email Test', fn($m) => $m->to(config('mail.from.address'))->subject('Test Mail'));
     return 'Mail Sent';
 });
+
