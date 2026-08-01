@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I AM MORINGA | Pure. Organic. Powerful.</title>
+<meta name="description" content="Premium Moringa-based health and wellness products — 100% organic, farm fresh, lab tested.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<!-- AOS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+  :root{
+    --moringa-dark:#1b3a2b;
+    --moringa-green:#2f6b3f;
+    --moringa-leaf:#4f9d5c;
+    --moringa-leaf-light:#7cc98a;
+    --moringa-cream:#faf6ec;
+    --moringa-cream-2:#f3ede0;
+    --moringa-gold:#c99a3d;
+    --moringa-olive:#8a8b52;
+    --moringa-earth:#7a5c3e;
+    --moringa-gray:#6f7873;
+    --moringa-text:#20281f;
+    --radius-lg:28px;
+    --radius-md:18px;
+    --radius-sm:12px;
+    --shadow-soft:0 10px 40px rgba(27,58,43,.10);
+    --shadow-hover:0 20px 60px rgba(27,58,43,.18);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope',sans-serif;
+    color:var(--moringa-text);
+    background:var(--moringa-cream);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.display-font{
+    font-family:'Poppins',sans-serif;
+  }
+  a{text-decoration:none;}
+  img{max-width:100%;}
+
+  .container-xl{max-width:1320px;}
+
+  .section-pad{padding:100px 0;}
+  @media (max-width:768px){ .section-pad{padding:60px 0;} }
+
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:.78rem;
+    font-weight:700;
+    color:var(--moringa-leaf);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:28px;height:2px;
+    background:var(--moringa-gold);
+    display:inline-block;
+  }
+  .section-title{
+    font-weight:700;
+    color:var(--moringa-dark);
+    letter-spacing:-.5px;
+  }
+  .section-sub{
+    color:var(--moringa-gray);
+    max-width:560px;
+  }
+
+  .btn-organic{
+    background:linear-gradient(135deg,var(--moringa-leaf) 0%,var(--moringa-green) 100%);
+    color:#fff;
+    border:none;
+    padding:14px 34px;
+    border-radius:50px;
+    font-weight:600;
+    letter-spacing:.3px;
+    box-shadow:0 10px 25px rgba(47,107,63,.35);
+    transition:all .4s var(--ease);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-organic:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 32px rgba(47,107,63,.45);
+    color:#fff;
+  }
+  .btn-outline-organic{
+    background:transparent;
+    color:var(--moringa-dark);
+    border:1.5px solid var(--moringa-dark);
+    padding:13px 32px;
+    border-radius:50px;
+    font-weight:600;
+    transition:all .4s var(--ease);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-outline-organic:hover{
+    background:var(--moringa-dark);
+    color:#fff;
+    transform:translateY(-3px);
+  }
+  .btn-gold{
+    background:linear-gradient(135deg,var(--moringa-gold),#e0b455);
+    color:#2b2107;
+    border:none;
+    padding:14px 34px;
+    border-radius:50px;
+    font-weight:700;
+    box-shadow:0 10px 25px rgba(201,154,61,.35);
+    transition:all .4s var(--ease);
+  }
+  .btn-gold:hover{ transform:translateY(-3px); color:#2b2107; box-shadow:0 16px 32px rgba(201,154,61,.45);}
+
+  /* ---------- Scroll progress ---------- */
+  #scrollProgress{
+    position:fixed; top:0; left:0; height:3px;
+    background:linear-gradient(90deg,var(--moringa-leaf),var(--moringa-gold));
+    width:0%; z-index:2000; transition:width .1s linear;
+  }
+
+  /* ---------- Announcement bar ---------- */
+  .announce-bar{
+    background:var(--moringa-dark);
+    color:#eef5ee;
+    font-size:.85rem;
+    letter-spacing:.4px;
+    padding:9px 0;
+    overflow:hidden;
+    position:relative;
+    z-index:1100;
+  }
+  .announce-track{
+    display:flex;
+    gap:60px;
+    white-space:nowrap;
+    animation:marquee 22s linear infinite;
+    width:max-content;
+  }
+  .announce-track span{display:inline-flex; align-items:center; gap:8px;}
+  @keyframes marquee{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ---------- Header ---------- */
+  header.site-header{
+    position:fixed; top:32px; left:0; right:0; z-index:1050;
+    padding:18px 0;
+    transition:all .45s var(--ease);
+    background:transparent;
+  }
+  header.site-header.scrolled{
+    top:0;
+    background:rgba(250,246,236,.9);
+    backdrop-filter:blur(14px);
+    box-shadow:0 6px 30px rgba(27,58,43,.08);
+    padding:10px 0;
+  }
+  .navbar-brand-logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Poppins',sans-serif;
+    font-weight:700; font-size:1.35rem;
+    color:var(--moringa-dark) !important;
+  }
+  .navbar-brand-logo .leaf-icon{
+    width:38px;height:38px;border-radius:50%;
+    background:linear-gradient(135deg,var(--moringa-leaf),var(--moringa-green));
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;
+  }
+  .main-nav .nav-link{
+    color:var(--moringa-dark);
+    font-weight:600;
+    font-size:.95rem;
+    margin:0 14px;
+    position:relative;
+    padding:6px 0 !important;
+  }
+  .main-nav .nav-link::after{
+    content:"";
+    position:absolute; left:0; bottom:0;
+    width:0; height:2px;
+    background:var(--moringa-gold);
+    transition:width .35s var(--ease);
+  }
+  .main-nav .nav-link:hover::after,
+  .main-nav .nav-link.active::after{ width:100%; }
+
+  .header-icons a{
+    color:var(--moringa-dark);
+    font-size:1.2rem;
+    margin-left:18px;
+    position:relative;
+    transition:color .3s;
+  }
+  .header-icons a:hover{ color:var(--moringa-leaf); }
+  .badge-count{
+    position:absolute; top:-8px; right:-10px;
+    background:var(--moringa-gold);
+    color:#2b2107;
+    font-size:.62rem;
+    font-weight:800;
+    width:17px;height:17px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* Mega menu */
+  .mega-menu{
+    position:absolute; top:100%; left:0; right:0;
+    background:#fff;
+    border-radius:0 0 24px 24px;
+    box-shadow:0 30px 60px rgba(27,58,43,.15);
+    padding:36px 0;
+    opacity:0; visibility:hidden; transform:translateY(-12px);
+    transition:all .35s var(--ease);
+  }
+  .nav-item.has-mega:hover .mega-menu{
+    opacity:1; visibility:visible; transform:translateY(0);
+  }
+  .mega-menu h6{
+    color:var(--moringa-leaf);
+    text-transform:uppercase; font-size:.72rem; letter-spacing:2px; font-weight:800;
+    margin-bottom:14px;
+  }
+  .mega-menu a.mega-link{
+    display:block; color:var(--moringa-text); padding:6px 0; font-weight:500; font-size:.92rem;
+    transition:all .25s;
+  }
+  .mega-menu a.mega-link:hover{ color:var(--moringa-leaf); transform:translateX(4px); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    background:linear-gradient(160deg,#eef4e9 0%, var(--moringa-cream) 45%, #f4efe0 100%);
+    overflow:hidden;
+    padding-top:120px;
+  }
+  .hero-shape{
+    position:absolute; border-radius:50%;
+    filter:blur(2px);
+    opacity:.5;
+  }
+  .hero-shape.one{
+    width:420px;height:420px;
+    background:radial-gradient(circle at 30% 30%, var(--moringa-leaf-light), transparent 70%);
+    top:-120px; right:-100px;
+    animation:float1 9s ease-in-out infinite;
+  }
+  .hero-shape.two{
+    width:260px;height:260px;
+    background:radial-gradient(circle at 30% 30%, var(--moringa-gold), transparent 70%);
+    bottom:-60px; left:-80px;
+    animation:float2 8s ease-in-out infinite;
+  }
+  @keyframes float1{ 0%,100%{transform:translateY(0) rotate(0);} 50%{transform:translateY(-30px) rotate(8deg);} }
+  @keyframes float2{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(24px);} }
+
+  .hero-badge{
+    background:#fff;
+    border-radius:50px;
+    padding:8px 18px;
+    display:inline-flex;
+    align-items:center; gap:8px;
+    box-shadow:var(--shadow-soft);
+    font-weight:700; font-size:.82rem;
+    color:var(--moringa-green);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,5.2vw,4.4rem);
+    font-weight:700;
+    color:var(--moringa-dark);
+    line-height:1.08;
+    letter-spacing:-1.5px;
+  }
+  .hero h1 .accent{
+    color:var(--moringa-leaf);
+    font-style:italic;
+    position:relative;
+  }
+  .hero p.lead-text{
+    color:var(--moringa-gray);
+    font-size:1.12rem;
+    max-width:480px;
+  }
+  .hero-stats{
+    display:flex; gap:34px; margin-top:38px;
+  }
+  .hero-stats div h3{
+    font-weight:800; color:var(--moringa-dark); margin-bottom:0;
+    font-size:1.8rem;
+  }
+  .hero-stats div span{
+    color:var(--moringa-gray); font-size:.82rem;
+  }
+  .hero-visual{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-visual-circle{
+    width:min(480px,90%); aspect-ratio:1/1;
+    border-radius:50%;
+    background:linear-gradient(160deg,var(--moringa-leaf-light),var(--moringa-leaf) 60%,var(--moringa-green));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 40px 80px rgba(47,107,63,.35);
+    position:relative;
+    animation:pulseGlow 5s ease-in-out infinite;
+  }
+  @keyframes pulseGlow{
+    0%,100%{ box-shadow:0 40px 80px rgba(47,107,63,.35); }
+    50%{ box-shadow:0 50px 100px rgba(47,107,63,.5); }
+  }
+  .hero-visual-circle i{ font-size:9rem; color:rgba(255,255,255,.92); }
+  .floating-card{
+    position:absolute;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-radius:18px;
+    padding:14px 18px;
+    box-shadow:var(--shadow-soft);
+    display:flex; align-items:center; gap:10px;
+    font-weight:700; font-size:.85rem;
+    animation:floatCard 4.5s ease-in-out infinite;
+  }
+  .floating-card.fc1{ top:6%; left:-4%; animation-delay:.2s; }
+  .floating-card.fc2{ bottom:10%; right:-6%; animation-delay:1s; }
+  .floating-card i{ color:var(--moringa-gold); font-size:1.3rem; }
+  @keyframes floatCard{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+
+  .scroll-indicator{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:var(--moringa-gray); font-size:.75rem; font-weight:600; letter-spacing:1px;
+  }
+  .scroll-indicator .line{ width:1px; height:34px; background:var(--moringa-gray); position:relative; overflow:hidden;}
+  .scroll-indicator .line::after{
+    content:""; position:absolute; top:-100%; left:0; width:100%; height:100%;
+    background:var(--moringa-leaf); animation:scrollLine 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollLine{ 0%{top:-100%;} 100%{top:100%;} }
+
+  /* ---------- Category cards ---------- */
+  .cat-card{
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    position:relative;
+    height:320px;
+    box-shadow:var(--shadow-soft);
+    transition:all .5s var(--ease);
+  }
+  .cat-card .cat-bg{
+    position:absolute; inset:0;
+    background-size:cover; background-position:center;
+    transition:transform .7s var(--ease);
+  }
+  .cat-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(27,58,43,0) 30%, rgba(20,40,28,.85) 100%);
+    z-index:1;
+  }
+  .cat-card:hover .cat-bg{ transform:scale(1.12); }
+  .cat-card:hover{ transform:translateY(-8px); box-shadow:var(--shadow-hover); }
+  .cat-card-body{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    padding:24px; color:#fff;
+  }
+  .cat-card-body h5{ font-weight:700; margin-bottom:4px;}
+  .cat-card-body span{ font-size:.8rem; opacity:.85; }
+  .cat-card-body .cat-arrow{
+    width:38px;height:38px; border-radius:50%;
+    background:rgba(255,255,255,.15); backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center;
+    position:absolute; right:20px; bottom:24px;
+    transition:all .35s var(--ease);
+  }
+  .cat-card:hover .cat-arrow{ background:var(--moringa-gold); transform:rotate(45deg); color:#2b2107;}
+
+  /* ---------- Product cards ---------- */
+  .product-card{
+    background:#fff;
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    transition:all .45s var(--ease);
+    height:100%;
+    position:relative;
+  }
+  .product-card:hover{ transform:translateY(-10px); box-shadow:var(--shadow-hover); }
+  .product-media{
+    position:relative;
+    background:var(--moringa-cream-2);
+    height:230px;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .product-media i{ font-size:5rem; color:var(--moringa-leaf); opacity:.55; transition:transform .5s var(--ease);}
+  .product-card:hover .product-media i{ transform:scale(1.1) rotate(-4deg); }
+  .badge-discount{
+    position:absolute; top:14px; left:14px;
+    background:var(--moringa-gold); color:#2b2107;
+    font-weight:800; font-size:.72rem;
+    padding:5px 12px; border-radius:50px;
+  }
+  .product-actions{
+    position:absolute; top:14px; right:14px;
+    display:flex; flex-direction:column; gap:8px;
+    opacity:0; transform:translateX(10px);
+    transition:all .35s var(--ease);
+  }
+  .product-card:hover .product-actions{ opacity:1; transform:translateX(0); }
+  .product-actions button{
+    width:38px;height:38px; border-radius:50%; border:none;
+    background:#fff; color:var(--moringa-dark);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow-soft);
+    transition:all .3s;
+  }
+  .product-actions button:hover{ background:var(--moringa-leaf); color:#fff; }
+  .product-info{ padding:20px 22px 24px; }
+  .product-info .cat-label{ color:var(--moringa-leaf); font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:1px;}
+  .product-info h6{ font-weight:700; margin:6px 0 8px; }
+  .rating-stars{ color:var(--moringa-gold); font-size:.82rem; }
+  .rating-stars span{ color:var(--moringa-gray); font-weight:600; margin-left:4px; }
+  .price-row{ display:flex; align-items:center; gap:10px; margin:10px 0 16px;}
+  .price-now{ font-weight:800; font-size:1.15rem; color:var(--moringa-dark); }
+  .price-old{ color:var(--moringa-gray); text-decoration:line-through; font-size:.88rem; }
+  .btn-add-cart{
+    width:100%; border:none; border-radius:50px; padding:11px;
+    background:var(--moringa-cream-2); color:var(--moringa-dark); font-weight:700;
+    transition:all .35s var(--ease);
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .btn-add-cart:hover{ background:linear-gradient(135deg,var(--moringa-leaf),var(--moringa-green)); color:#fff; }
+
+  /* Loading skeleton */
+  .skeleton{
+    background:linear-gradient(90deg,#eee 25%,#f6f6f6 37%,#eee 63%);
+    background-size:400% 100%;
+    animation:skeletonWave 1.4s ease infinite;
+    border-radius:8px;
+  }
+  @keyframes skeletonWave{ 0%{background-position:100% 0;} 100%{background-position:0 0;} }
+
+  /* ---------- Why choose ---------- */
+  .why-card{
+    background:#fff; border-radius:var(--radius-md);
+    padding:34px 26px; text-align:center;
+    box-shadow:var(--shadow-soft);
+    transition:all .4s var(--ease);
+    height:100%;
+  }
+  .why-card:hover{ transform:translateY(-8px); box-shadow:var(--shadow-hover); background:linear-gradient(160deg,#fff,var(--moringa-cream-2)); }
+  .why-icon{
+    width:68px;height:68px; border-radius:50%;
+    background:linear-gradient(135deg,var(--moringa-leaf-light),var(--moringa-green));
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size:1.7rem; margin:0 auto 18px;
+    transition:transform .4s var(--ease);
+  }
+  .why-card:hover .why-icon{ transform:rotate(-10deg) scale(1.08); }
+
+  /* ---------- Benefits ---------- */
+  .benefit-card{
+    border-radius:var(--radius-md);
+    background:#fff;
+    padding:28px;
+    box-shadow:var(--shadow-soft);
+    height:100%;
+    position:relative;
+    overflow:hidden;
+    transition:all .4s var(--ease);
+  }
+  .benefit-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-hover); }
+  .benefit-card .benefit-icon{
+    width:54px;height:54px;border-radius:16px;
+    background:var(--moringa-cream-2);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--moringa-green); font-size:1.4rem; margin-bottom:16px;
+  }
+  .benefit-card::after{
+    content:"";
+    position:absolute; width:120px; height:120px; border-radius:50%;
+    background:radial-gradient(circle, var(--moringa-leaf-light) 0%, transparent 70%);
+    opacity:.25; right:-40px; bottom:-40px;
+  }
+
+  /* ---------- Testimonials ---------- */
+  .testimonial-section{
+    background:linear-gradient(160deg,var(--moringa-dark),#12261c);
+    position:relative;
+  }
+  .testimonial-card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--radius-md);
+    padding:34px;
+    color:#eef5ee;
+    height:100%;
+  }
+  .testimonial-card .rating-stars{ color:var(--moringa-gold); }
+  .testimonial-card p{ color:#d7e5da; font-size:.98rem; line-height:1.7; margin:16px 0 22px;}
+  .testimonial-user{ display:flex; align-items:center; gap:12px; }
+  .testimonial-user .avatar{
+    width:48px;height:48px;border-radius:50%;
+    background:linear-gradient(135deg,var(--moringa-leaf-light),var(--moringa-gold));
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:#1b3a2b;
+  }
+  .testimonial-user h6{ margin-bottom:0; font-weight:700;}
+  .testimonial-user span{ font-size:.78rem; color:#a9c3ae; }
+
+  /* ---------- Brand story ---------- */
+  .story-image-wrap{
+    position:relative; border-radius:var(--radius-lg); overflow:hidden;
+    box-shadow:var(--shadow-soft);
+  }
+  .story-image-wrap .ratio-box{
+    background:linear-gradient(160deg,var(--moringa-leaf-light),var(--moringa-green));
+    min-height:420px; display:flex; align-items:center; justify-content:center;
+  }
+  .story-image-wrap .ratio-box i{ font-size:8rem; color:rgba(255,255,255,.85); }
+  .story-badge{
+    position:absolute; bottom:-24px; right:-24px;
+    background:#fff; border-radius:22px; padding:20px 26px;
+    box-shadow:var(--shadow-hover);
+    text-align:center;
+  }
+  .story-badge h3{ color:var(--moringa-leaf); font-weight:800; margin-bottom:0;}
+  .story-badge span{ font-size:.78rem; color:var(--moringa-gray); }
+
+  .timeline{ position:relative; padding-left:30px; margin-top:30px;}
+  .timeline::before{
+    content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(var(--moringa-leaf-light),var(--moringa-gold));
+  }
+  .timeline-item{ position:relative; padding-bottom:26px; }
+  .timeline-item::before{
+    content:""; position:absolute; left:-30px; top:2px;
+    width:14px;height:14px;border-radius:50%;
+    background:var(--moringa-leaf); border:3px solid #fff; box-shadow:0 0 0 2px var(--moringa-leaf);
+  }
+  .timeline-item h6{ font-weight:700; color:var(--moringa-dark); margin-bottom:4px;}
+  .timeline-item span.year{ color:var(--moringa-gold); font-weight:800; font-size:.8rem;}
+
+  /* ---------- Promo banner ---------- */
+  .promo-banner{
+    border-radius:var(--radius-lg);
+    background:linear-gradient(120deg,var(--moringa-green),var(--moringa-dark) 70%);
+    position:relative; overflow:hidden;
+    padding:70px 50px;
+    color:#fff;
+  }
+  .promo-banner .promo-shape{
+    position:absolute; border-radius:50%;
+    background:radial-gradient(circle, var(--moringa-gold) 0%, transparent 70%);
+    opacity:.35;
+  }
+  .promo-banner .ps1{ width:300px;height:300px; top:-100px; right:-60px; animation:float1 10s ease-in-out infinite;}
+  .promo-banner .ps2{ width:180px;height:180px; bottom:-80px; left:10%; animation:float2 7s ease-in-out infinite;}
+  .promo-banner h2{ font-weight:700; }
+  .promo-timer{ display:flex; gap:14px; margin:26px 0; }
+  .promo-timer .t-box{
+    background:rgba(255,255,255,.12); backdrop-filter:blur(6px);
+    border-radius:14px; padding:14px 18px; text-align:center; min-width:76px;
+  }
+  .promo-timer .t-box b{ display:block; font-size:1.5rem; }
+  .promo-timer .t-box small{ font-size:.68rem; opacity:.8; }
+
+  /* ---------- Instagram gallery ---------- */
+  .insta-item{
+    position:relative; border-radius:16px; overflow:hidden;
+    aspect-ratio:1/1;
+    background:linear-gradient(135deg,var(--moringa-leaf-light),var(--moringa-olive));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .insta-item i.brand-i{ font-size:2.4rem; color:rgba(255,255,255,.8); }
+  .insta-overlay{
+    position:absolute; inset:0; background:rgba(20,40,28,.75);
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    opacity:0; transition:all .4s var(--ease);
+    color:#fff; font-weight:700;
+  }
+  .insta-item:hover .insta-overlay{ opacity:1; }
+  .insta-item:hover i.brand-i{ transform:scale(0.9); }
+
+  /* ---------- Newsletter ---------- */
+  .newsletter-section{
+    background:var(--moringa-cream-2);
+    border-radius:var(--radius-lg);
+    padding:60px 40px;
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+  }
+  .newsletter-input-group{
+    max-width:520px; margin:26px auto 0;
+    background:#fff; border-radius:50px; padding:6px;
+    display:flex; box-shadow:var(--shadow-soft);
+  }
+  .newsletter-input-group input{
+    border:none; background:transparent; flex:1; padding:12px 20px; outline:none; font-weight:500;
+  }
+  .newsletter-input-group button{
+    border:none; border-radius:50px;
+    background:linear-gradient(135deg,var(--moringa-leaf),var(--moringa-green));
+    color:#fff; font-weight:700; padding:12px 28px;
+    transition:all .3s;
+  }
+  .newsletter-input-group button:hover{ box-shadow:0 10px 25px rgba(47,107,63,.4); transform:translateY(-2px);}
+  .newsletter-success{
+    display:none; color:var(--moringa-green); font-weight:700; margin-top:14px;
+  }
+  .newsletter-success.show{ display:block; animation:fadeInUp .5s var(--ease); }
+  @keyframes fadeInUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer{
+    background:var(--moringa-dark);
+    color:#cfe0d3;
+    padding-top:80px;
+  }
+  footer .footer-logo{ color:#fff; font-family:'Poppins',sans-serif; font-weight:700; font-size:1.4rem;}
+  footer h6{ color:#fff; font-weight:700; margin-bottom:20px; text-transform:uppercase; font-size:.82rem; letter-spacing:1.5px;}
+  footer a.footer-link{ color:#a9c3ae; display:block; padding:5px 0; transition:all .25s;}
+  footer a.footer-link:hover{ color:var(--moringa-gold); padding-left:5px;}
+  footer .social-icons a{
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(255,255,255,.08);
+    display:inline-flex;align-items:center;justify-content:center;
+    color:#fff; margin-right:8px; transition:all .3s;
+  }
+  footer .social-icons a:hover{ background:var(--moringa-gold); color:#2b2107; transform:translateY(-4px);}
+  footer .payment-icons i{ font-size:1.6rem; color:#a9c3ae; margin-right:12px;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    margin-top:50px; padding:22px 0; font-size:.85rem; color:#8fa896;
+  }
+  .footer-bottom a{ color:#8fa896; margin-left:18px;}
+  .footer-bottom a:hover{ color:var(--moringa-gold); }
+
+  /* ---------- Back to top ---------- */
+  #backToTop{
+    position:fixed; bottom:28px; right:28px; z-index:1000;
+    width:48px;height:48px;border-radius:50%;
+    background:linear-gradient(135deg,var(--moringa-leaf),var(--moringa-green));
+    color:#fff; border:none;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow-hover);
+    opacity:0; visibility:hidden; transform:translateY(16px);
+    transition:all .4s var(--ease);
+    font-size:1.2rem;
+  }
+  #backToTop.show{ opacity:1; visibility:visible; transform:translateY(0); }
+  #backToTop:hover{ transform:translateY(-4px); }
+
+  .section-swiper .swiper-button-next,
+  .section-swiper .swiper-button-prev{
+    width:46px; height:46px; background:#fff; border-radius:50%;
+    box-shadow:var(--shadow-soft); color:var(--moringa-dark);
+    top:40%;
+  }
+  .section-swiper .swiper-button-next::after,
+  .section-swiper .swiper-button-prev::after{ font-size:1rem; font-weight:800;}
+  .section-swiper .swiper-pagination-bullet-active{ background:var(--moringa-leaf); }
+</style>
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<!-- ============ ANNOUNCEMENT BAR ============ -->
+<div class="announce-bar">
+  <div class="announce-track">
+    <span><i class="bi bi-truck"></i> Free Shipping on Orders Above ₹999</span>
+    <span><i class="bi bi-patch-check"></i> 100% Organic &amp; Lab Tested</span>
+    <span><i class="bi bi-shield-lock"></i> Secure Payments Guaranteed</span>
+    <span><i class="bi bi-gift"></i> Flat 20% Off — Use Code MORINGA20</span>
+    <!-- duplicate for seamless marquee -->
+    <span><i class="bi bi-truck"></i> Free Shipping on Orders Above ₹999</span>
+    <span><i class="bi bi-patch-check"></i> 100% Organic &amp; Lab Tested</span>
+    <span><i class="bi bi-shield-lock"></i> Secure Payments Guaranteed</span>
+    <span><i class="bi bi-gift"></i> Flat 20% Off — Use Code MORINGA20</span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <nav class="navbar navbar-expand-lg container-xl">
+    <a class="navbar-brand-logo" href="#">
+      <span class="leaf-icon"><i class="bi bi-flower2"></i></span>
+      I AM MORINGA
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <i class="bi bi-list fs-2"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto main-nav">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
+        <li class="nav-item nav-item-mega position-relative has-mega">
+          <a class="nav-link" href="#categories">Categories <i class="bi bi-chevron-down small"></i></a>
+          <div class="mega-menu">
+            <div class="container-xl">
+              <div class="row">
+                <div class="col-md-3">
+                  <h6>Powders</h6>
+                  <a class="mega-link" href="#">Moringa Leaf Powder</a>
+                  <a class="mega-link" href="#">Moringa Seed Powder</a>
+                  <a class="mega-link" href="#">Green Superfood Mix</a>
+                </div>
+                <div class="col-md-3">
+                  <h6>Capsules &amp; Tea</h6>
+                  <a class="mega-link" href="#">Moringa Capsules</a>
+                  <a class="mega-link" href="#">Herbal Moringa Tea</a>
+                  <a class="mega-link" href="#">Detox Tea Blends</a>
+                </div>
+                <div class="col-md-3">
+                  <h6>Oils &amp; Care</h6>
+                  <a class="mega-link" href="#">Moringa Hair Oil</a>
+                  <a class="mega-link" href="#">Moringa Face Oil</a>
+                  <a class="mega-link" href="#">Skin Care Range</a>
+                </div>
+                <div class="col-md-3">
+                  <h6>Wellness</h6>
+                  <a class="mega-link" href="#">Immunity Boosters</a>
+                  <a class="mega-link" href="#">Energy Supplements</a>
+                  <a class="mega-link" href="#">Gift Sets</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="header-icons d-flex align-items-center">
+        <a href="#" aria-label="Search"><i class="bi bi-search"></i></a>
+        <a href="#" aria-label="Wishlist" class="position-relative">
+          <i class="bi bi-heart"></i><span class="badge-count">3</span>
+        </a>
+        <a href="#" aria-label="Cart" class="position-relative">
+          <i class="bi bi-bag"></i><span class="badge-count">2</span>
+        </a>
+        <a href="#" aria-label="Account"><i class="bi bi-person-circle"></i></a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <span class="hero-shape one"></span>
+  <span class="hero-shape two"></span>
+  <div class="container-xl">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+        <span class="hero-badge"><i class="bi bi-stars"></i> India's Trusted Organic Moringa Brand</span>
+        <h1 class="mt-4">Nature's Purest <span class="accent">Superfood</span>, Delivered Fresh</h1>
+        <p class="lead-text mt-3">
+          From farm to formula — 100% organic Moringa powders, capsules, teas and oils crafted to fuel your energy, immunity and everyday wellness.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#shop" class="btn-organic">Shop Now <i class="bi bi-arrow-right"></i></a>
+          <a href="#benefits" class="btn-outline-organic">Explore Benefits <i class="bi bi-play-circle"></i></a>
+        </div>
+        <div class="hero-stats">
+          <div><h3>50k+</h3><span>Happy Customers</span></div>
+          <div><h3>4.9<i class="bi bi-star-fill text-warning small ms-1"></i></h3><span>Average Rating</span></div>
+          <div><h3>100%</h3><span>Organic Certified</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900">
+        <div class="hero-visual">
+          <div class="hero-visual-circle">
+            <i class="bi bi-flower3"></i>
+          </div>
+          <div class="floating-card fc1"><i class="bi bi-patch-check-fill"></i> Lab Tested Purity</div>
+          <div class="floating-card fc2"><i class="bi bi-truck"></i> Free Fast Delivery</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    SCROLL <div class="line"></div>
+  </div>
+</section>
+
+<!-- ============ FEATURED CATEGORIES ============ -->
+<section class="section-pad" id="categories">
+  <div class="container-xl">
+    <div class="row justify-content-between align-items-end mb-5">
+      <div class="col-lg-7" data-aos="fade-up">
+        <span class="eyebrow">Shop by Category</span>
+        <h2 class="section-title display-6 mt-2">Explore Our Organic Range</h2>
+      </div>
+      <div class="col-lg-4 text-lg-end" data-aos="fade-up" data-aos-delay="100">
+        <p class="section-sub ms-lg-auto">Handpicked Moringa formulations for every part of your wellness journey.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="cat-card">
+          <div class="cat-bg" style="background:linear-gradient(135deg,#7cc98a,#2f6b3f);"></div>
+          <div class="cat-card-body">
+            <h5>Moringa Powder</h5>
+            <span>18 Products</span>
+            <div class="cat-arrow"><i class="bi bi-arrow-up-right"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="cat-card">
+          <div class="cat-bg" style="background:linear-gradient(135deg,#c99a3d,#8a8b52);"></div>
+          <div class="cat-card-body">
+            <h5>Capsules</h5>
+            <span>12 Products</span>
+            <div class="cat-arrow"><i class="bi bi-arrow-up-right"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="cat-card">
+          <div class="cat-bg" style="background:linear-gradient(135deg,#4f9d5c,#1b3a2b);"></div>
+          <div class="cat-card-body">
+            <h5>Herbal Tea</h5>
+            <span>9 Products</span>
+            <div class="cat-arrow"><i class="bi bi-arrow-up-right"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="cat-card">
+          <div class="cat-bg" style="background:linear-gradient(135deg,#7a5c3e,#8a8b52);"></div>
+          <div class="cat-card-body">
+            <h5>Moringa Oil</h5>
+            <span>7 Products</span>
+            <div class="cat-arrow"><i class="bi bi-arrow-up-right"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="cat-card">
+          <div class="cat-bg" style="background:linear-gradient(135deg,#7cc98a,#c99a3d);"></div>
+          <div class="cat-card-body">
+            <h5>Personal Care</h5>
+            <span>14 Products</span>
+            <div class="cat-arrow"><i class="bi bi-arrow-up-right"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="cat-card">
+          <div class="cat-bg" style="background:linear-gradient(135deg,#2f6b3f,#7a5c3e);"></div>
+          <div class="cat-card-body">
+            <h5>Health Supplements</h5>
+            <span>11 Products</span>
+            <div class="cat-arrow"><i class="bi bi-arrow-up-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED PRODUCTS ============ -->
+<section class="section-pad bg-white" id="shop">
+  <div class="container-xl">
+    <div class="row justify-content-between align-items-end mb-5">
+      <div class="col-lg-7" data-aos="fade-up">
+        <span class="eyebrow">Featured Products</span>
+        <h2 class="section-title display-6 mt-2">Our Bestselling Essentials</h2>
+      </div>
+      <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <p class="section-sub">Loved by thousands for their purity and effectiveness.</p>
+      </div>
+    </div>
+
+    <div class="swiper section-swiper" data-aos="fade-up" data-aos-delay="150">
+      <div class="swiper-wrapper pb-5">
+
+        <!-- Product 1 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media">
+              <span class="badge-discount">-20%</span>
+              <div class="product-actions">
+                <button aria-label="Quick View"><i class="bi bi-eye"></i></button>
+                <button aria-label="Wishlist"><i class="bi bi-heart"></i></button>
+              </div>
+              <i class="bi bi-flower1"></i>
+            </div>
+            <div class="product-info">
+              <span class="cat-label">Powder</span>
+              <h6>Organic Moringa Leaf Powder 200g</h6>
+              <div class="rating-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                <span>(214)</span>
+              </div>
+              <div class="price-row">
+                <span class="price-now">₹499</span>
+                <span class="price-old">₹649</span>
+              </div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media">
+              <span class="badge-discount">-15%</span>
+              <div class="product-actions">
+                <button aria-label="Quick View"><i class="bi bi-eye"></i></button>
+                <button aria-label="Wishlist"><i class="bi bi-heart"></i></button>
+              </div>
+              <i class="bi bi-capsule"></i>
+            </div>
+            <div class="product-info">
+              <span class="cat-label">Capsules</span>
+              <h6>Moringa Immunity Capsules (60 ct)</h6>
+              <div class="rating-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                <span>(158)</span>
+              </div>
+              <div class="price-row">
+                <span class="price-now">₹699</span>
+                <span class="price-old">₹825</span>
+              </div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media">
+              <span class="badge-discount">-10%</span>
+              <div class="product-actions">
+                <button aria-label="Quick View"><i class="bi bi-eye"></i></button>
+                <button aria-label="Wishlist"><i class="bi bi-heart"></i></button>
+              </div>
+              <i class="bi bi-cup-hot"></i>
+            </div>
+            <div class="product-info">
+              <span class="cat-label">Tea</span>
+              <h6>Herbal Moringa Detox Tea (25 bags)</h6>
+              <div class="rating-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <span>(302)</span>
+              </div>
+              <div class="price-row">
+                <span class="price-now">₹349</span>
+                <span class="price-old">₹389</span>
+              </div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media">
+              <span class="badge-discount">-25%</span>
+              <div class="product-actions">
+                <button aria-label="Quick View"><i class="bi bi-eye"></i></button>
+                <button aria-label="Wishlist"><i class="bi bi-heart"></i></button>
+              </div>
+              <i class="bi bi-droplet"></i>
+            </div>
+            <div class="product-info">
+              <span class="cat-label">Oil</span>
+              <h6>Cold-Pressed Moringa Hair Oil 100ml</h6>
+              <div class="rating-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                <span>(97)</span>
+              </div>
+              <div class="price-row">
+                <span class="price-now">₹399</span>
+                <span class="price-old">₹529</span>
+              </div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media">
+              <span class="badge-discount">-30%</span>
+              <div class="product-actions">
+                <button aria-label="Quick View"><i class="bi bi-eye"></i></button>
+                <button aria-label="Wishlist"><i class="bi bi-heart"></i></button>
+              </div>
+              <i class="bi bi-basket"></i>
+            </div>
+            <div class="product-info">
+              <span class="cat-label">Supplement</span>
+              <h6>Moringa Energy &amp; Wellness Combo</h6>
+              <div class="rating-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <span>(441)</span>
+              </div>
+              <div class="price-row">
+                <span class="price-now">₹899</span>
+                <span class="price-old">₹1,199</span>
+              </div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="section-pad">
+  <div class="container-xl">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow justify-content-center">Why I AM MORINGA</span>
+      <h2 class="section-title display-6 mt-2">Purity You Can Trust</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="bi bi-leaf"></i></div>
+          <h6 class="fw-bold">100% Organic</h6>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="80">
+        <div class="why-card">
+          <div class="why-icon"><i class="bi bi-tree"></i></div>
+          <h6 class="fw-bold">Farm Fresh</h6>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="160">
+        <div class="why-card">
+          <div class="why-icon"><i class="bi bi-clipboard2-pulse"></i></div>
+          <h6 class="fw-bold">Lab Tested</h6>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="240">
+        <div class="why-card">
+          <div class="why-icon"><i class="bi bi-patch-check"></i></div>
+          <h6 class="fw-bold">GMP Certified</h6>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="320">
+        <div class="why-card">
+          <div class="why-icon"><i class="bi bi-truck"></i></div>
+          <h6 class="fw-bold">Fast Delivery</h6>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="400">
+        <div class="why-card">
+          <div class="why-icon"><i class="bi bi-shield-lock"></i></div>
+          <h6 class="fw-bold">Secure Payments</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEST SELLING SLIDER ============ -->
+<section class="section-pad bg-white">
+  <div class="container-xl">
+    <div class="row justify-content-between align-items-end mb-5">
+      <div class="col-lg-7" data-aos="fade-up">
+        <span class="eyebrow">Top Rated</span>
+        <h2 class="section-title display-6 mt-2">Best Selling Products</h2>
+      </div>
+    </div>
+
+    <div class="swiper bestseller-swiper" data-aos="fade-up" data-aos-delay="150">
+      <div class="swiper-wrapper pb-5">
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media"><i class="bi bi-flower1"></i></div>
+            <div class="product-info">
+              <span class="cat-label">Powder</span>
+              <h6>Moringa &amp; Amla Boost Powder</h6>
+              <div class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span>(512)</span></div>
+              <div class="price-row"><span class="price-now">₹549</span></div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media"><i class="bi bi-capsule2"></i></div>
+            <div class="product-info">
+              <span class="cat-label">Capsules</span>
+              <h6>Moringa Multivitamin Capsules</h6>
+              <div class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span>(289)</span></div>
+              <div class="price-row"><span class="price-now">₹749</span></div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media"><i class="bi bi-cup-straw"></i></div>
+            <div class="product-info">
+              <span class="cat-label">Tea</span>
+              <h6>Moringa Green Tea Classic</h6>
+              <div class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span>(376)</span></div>
+              <div class="price-row"><span class="price-now">₹299</span></div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-media"><i class="bi bi-droplet-half"></i></div>
+            <div class="product-info">
+              <span class="cat-label">Oil</span>
+              <h6>Moringa Face Radiance Oil</h6>
+              <div class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><span>(134)</span></div>
+              <div class="price-row"><span class="price-now">₹459</span></div>
+              <button class="btn-add-cart"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS OF MORINGA ============ -->
+<section class="section-pad" id="benefits">
+  <div class="container-xl">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow justify-content-center">The Miracle Tree</span>
+      <h2 class="section-title display-6 mt-2">Benefits of Moringa</h2>
+      <p class="section-sub mx-auto mt-2">Packed with over 90 nutrients and 46 antioxidants for holistic wellness.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-capsule"></i></div>
+          <h6 class="fw-bold">Rich in Vitamins</h6>
+          <p class="text-muted small mb-0">Loaded with Vitamin A, C &amp; E to support overall body function.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-shield-plus"></i></div>
+          <h6 class="fw-bold">Powerful Antioxidants</h6>
+          <p class="text-muted small mb-0">Fights free radicals and reduces oxidative stress naturally.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-heart-pulse"></i></div>
+          <h6 class="fw-bold">Boosts Immunity</h6>
+          <p class="text-muted small mb-0">Strengthens your body's natural defense system every day.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-lightning-charge"></i></div>
+          <h6 class="fw-bold">Natural Energy</h6>
+          <p class="text-muted small mb-0">Sustained energy release without the crash of caffeine.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-magic"></i></div>
+          <h6 class="fw-bold">Hair Care</h6>
+          <p class="text-muted small mb-0">Nourishes scalp and strengthens hair from root to tip.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-sun"></i></div>
+          <h6 class="fw-bold">Glowing Skin</h6>
+          <p class="text-muted small mb-0">Deeply hydrates and revitalizes skin for a natural glow.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section-pad testimonial-section">
+  <div class="container-xl">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow justify-content-center">Testimonials</span>
+      <h2 class="section-title display-6 mt-2 text-white">Loved by Our Community</h2>
+    </div>
+
+    <div class="swiper testimonial-swiper" data-aos="fade-up" data-aos-delay="150">
+      <div class="swiper-wrapper pb-5">
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>"I've tried many superfood powders, but I AM MORINGA's quality is unmatched. My energy levels have genuinely improved within two weeks!"</p>
+            <div class="testimonial-user">
+              <div class="avatar">RA</div>
+              <div><h6>Riya Agarwal</h6><span>Verified Buyer</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+            <p>"The hair oil has completely transformed my hair texture. Packaging is premium and delivery was super fast."</p>
+            <div class="testimonial-user">
+              <div class="avatar">SK</div>
+              <div><h6>Sahil Kapoor</h6><span>Verified Buyer</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>"Finally a brand that's transparent about sourcing and lab testing. The tea tastes amazing and helps me relax in the evening."</p>
+            <div class="testimonial-user">
+              <div class="avatar">PN</div>
+              <div><h6>Priya Nair</h6><span>Verified Buyer</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND STORY ============ -->
+<section class="section-pad" id="about">
+  <div class="container-xl">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="story-image-wrap">
+          <div class="ratio-box"><i class="bi bi-tree-fill"></i></div>
+          <div class="story-badge">
+            <h3>12+</h3>
+            <span>Years of Purity</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="section-title display-6 mt-2">From Farm Fields to Your Doorstep</h2>
+        <p class="section-sub mt-3">
+          I AM MORINGA began with a simple mission — to bring the purest form of Moringa Oleifera, the "Miracle Tree,"
+          directly from organic farms into modern wellness routines, without compromise.
+        </p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="year">2013</span>
+            <h6>The Beginning</h6>
+            <p class="text-muted small mb-0">Started with a single organic Moringa farm and a vision for pure wellness.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2018</span>
+            <h6>GMP Certification</h6>
+            <p class="text-muted small mb-0">Achieved GMP &amp; ISO certification for our processing facility.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2023</span>
+            <h6>50,000+ Customers</h6>
+            <p class="text-muted small mb-0">Became a trusted household name for organic Moringa products.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROMOTIONAL BANNER ============ -->
+<section class="section-pad pt-0">
+  <div class="container-xl">
+    <div class="promo-banner" data-aos="zoom-in">
+      <span class="promo-shape ps1"></span>
+      <span class="promo-shape ps2"></span>
+      <div class="row align-items-center position-relative">
+        <div class="col-lg-7">
+          <span class="eyebrow" style="color:#e0b455;">Limited Time Offer</span>
+          <h2 class="mt-2">Get 20% Off Your First Wellness Box</h2>
+          <p class="mt-2" style="color:#cfe0d3; max-width:480px;">Subscribe to our monthly wellness box and save on every delivery. Offer ends soon!</p>
+          <div class="promo-timer">
+            <div class="t-box"><b id="cd-days">12</b><small>DAYS</small></div>
+            <div class="t-box"><b id="cd-hours">08</b><small>HRS</small></div>
+            <div class="t-box"><b id="cd-mins">45</b><small>MINS</small></div>
+            <div class="t-box"><b id="cd-secs">30</b><small>SECS</small></div>
+          </div>
+          <a href="#shop" class="btn-gold">Claim Offer <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM GALLERY ============ -->
+<section class="section-pad pt-0">
+  <div class="container-xl">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow justify-content-center">Follow Along</span>
+      <h2 class="section-title display-6 mt-2">@iammoringa on Instagram</h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="insta-item"><i class="bi bi-instagram brand-i"></i><div class="insta-overlay"><i class="bi bi-heart-fill"></i> 482</div></div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="insta-item"><i class="bi bi-instagram brand-i"></i><div class="insta-overlay"><i class="bi bi-heart-fill"></i> 391</div></div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="insta-item"><i class="bi bi-instagram brand-i"></i><div class="insta-overlay"><i class="bi bi-heart-fill"></i> 267</div></div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="180">
+        <div class="insta-item"><i class="bi bi-instagram brand-i"></i><div class="insta-overlay"><i class="bi bi-heart-fill"></i> 528</div></div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="insta-item"><i class="bi bi-instagram brand-i"></i><div class="insta-overlay"><i class="bi bi-heart-fill"></i> 149</div></div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="insta-item"><i class="bi bi-instagram brand-i"></i><div class="insta-overlay"><i class="bi bi-heart-fill"></i> 610</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="section-pad pt-0">
+  <div class="container-xl">
+    <div class="newsletter-section" data-aos="zoom-in">
+      <span class="eyebrow justify-content-center">Stay In The Loop</span>
+      <h2 class="section-title display-6 mt-2">Join the Moringa Wellness Circle</h2>
+      <p class="section-sub mx-auto mt-2">Get exclusive offers, wellness tips and early access to new launches.</p>
+      <form id="newsletterForm" class="newsletter-input-group">
+        <input type="email" required placeholder="Enter your email address" aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter-success" id="newsletterSuccess"><i class="bi bi-check-circle-fill"></i> Thank you! Please check your inbox to confirm.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="contact">
+  <div class="container-xl">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <a href="#" class="footer-logo d-inline-flex align-items-center gap-2 mb-3">
+          <span class="leaf-icon"><i class="bi bi-flower2"></i></span> I AM MORINGA
+        </a>
+        <p class="text-white-50 small">Premium organic Moringa-based health and wellness products, crafted with purity and backed by science.</p>
+        <div class="social-icons mt-3">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6>Quick Links</h6>
+        <a class="footer-link" href="#home">Home</a>
+        <a class="footer-link" href="#shop">Shop</a>
+        <a class="footer-link" href="#about">About Us</a>
+        <a class="footer-link" href="#contact">Contact</a>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6>Categories</h6>
+        <a class="footer-link" href="#">Moringa Powder</a>
+        <a class="footer-link" href="#">Capsules</a>
+        <a class="footer-link" href="#">Herbal Tea</a>
+        <a class="footer-link" href="#">Moringa Oil</a>
+      </div>
+      <div class="col-lg-4">
+        <h6>Contact Us</h6>
+        <p class="text-white-50 small mb-2"><i class="bi bi-geo-alt me-2"></i>123 Green Valley, Nashik, Maharashtra, India</p>
+        <p class="text-white-50 small mb-2"><i class="bi bi-envelope me-2"></i>hello@iammoringa.in</p>
+        <p class="text-white-50 small mb-2"><i class="bi bi-telephone me-2"></i>+91 98765 43210</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
+      <span>&copy; 2026 I AM MORINGA. All Rights Reserved.</span>
+      <div class="payment-icons">
+        <i class="bi bi-credit-card" title="Cards"></i>
+        <i class="bi bi-wallet2" title="Wallets"></i>
+        <i class="bi bi-phone" title="UPI"></i>
+        <i class="bi bi-paypal" title="PayPal"></i>
+      </div>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  // AOS init
+  AOS.init({ once:true, offset:60 });
+
+  // Sticky header + scroll progress
+  const header = document.getElementById('siteHeader');
+  const progress = document.getElementById('scrollProgress');
+  const backToTop = document.getElementById('backToTop');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (scrollTop / docHeight * 100) + '%';
+
+    header.classList.toggle('scrolled', scrollTop > 60);
+    backToTop.classList.toggle('show', scrollTop > 500);
+  });
+
+  backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  // Swipers
+  new Swiper('.section-swiper', {
+    slidesPerView: 1.15,
+    spaceBetween: 24,
+    navigation: { nextEl:'.section-swiper .swiper-button-next', prevEl:'.section-swiper .swiper-button-prev' },
+    breakpoints: { 576:{slidesPerView:2}, 992:{slidesPerView:3}, 1200:{slidesPerView:4} }
+  });
+
+  new Swiper('.bestseller-swiper', {
+    slidesPerView: 1.15,
+    spaceBetween: 24,
+    breakpoints: { 576:{slidesPerView:2}, 992:{slidesPerView:4} },
+    autoplay: { delay: 3000, disableOnInteraction:false }
+  });
+
+  new Swiper('.testimonial-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    pagination: { el:'.testimonial-swiper .swiper-pagination', clickable:true },
+    breakpoints: { 768:{slidesPerView:2}, 1200:{slidesPerView:3} },
+    autoplay: { delay: 4000, disableOnInteraction:false }
+  });
+
+  // Newsletter form (static demo)
+  document.getElementById('newsletterForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('newsletterSuccess').classList.add('show');
+    this.reset();
+  });
+
+  // Promo countdown (static demo target: 12 days from load)
+  const countdownTarget = new Date().getTime() + (12*24*60*60*1000) + (8*60*60*1000) + (45*60*1000);
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = countdownTarget - now;
+    if(diff <= 0) return;
+    const d = Math.floor(diff/(1000*60*60*24));
+    const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const m = Math.floor((diff%(1000*60*60))/(1000*60));
+    const s = Math.floor((diff%(1000*60))/1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+</body>
+</html>

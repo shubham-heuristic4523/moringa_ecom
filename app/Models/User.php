@@ -6,7 +6,9 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Customer\CustomerProfile;
+use App\Models\Customer\CustomerAddress;
 
 class User extends Authenticatable
 {
@@ -42,5 +44,10 @@ class User extends Authenticatable
         public function customerAddresses()
     {
         return $this->hasMany(CustomerAddress::class);
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }
