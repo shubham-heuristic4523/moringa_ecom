@@ -12,8 +12,3 @@ if (document.getElementById('login-form') || document.getElementById('register-f
 if (document.getElementById('cart-page-root')) {
     import('./modules/cart.js');
 }
-
-// Admin dashboard
-if (document.getElementById('admin-dashboard-root')) {
-    import('./modules/admin-dashboard.js');
-}
