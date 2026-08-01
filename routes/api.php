@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\WishlistController;
+use App\Http\Controllers\Api\CheckoutController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\OtpController;
 use App\Http\Controllers\Api\Customer\CustomerController;
@@ -84,7 +85,6 @@ Route::prefix('products')->group(function () {
     Route::get('/{id}', [ProductController::class, 'show']);       
 
     Route::put('/{id}', [ProductController::class, 'update']);     
-    Route::patch('/{id}', [ProductController::class, 'update']);   
 
     Route::delete('/{id}', [ProductController::class, 'destroy']); 
 });
@@ -98,8 +98,6 @@ Route::prefix('categories')->group(function () {
     Route::get('/{id}', [CategoryController::class, 'show']);
 
     Route::put('/{id}', [CategoryController::class, 'update']);
-
-    Route::patch('/{id}', [CategoryController::class, 'update']);
 
     Route::delete('/{id}', [CategoryController::class, 'destroy']);
 
@@ -115,8 +113,6 @@ Route::prefix('brands')->group(function () {
 
     Route::put('/{id}', [BrandController::class, 'update']);
 
-    Route::patch('/{id}', [BrandController::class, 'update']);
-
     Route::delete('/{id}', [BrandController::class, 'destroy']);
 
 });
@@ -131,11 +127,10 @@ Route::prefix('wishlists')->group(function () {
 
     Route::put('/{id}', [WishlistController::class, 'update']);
 
-    Route::patch('/{id}', [WishlistController::class, 'update']);
-
     Route::delete('/{id}', [WishlistController::class, 'destroy']);
 
 });
+
 
 Route::post(
     '/verify-registration-otp',
