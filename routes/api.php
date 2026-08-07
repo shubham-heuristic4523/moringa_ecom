@@ -15,6 +15,9 @@ use App\Http\Controllers\Api\OtpController;
 use App\Http\Controllers\Api\Customer\CustomerController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Api\Admin\CustomerController as AdminCustomerController;
+use App\Http\Controllers\Api\Admin\OfferController as AdminOfferController;
+use App\Http\Controllers\Api\Admin\ReferralController as AdminReferralController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-registration-otp', [OtpController::class, 'verifyRegistrationOtp']);
@@ -81,14 +84,14 @@ Route::middleware('auth:sanctum')->group(function () {
 //Gayatri
 Route::prefix('products')->group(function () {
 
-    Route::get('/', [ProductController::class, 'index']);         
-    Route::post('/', [ProductController::class, 'store']);         
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/{id}', [ProductController::class, 'show']);
 
-    Route::get('/{id}', [ProductController::class, 'show']);       
-
-    Route::put('/{id}', [ProductController::class, 'update']);     
-
-    Route::delete('/{id}', [ProductController::class, 'destroy']); 
+    Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+        Route::post('/', [ProductController::class, 'store']);
+        Route::put('/{id}', [ProductController::class, 'update']);
+        Route::delete('/{id}', [ProductController::class, 'destroy']);
+    });
 });
 
 Route::prefix('categories')->group(function () {
@@ -167,7 +170,7 @@ Route::middleware('auth:sanctum')->prefix('orders')->group(function () {
 
 });
 
-Route::middleware(['auth:sanctum', 'role:user,admin'])->prefix('admin/orders')->group(function () {
+Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin/orders')->group(function () {
 
     Route::get('/', [AdminOrderController::class, 'index']);
 
@@ -179,5 +182,37 @@ Route::middleware(['auth:sanctum', 'role:user,admin'])->prefix('admin/orders')->
     Route::patch('/{id}', [AdminOrderController::class, 'update']);
 
     Route::delete('/{id}', [AdminOrderController::class, 'destroy']);
+
+});
+
+Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin/customers')->group(function () {
+
+    Route::get('/', [AdminCustomerController::class, 'index']);
+
+    Route::get('/{id}', [AdminCustomerController::class, 'show']);
+
+    Route::put('/{id}', [AdminCustomerController::class, 'update']);
+
+});
+
+Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin/offers')->group(function () {
+
+    Route::get('/', [AdminOfferController::class, 'index']);
+
+    Route::post('/', [AdminOfferController::class, 'store']);
+
+    Route::get('/{id}', [AdminOfferController::class, 'show']);
+
+    Route::put('/{id}', [AdminOfferController::class, 'update']);
+
+    Route::delete('/{id}', [AdminOfferController::class, 'destroy']);
+
+});
+
+Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin/referrals')->group(function () {
+
+    Route::get('/', [AdminReferralController::class, 'index']);
+
+    Route::get('/{id}', [AdminReferralController::class, 'show']);
 
 });

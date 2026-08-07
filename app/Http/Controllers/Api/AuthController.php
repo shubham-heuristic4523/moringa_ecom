@@ -42,6 +42,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:8',
+            'referral_code' => 'nullable|string',
         ]);
 
         // Check if user already exists
@@ -56,12 +57,18 @@ class AuthController extends Controller
 
         try {
 
+            // Silently ignore an unknown/invalid referral code rather than blocking registration
+            $referrerId = $request->filled('referral_code')
+                ? User::where('referral_code', $request->referral_code)->value('id')
+                : null;
+
             // Save pending registration
             PendingRegistration::updateOrCreate(
                 ['email' => $request->email],
                 [
                     'name' => $request->name,
                     'password' => Hash::make($request->password),
+                    'referrer_id' => $referrerId,
                 ]
             );
 
@@ -156,13 +163,11 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $request->user()
-            ->currentAccessToken()
-            ->delete();
+        $request->user()->tokens()->delete();
 
         return response()->json([
             'success' => true,
-            'message' => 'Logged out'
+            'message' => 'Logged out successfully.'
         ]);
     }
 }

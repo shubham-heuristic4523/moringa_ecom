@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Customer\CustomerProfile;
 use App\Models\Customer\CustomerAddress;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'google_id',
         'role',
         'status',
+        'referral_code',
         'last_login_at',
         'last_login_ip',
     ];
@@ -49,5 +51,34 @@ class User extends Authenticatable
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    /**
+     * Referrals this user has made as the referrer.
+     */
+    public function referralsMade(): HasMany
+    {
+        return $this->hasMany(Referral::class, 'referrer_id');
+    }
+
+    /**
+     * The referral record for how this user was referred in, if any.
+     */
+    public function referredBy(): HasOne
+    {
+        return $this->hasOne(Referral::class, 'referred_id');
+    }
+
+    protected static function booted(): void
+    {
+        static::creating(function (User $user) {
+            if (empty($user->referral_code)) {
+                do {
+                    $code = 'REF' . strtoupper(Str::random(6));
+                } while (static::where('referral_code', $code)->exists());
+
+                $user->referral_code = $code;
+            }
+        });
     }
 }

@@ -18,8 +18,28 @@ class AdminController extends Controller
         return view('admin.list');
     }
 
-    public function form()
+    public function form($product = null)
     {
-        return view('admin.form');
+        return view('admin.form', ['productId' => $product]);
+    }
+
+    public function orders()
+    {
+        return view('admin.orders');
+    }
+
+    public function customers()
+    {
+        return view('admin.customers');
+    }
+
+    public function offers()
+    {
+        return view('admin.offers');
+    }
+
+    public function referrals()
+    {
+        return view('admin.referrals');
     }
 }

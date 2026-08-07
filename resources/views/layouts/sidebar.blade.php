@@ -44,10 +44,10 @@
             </button>
             <div class="sidebar-submenu">
                 <div>
-                    <a href="#" class="sidebar-link !py-2 pl-11 text-[0.82rem]">
+                    <a href="{{ route('admin.list') }}" class="sidebar-link !py-2 pl-11 text-[0.82rem]">
                         <span class="sidebar-label">All Products</span>
                     </a>
-                    <a href="#" class="sidebar-link !py-2 pl-11 text-[0.82rem]">
+                    <a href="{{ route('admin.form') }}" class="sidebar-link !py-2 pl-11 text-[0.82rem]">
                         <span class="sidebar-label">Add New</span>
                     </a>
                     <a href="#" class="sidebar-link !py-2 pl-11 text-[0.82rem]">
@@ -65,13 +65,12 @@
 
         <p class="sidebar-group-title">Sales</p>
 
-        <a href="#" class="sidebar-link">
+        <a href="{{ route('admin.orders') }}" class="sidebar-link">
             <span class="sidebar-icon"><i class="fa-solid fa-cart-shopping"></i></span>
             <span class="sidebar-label">Orders</span>
-            <span class="sidebar-badge">12</span>
             <span class="sidebar-tooltip">Orders</span>
         </a>
-        <a href="#" class="sidebar-link">
+        <a href="{{ route('admin.customers') }}" class="sidebar-link">
             <span class="sidebar-icon"><i class="fa-solid fa-users"></i></span>
             <span class="sidebar-label">Customers</span>
             <span class="sidebar-tooltip">Customers</span>
@@ -80,6 +79,19 @@
             <span class="sidebar-icon"><i class="fa-solid fa-heart"></i></span>
             <span class="sidebar-label">Wishlists</span>
             <span class="sidebar-tooltip">Wishlists</span>
+        </a>
+
+        <p class="sidebar-group-title">Marketing</p>
+
+        <a href="{{ route('admin.offers') }}" class="sidebar-link">
+            <span class="sidebar-icon"><i class="fa-solid fa-tags"></i></span>
+            <span class="sidebar-label">Offers &amp; Discounts</span>
+            <span class="sidebar-tooltip">Offers &amp; Discounts</span>
+        </a>
+        <a href="{{ route('admin.referrals') }}" class="sidebar-link">
+            <span class="sidebar-icon"><i class="fa-solid fa-user-plus"></i></span>
+            <span class="sidebar-label">Referrals</span>
+            <span class="sidebar-tooltip">Referrals</span>
         </a>
 
         <p class="sidebar-group-title">Insights</p>

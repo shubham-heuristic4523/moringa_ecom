@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use App\Models\EmailOtp;
+use App\Models\Referral;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -145,6 +146,16 @@ class OtpController extends Controller
                 'user_id' => $user->id,
                 'verified_at' => now(),
             ]);
+
+            // Log the referral, if this signup used a valid referral code
+            if ($pending->referrer_id) {
+                Referral::create([
+                    'referrer_id' => $pending->referrer_id,
+                    'referred_id' => $user->id,
+                    'referral_code' => User::whereKey($pending->referrer_id)->value('referral_code'),
+                    'status' => 'pending',
+                ]);
+            }
 
             // Delete temporary registration
             $pending->delete();

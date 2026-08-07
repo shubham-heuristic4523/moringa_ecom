@@ -77,13 +77,39 @@
                 <a href="#" class="dropdown-item"><i class="fa-solid fa-user"></i><span>My Profile</span></a>
                 <a href="#" class="dropdown-item"><i class="fa-solid fa-gear"></i><span>Account Settings</span></a>
                 <hr class="my-1 border-forest-900/10 dark:border-moringa-200/10">
-                <form method="POST" action="{{ url('/logout') }}">
-                    @csrf
-                    <button type="submit" class="dropdown-item w-full text-left text-red-600">
-                        <i class="fa-solid fa-right-from-bracket"></i><span>Log Out</span>
-                    </button>
-                </form>
+                <button type="button" id="logoutBtn" class="dropdown-item w-full text-left text-red-600">
+                    <i class="fa-solid fa-right-from-bracket"></i><span>Log Out</span>
+                </button>
             </div>
         </div>
     </div>
 </header>
+<script>
+    document.getElementById('logoutBtn').addEventListener('click', async function () {
+
+    if (this.disabled) return;
+    this.disabled = true;
+
+    const token = localStorage.getItem('token');
+
+    // Clear locally first so the user is logged out client-side no matter what the API does
+    localStorage.removeItem('token');
+
+    try {
+
+        await fetch('/api/logout', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Accept': 'application/json'
+            }
+        });
+
+    } catch (error) {
+        // Ignore — token is already cleared locally, still proceed to login
+    }
+
+    window.location.href = '/login';
+
+});
+</script>

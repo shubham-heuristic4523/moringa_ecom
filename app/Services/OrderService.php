@@ -12,6 +12,10 @@ use Illuminate\Validation\ValidationException;
 
 class OrderService
 {
+    public function __construct(private readonly ReferralService $referralService)
+    {
+    }
+
     /**
      * Place a new order for the given user, validating stock and
      * snapshotting product details onto the order items.
@@ -25,6 +29,7 @@ class OrderService
 
             $subtotal = 0;
             $orderItemsData = [];
+            $adminId = null;
 
             foreach ($items as $item) {
                 $product = Product::whereKey($item['product_id'])
@@ -37,28 +42,26 @@ class OrderService
                     ]);
                 }
 
-                if ($product->quantity < $item['quantity']) {
-                    throw ValidationException::withMessages([
-                        'items' => "Insufficient stock for \"{$product->name}\". Only {$product->quantity} left.",
-                    ]);
-                }
+                // Orders belong to whichever admin's storefront the products came
+                // from. The cart is expected to be single-vendor.
+                $adminId ??= $product->owner_id;
 
-                $lineTotal = $product->price * $item['quantity'];
+                $price = $product->sale_price ?? $product->regular_price ?? 0;
+                $lineTotal = $price * $item['quantity'];
                 $subtotal += $lineTotal;
 
                 $orderItemsData[] = [
                     'product_id' => $product->id,
                     'product_name' => $product->name,
-                    'price' => $product->price,
+                    'price' => $price,
                     'quantity' => $item['quantity'],
                     'line_total' => $lineTotal,
                 ];
-
-                $product->decrement('quantity', $item['quantity']);
             }
 
             $order = Order::create([
                 'user_id' => $user->id,
+                'admin_id' => $adminId,
                 'address_id' => $address->id,
                 'status' => OrderStatus::PENDING->value,
                 'subtotal' => $subtotal,
@@ -126,11 +129,13 @@ class OrderService
     }
 
     /**
-     * Admin: list every order, optionally filtered/searched.
+     * Admin: list every order, optionally filtered/searched. Pass $adminId
+     * to restrict to orders belonging to that admin (omit for super_admin).
      */
-    public function listAll(?string $status = null, ?string $search = null, int $perPage = 15)
+    public function listAll(?string $status = null, ?string $search = null, int $perPage = 15, ?int $adminId = null)
     {
         return Order::query()
+            ->when($adminId, fn ($query) => $query->where('admin_id', $adminId))
             ->when($status, fn ($query) => $query->where('status', $status))
             ->when($search, function ($query) use ($search) {
                 $query->where(function ($inner) use ($search) {
@@ -147,20 +152,35 @@ class OrderService
     }
 
     /**
-     * Admin: fetch any order regardless of owner.
+     * Admin: fetch a single order. Pass $adminId to restrict lookup to
+     * orders belonging to that admin (omit for super_admin).
      */
-    public function findAny(int $orderId): Order
+    public function findAny(int $orderId, ?int $adminId = null): Order
     {
         return Order::with('user', 'items.product', 'address')
+            ->when($adminId, fn ($query) => $query->where('admin_id', $adminId))
             ->findOrFail($orderId);
     }
 
     /**
-     * Admin: create an order on behalf of a customer.
+     * Admin: create an order on behalf of a customer. When $adminId is
+     * given, every item's product must belong to that admin.
      */
-    public function createOrderForUser(int $userId, int $addressId, array $items, ?string $notes = null): Order
+    public function createOrderForUser(int $userId, int $addressId, array $items, ?string $notes = null, ?int $adminId = null): Order
     {
         $user = User::findOrFail($userId);
+
+        if ($adminId) {
+            $foreignProductCount = Product::whereIn('id', array_column($items, 'product_id'))
+                ->where(fn ($query) => $query->whereNull('owner_id')->orWhere('owner_id', '!=', $adminId))
+                ->count();
+
+            if ($foreignProductCount > 0) {
+                throw ValidationException::withMessages([
+                    'items' => 'One or more products do not belong to your catalog.',
+                ]);
+            }
+        }
 
         return $this->createOrder($user, $addressId, $items, $notes);
     }
@@ -174,6 +194,7 @@ class OrderService
         return DB::transaction(function () use ($order, $status, $adminNotes) {
 
             $terminal = [OrderStatus::CANCELLED->value, OrderStatus::RETURNED->value, OrderStatus::REFUNDED->value];
+            $wasDelivered = $order->status === OrderStatus::DELIVERED->value;
 
             if ($status && $status !== $order->status && in_array($status, $terminal, true)
                 && !in_array($order->status, $terminal, true)) {
@@ -184,6 +205,10 @@ class OrderService
                 'status' => $status,
                 'admin_notes' => $adminNotes,
             ], fn ($value) => $value !== null));
+
+            if ($status === OrderStatus::DELIVERED->value && !$wasDelivered) {
+                $this->referralService->handleOrderDelivered($order);
+            }
 
             return $order->fresh(['user', 'items.product', 'address']);
         });
@@ -208,13 +233,12 @@ class OrderService
 
     /**
      * Return each item's quantity back to product stock.
+     *
+     * No-op: stock now lives per-variant on product_variants, and order_items
+     * only snapshots a free-text variant label (not a variant_id), so there is
+     * no reliable row left to restock against.
      */
     private function restockItems(Order $order): void
     {
-        foreach ($order->items as $item) {
-            if ($item->product_id) {
-                Product::whereKey($item->product_id)->increment('quantity', $item->quantity);
-            }
-        }
     }
 }

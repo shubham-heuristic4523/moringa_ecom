@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Enums\OrderStatus;
+use App\Http\Controllers\Concerns\ScopesByOwner;
 use App\Http\Controllers\Controller;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
@@ -10,11 +11,22 @@ use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
 {
+    use ScopesByOwner;
+
     protected OrderService $orderService;
 
     public function __construct(OrderService $orderService)
     {
         $this->orderService = $orderService;
+    }
+
+    /**
+     * The current admin's id if they should be scoped to their own orders,
+     * or null (unscoped) for super_admin.
+     */
+    private function scopeId(Request $request): ?int
+    {
+        return $this->isScopedAdmin($request->user()) ? $request->user()->id : null;
     }
 
     /**
@@ -31,7 +43,9 @@ class OrderController extends Controller
             'success' => true,
             'data' => $this->orderService->listAll(
                 $request->query('status'),
-                $request->query('search')
+                $request->query('search'),
+                15,
+                $this->scopeId($request)
             ),
         ]);
     }
@@ -54,7 +68,8 @@ class OrderController extends Controller
             $validated['user_id'],
             $validated['address_id'],
             $validated['items'],
-            $validated['notes'] ?? null
+            $validated['notes'] ?? null,
+            $this->scopeId($request)
         );
 
         return response()->json([
@@ -67,11 +82,11 @@ class OrderController extends Controller
     /**
      * Show any order.
      */
-    public function show(int $id)
+    public function show(Request $request, int $id)
     {
         return response()->json([
             'success' => true,
-            'data' => $this->orderService->findAny($id),
+            'data' => $this->orderService->findAny($id, $this->scopeId($request)),
         ]);
     }
 
@@ -85,7 +100,7 @@ class OrderController extends Controller
             'admin_notes' => 'nullable|string|max:1000',
         ]);
 
-        $order = $this->orderService->findAny($id);
+        $order = $this->orderService->findAny($id, $this->scopeId($request));
 
         $order = $this->orderService->updateStatus(
             $order,
@@ -103,9 +118,9 @@ class OrderController extends Controller
     /**
      * Delete an order.
      */
-    public function destroy(int $id)
+    public function destroy(Request $request, int $id)
     {
-        $order = $this->orderService->findAny($id);
+        $order = $this->orderService->findAny($id, $this->scopeId($request));
 
         $this->orderService->delete($order);
 

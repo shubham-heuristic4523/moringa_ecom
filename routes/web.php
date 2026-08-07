@@ -26,6 +26,21 @@ Route::get('admin/list', [AdminController::class, 'list'])
 
 Route::get('admin/form', [AdminController::class, 'form'])
     ->name('admin.form');
+
+Route::get('admin/form/{product}', [AdminController::class, 'form'])
+    ->name('admin.form.edit');
+
+Route::get('admin/orders', [AdminController::class, 'orders'])
+    ->name('admin.orders');
+
+Route::get('admin/customers', [AdminController::class, 'customers'])
+    ->name('admin.customers');
+
+Route::get('admin/offers', [AdminController::class, 'offers'])
+    ->name('admin.offers');
+
+Route::get('admin/referrals', [AdminController::class, 'referrals'])
+    ->name('admin.referrals');
 // ─── Utility ─────────────────────────────────────────────────────────────────
 
 Route::get('/test-mail', function () {
@@ -33,9 +48,14 @@ Route::get('/test-mail', function () {
     return 'Mail Sent';
 });
 
-<<<<<<< HEAD
 Route::get('/test-view', function () {
     return view('components.navigation.admin-sidebar', ['message' => 'This is a test message.']);
 });
-=======
->>>>>>> ad2070541beb5fcbae5c0885b66bddaf5aa35664
+
+//login and registration view routes
+Route::view('/login', 'auth.login')->name('login');
+Route::view('/register', 'auth.register')->name('register');
+
+Route::view('/dashboard', 'admin.dashboard')
+    
+    ->name('dashboard');
