@@ -21,6 +21,14 @@
     </div>
 </div>
 
+<div class="admin-card" style="margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+    <div>
+        <p class="card-subtitle" style="margin-bottom:0.2rem;">Current reward rule</p>
+        <p class="card-title" style="margin-bottom:0; font-size:1rem;" id="currentRewardRule">Loading…</p>
+    </div>
+    <a href="{{ route('admin.settings') }}" class="btn btn-ghost"><i class="fa-solid fa-pen"></i> Change</a>
+</div>
+
 <div class="admin-card">
 
     <div class="card-header">
@@ -42,6 +50,10 @@
                 <option value="pending">Pending</option>
                 <option value="completed">Rewarded</option>
             </select>
+
+            <a href="{{ route('admin.settings') }}" class="btn btn-ghost">
+                <i class="fa-solid fa-gear"></i> Configure Reward Amount
+            </a>
 
         </div>
 
@@ -369,7 +381,31 @@
     });
     statusFilter.addEventListener('change', () => loadReferrals(1));
 
+    async function loadCurrentRewardRule() {
+        const el = document.getElementById('currentRewardRule');
+
+        try {
+            const response = await fetch('/api/admin/settings', { headers: authHeaders() });
+            const payload = await response.json();
+            const s = payload.data;
+
+            if (!payload.status || !s) {
+                el.textContent = 'Could not load — open Settings to view.';
+                return;
+            }
+
+            const value = s.referral_discount_type === 'percentage'
+                ? `${parseFloat(s.referral_discount_value)}%${s.referral_max_discount_amount ? ' (max ₹' + parseFloat(s.referral_max_discount_amount).toFixed(2) + ')' : ''}`
+                : `₹${parseFloat(s.referral_discount_value).toFixed(2)}`;
+
+            el.textContent = `${value} off, valid ${s.referral_validity_days} days after being earned`;
+        } catch (err) {
+            el.textContent = 'Could not load — open Settings to view.';
+        }
+    }
+
     loadReferrals(1);
+    loadCurrentRewardRule();
 })();
 </script>
 @endpush

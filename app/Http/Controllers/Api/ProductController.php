@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::with(['category', 'brand', 'images'])
+        $products = Product::with(['category', 'brand', 'images', 'owner:id,name', 'variants:id,product_id,unit,stock,status'])
             ->withCount('variants')
             ->when($request->filled('search'), function ($query) use ($request) {
                 $query->where(function ($q) use ($request) {
@@ -31,6 +31,10 @@ class ProductController extends Controller
             ->when($request->filled('category_id'), fn ($query) => $query->where('category_id', $request->category_id))
             ->when($request->filled('brand_id'), fn ($query) => $query->where('brand_id', $request->brand_id))
             ->when($request->filled('status'), fn ($query) => $query->where('status', $request->status))
+            ->when($request->filled('is_featured'), fn ($query) => $query->where('is_featured', $request->boolean('is_featured')))
+            ->when($request->filled('is_best_seller'), fn ($query) => $query->where('is_best_seller', $request->boolean('is_best_seller')))
+            ->when($request->filled('is_new'), fn ($query) => $query->where('is_new', $request->boolean('is_new')))
+            ->when($request->filled('owner_id'), fn ($query) => $query->where('owner_id', $request->owner_id))
             ->tap(fn ($query) => $this->applyOwnerScope($query, $request->user('sanctum')))
             ->latest()
             ->paginate($request->integer('per_page', 10));

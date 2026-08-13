@@ -19,9 +19,13 @@ class Order extends Model
         'address_id',
         'status',
         'subtotal',
+        'discount',
+        'coupon_code',
+        'offer_id',
         'shipping',
         'tax',
         'total',
+        'payment_method',
         'notes',
         'admin_notes',
         'cancelled_at',
@@ -30,6 +34,7 @@ class Order extends Model
 
     protected $casts = [
         'subtotal' => 'decimal:2',
+        'discount' => 'decimal:2',
         'shipping' => 'decimal:2',
         'tax' => 'decimal:2',
         'total' => 'decimal:2',
@@ -44,6 +49,11 @@ class Order extends Model
     public function admin(): BelongsTo
     {
         return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function offer(): BelongsTo
+    {
+        return $this->belongsTo(Offer::class);
     }
 
     public function address(): BelongsTo

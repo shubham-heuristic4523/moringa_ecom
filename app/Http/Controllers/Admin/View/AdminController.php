@@ -38,8 +38,28 @@ class AdminController extends Controller
         return view('admin.offers');
     }
 
+    public function flashSales()
+    {
+        return view('admin.flash-sales');
+    }
+
     public function referrals()
     {
         return view('admin.referrals');
+    }
+
+    public function settings()
+    {
+        return view('admin.settings');
+    }
+
+    public function admins()
+    {
+        return view('admin.admins');
+    }
+
+    public function reports()
+    {
+        return view('admin.reports');
     }
 }

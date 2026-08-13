@@ -17,6 +17,20 @@ use App\Http\Controllers\Admin\View\AdminController;
 
 // ─── Public Storefront ──────────────────────────────────────────────────────
 
+Route::view('/', 'storefront.home')->name('home');
+
+Route::get('/store/{slug}', function (string $slug) {
+    return view('storefront.home', ['storeSlug' => $slug]);
+})->name('store');
+
+Route::get('/product/{id}', function (int $id) {
+    return view('storefront.product', ['productId' => $id]);
+})->name('product.show');
+
+Route::view('/cart', 'storefront.cart')->name('cart');
+Route::view('/checkout', 'storefront.checkout')->name('checkout');
+Route::view('/order-success/{order}', 'storefront.order-success')->name('order.success');
+Route::view('/account', 'storefront.account')->name('account');
 
 Route::get('/admin', [AdminController::class, 'index'])
     ->name('welcome');
@@ -39,8 +53,20 @@ Route::get('admin/customers', [AdminController::class, 'customers'])
 Route::get('admin/offers', [AdminController::class, 'offers'])
     ->name('admin.offers');
 
+Route::get('admin/flash-sales', [AdminController::class, 'flashSales'])
+    ->name('admin.flash-sales');
+
 Route::get('admin/referrals', [AdminController::class, 'referrals'])
     ->name('admin.referrals');
+
+Route::get('admin/settings', [AdminController::class, 'settings'])
+    ->name('admin.settings');
+
+Route::get('admin/admins', [AdminController::class, 'admins'])
+    ->name('admin.admins');
+
+Route::get('admin/reports', [AdminController::class, 'reports'])
+    ->name('admin.reports');
 // ─── Utility ─────────────────────────────────────────────────────────────────
 
 Route::get('/test-mail', function () {

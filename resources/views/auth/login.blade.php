@@ -26,6 +26,13 @@
 
                     <form id="loginForm">
 
+                        <button type="button" class="btn btn-outline-secondary w-100 mb-2" disabled title="Coming soon">
+                            Log in with Google
+                            <span class="badge bg-secondary ms-1">Coming soon</span>
+                        </button>
+
+                        <div class="text-center text-muted mb-3" style="font-size:0.85rem;">— or log in with email —</div>
+
                         <div class="mb-3">
 
                             <label>Email</label>
@@ -50,14 +57,14 @@
 
                         </div>
 
-                        <button class="btn btn-primary w-100">
-                            Login
+                        <button type="submit" id="loginBtn" class="btn btn-primary w-100">
+                            <span id="loginBtnText">Login</span>
                         </button>
 
                     </form>
 
                     <div class="mt-3 text-center">
-                        <a href="{{ route('register') }}">
+                        <a href="{{ route('register') }}" id="createAccountLink">
                             Create Account
                         </a>
                     </div>
@@ -74,35 +81,70 @@
 
 <script>
 
+// Carry the redirect (and, if it points back at a specific store, that
+// store's slug) through to "Create Account" too.
+(function () {
+    const redirect = new URLSearchParams(window.location.search).get('redirect');
+    if (!redirect) return;
+
+    const link = document.getElementById('createAccountLink');
+    const params = new URLSearchParams({ redirect });
+
+    const storeMatch = redirect.match(/^\/store\/([^/?]+)/);
+    if (storeMatch) params.set('store', storeMatch[1]);
+
+    link.href = '{{ route('register') }}?' + params.toString();
+})();
+
 document.getElementById('loginForm').addEventListener('submit',async function(e){
 
     e.preventDefault();
 
+    const btn = document.getElementById('loginBtn');
+    if (btn.disabled) return;
+    btn.disabled = true;
+    document.getElementById('loginBtnText').textContent = 'Logging in…';
+
     let form=new FormData(this);
 
-    let response=await fetch('/api/login',{
+    try {
 
-        method:'POST',
+        let response=await fetch('/api/login',{
 
-        headers:{
-            'Accept':'application/json'
-        },
+            method:'POST',
 
-        body:form
+            headers:{
+                'Accept':'application/json'
+            },
 
-    });
+            body:form
 
-    let data=await response.json();
+        });
 
-    if(data.success){
+        let data=await response.json();
 
-        localStorage.setItem('token',data.token);
+        if(data.success){
 
-        window.location="/dashboard";
+            localStorage.setItem('token',data.token);
 
-    }else{
+            if (data.user?.role === 'admin' || data.user?.role === 'super_admin') {
+                window.location = '/dashboard';
+                return;
+            }
 
-        alert(data.message);
+            const redirect = new URLSearchParams(window.location.search).get('redirect');
+            window.location = redirect || '/';
+
+        }else{
+
+            alert(data.message);
+
+        }
+
+    } finally {
+
+        btn.disabled = false;
+        document.getElementById('loginBtnText').textContent = 'Login';
 
     }
 

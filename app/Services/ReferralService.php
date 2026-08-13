@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Offer;
 use App\Models\Order;
 use App\Models\Referral;
+use App\Models\SiteSetting;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -47,14 +48,16 @@ class ReferralService
     }
 
     /**
-     * Auto-generate a one-time coupon for the referrer, using the
-     * reward configured in config/referrals.php. Owned by whichever
-     * admin's storefront the qualifying order was placed with.
+     * Auto-generate a one-time coupon for the referrer, using the reward
+     * that admin has configured for their own storefront (Settings →
+     * Referral Rewards). Owned by whichever admin's storefront the
+     * qualifying order was placed with.
      */
     private function issueRewardCoupon(Referral $referral, ?int $ownerId): Offer
     {
         $referrer = $referral->referrer;
-        $discountType = config('referrals.discount_type', 'percentage');
+        $settings = SiteSetting::forAdmin($ownerId);
+        $discountType = $settings->referral_discount_type;
 
         do {
             $code = 'REF' . $referrer->id . strtoupper(Str::random(4));
@@ -67,11 +70,11 @@ class ReferralService
             'type' => 'coupon',
             'code' => $code,
             'discount_type' => $discountType,
-            'discount_value' => config('referrals.discount_value', 10),
-            'max_discount_amount' => $discountType === 'percentage' ? config('referrals.max_discount_amount') : null,
+            'discount_value' => $settings->referral_discount_value,
+            'max_discount_amount' => $discountType === 'percentage' ? $settings->referral_max_discount_amount : null,
             'scope' => 'all',
             'starts_at' => now(),
-            'ends_at' => now()->addDays((int) config('referrals.validity_days', 30)),
+            'ends_at' => now()->addDays($settings->referral_validity_days),
             'status' => 'active',
         ]);
     }

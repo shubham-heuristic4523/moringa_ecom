@@ -9,13 +9,30 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    public function index()
+    /**
+     * List every admin with rollup stats, so a super_admin can see who's
+     * driving the most products/customers/sales at a glance.
+     */
+    public function index(Request $request)
     {
         $admins = User::where('role', 'admin')
+            ->withCount(['products', 'registeredCustomers', 'orders'])
+            ->withSum(['orders as total_sales' => function ($query) {
+                $query->whereNotIn('status', ['cancelled', 'returned', 'refunded']);
+            }], 'total')
+            ->when($request->filled('search'), function ($query) use ($request) {
+                $query->where(function ($inner) use ($request) {
+                    $inner->where('name', 'like', '%' . $request->search . '%')
+                        ->orWhere('email', 'like', '%' . $request->search . '%');
+                });
+            })
             ->latest()
             ->paginate(10);
 
-        return response()->json($admins);
+        return response()->json([
+            'success' => true,
+            'data' => $admins,
+        ]);
     }
 
     public function store(Request $request)

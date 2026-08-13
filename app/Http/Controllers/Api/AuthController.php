@@ -43,6 +43,7 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|confirmed|min:8',
             'referral_code' => 'nullable|string',
+            'store' => 'nullable|string',
         ]);
 
         // Check if user already exists
@@ -62,6 +63,11 @@ class AuthController extends Controller
                 ? User::where('referral_code', $request->referral_code)->value('id')
                 : null;
 
+            // Which admin's storefront (if any) this signup happened on
+            $adminId = $request->filled('store')
+                ? User::where('store_slug', $request->store)->whereIn('role', ['admin', 'super_admin'])->value('id')
+                : null;
+
             // Save pending registration
             PendingRegistration::updateOrCreate(
                 ['email' => $request->email],
@@ -69,6 +75,7 @@ class AuthController extends Controller
                     'name' => $request->name,
                     'password' => Hash::make($request->password),
                     'referrer_id' => $referrerId,
+                    'admin_id' => $adminId,
                 ]
             );
 

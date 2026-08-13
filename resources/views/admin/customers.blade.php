@@ -40,6 +40,7 @@
                 <tr>
                     <th>Customer</th>
                     <th>Email</th>
+                    <th class="sa-only">Belongs To</th>
                     <th>Orders</th>
                     <th>Total Spent</th>
                     <th>Joined</th>
@@ -50,7 +51,7 @@
 
             <tbody id="customerTableBody">
                 <tr>
-                    <td colspan="7" class="table-empty">
+                    <td colspan="8" class="table-empty">
                         <i class="fa-solid fa-spinner fa-spin"></i>
                         Loading customers…
                     </td>
@@ -156,6 +157,9 @@
 
     .cust-plain-text { font-size: 0.85rem; line-height: 1.5; color: var(--color-forest-900); }
     body[data-theme="dark"] .cust-plain-text { color: var(--color-moringa-100); }
+
+    .sa-only { display: none; }
+    #customerTable.is-super-admin .sa-only { display: table-cell; }
 </style>
 @endpush
 
@@ -175,6 +179,8 @@
     const closeDrawerBtn = document.getElementById('closeDrawerBtn');
 
     const STATUS_BADGE = { active: 'badge-success', inactive: 'badge-danger' };
+
+    let isSuperAdmin = false;
 
     let currentPage = 1;
     let searchDebounce = null;
@@ -213,7 +219,7 @@
     async function loadCustomers(page = 1) {
         currentPage = page;
 
-        tableBody.innerHTML = `<tr><td colspan="7" class="table-empty"><i class="fa-solid fa-spinner fa-spin"></i> Loading customers…</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-spinner fa-spin"></i> Loading customers…</td></tr>`;
 
         const params = new URLSearchParams({ page });
         if (searchInput.value.trim()) params.set('search', searchInput.value.trim());
@@ -224,20 +230,20 @@
             const payload = await response.json();
 
             if (!payload.success) {
-                tableBody.innerHTML = `<tr><td colspan="7" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load customers.</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load customers.</td></tr>`;
                 return;
             }
 
             renderRows(payload.data?.data ?? []);
             renderPagination(payload.data);
         } catch (err) {
-            tableBody.innerHTML = `<tr><td colspan="7" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load customers.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load customers.</td></tr>`;
         }
     }
 
     function renderRows(customers) {
         if (!customers.length) {
-            tableBody.innerHTML = `<tr><td colspan="7" class="table-empty"><i class="fa-solid fa-user-slash"></i> No customers found.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-user-slash"></i> No customers found.</td></tr>`;
             return;
         }
 
@@ -250,6 +256,7 @@
                     </div>
                 </td>
                 <td>${escapeHtml(customer.email)}</td>
+                <td class="sa-only">${customer.registered_via_admin?.name ? escapeHtml(customer.registered_via_admin.name) : '—'}</td>
                 <td>${customer.orders_count ?? 0}</td>
                 <td>${formatMoney(customer.total_spent)}</td>
                 <td>${formatDate(customer.created_at)}</td>
@@ -360,6 +367,7 @@
                 <div>
                     <div style="font-weight:600;">${escapeHtml(order.order_number ?? ('#' + order.id))}</div>
                     <div class="form-help" style="margin:0;">${formatDate(order.created_at)}</div>
+                    ${isSuperAdmin ? `<div class="form-help" style="margin:0;"><i class="fa-solid fa-store"></i> ${order.admin?.name ? escapeHtml(order.admin.name) : 'Main site'}</div>` : ''}
                 </div>
                 <div style="text-align:right;">
                     <div>${formatMoney(order.total)}</div>
@@ -385,6 +393,12 @@
                 <p class="cust-plain-text">${formatDate(customer.created_at)}</p>
             </div>
 
+            ${isSuperAdmin ? `
+            <div>
+                <p class="cust-section-title">Registered Via</p>
+                <p class="cust-plain-text"><i class="fa-solid fa-store"></i> ${customer.registered_via_admin?.name ? escapeHtml(customer.registered_via_admin.name) + "'s store" : 'Main site (direct)'}</p>
+            </div>` : ''}
+
             ${profile ? `<div><p class="cust-section-title">Profile</p>${profileHtml}</div>` : ''}
 
             <div>
@@ -393,7 +407,7 @@
             </div>
 
             <div>
-                <p class="cust-section-title">Recent Orders</p>
+                <p class="cust-section-title">${isSuperAdmin ? 'Order History' : 'Recent Orders'}</p>
                 ${ordersHtml}
             </div>
 
@@ -458,6 +472,20 @@
     });
     statusFilter.addEventListener('change', () => loadCustomers(1));
 
+    async function markSuperAdmin() {
+        try {
+            const response = await fetch('/api/profile', { headers: authHeaders() });
+            const payload = await response.json();
+            if (payload.user?.role === 'super_admin') {
+                isSuperAdmin = true;
+                document.getElementById('customerTable').classList.add('is-super-admin');
+            }
+        } catch (err) {
+            // Non-critical — the "Belongs To" column just stays hidden.
+        }
+    }
+
+    markSuperAdmin();
     loadCustomers(1);
 })();
 </script>

@@ -40,8 +40,17 @@
 
 <div id="alertBox" class="alert d-none-important" role="alert"></div>
 
+<div id="storeContextBanner" class="alert alert-info d-none-important" role="alert"></div>
+
 <!-- STEP 1: Registration form -->
 <form id="registerForm">
+
+<button type="button" class="btn btn-outline-secondary w-100 mb-2" disabled title="Coming soon">
+Sign up with Google
+<span class="badge bg-secondary ms-1">Coming soon</span>
+</button>
+
+<div class="text-center text-muted mb-3" style="font-size:0.85rem;">— or register with email —</div>
 
 <div class="mb-3">
 
@@ -133,7 +142,7 @@ Use a different email
 
 <div class="mt-3 text-center" id="loginLink">
 
-<a href="{{ route('login') }}">
+<a href="{{ route('login') }}" id="loginLinkAnchor">
 
 Already have account?
 
@@ -166,6 +175,31 @@ const otpDigits = Array.from(document.querySelectorAll('#otpDigits .otp-input'))
 
 let lastPayload = null;
 let resendCooldownInterval = null;
+
+// Carry the redirect target through to "Already have an account?" too.
+(function () {
+    const redirect = new URLSearchParams(window.location.search).get('redirect');
+    if (redirect) {
+        document.getElementById('loginLinkAnchor').href = '{{ route('login') }}?redirect=' + encodeURIComponent(redirect);
+    }
+})();
+
+// If arriving via a specific admin's store link (?store=slug), show which
+// site the new account is being created for.
+(function () {
+    const store = new URLSearchParams(window.location.search).get('store');
+    if (!store) return;
+
+    fetch('/api/settings?store=' + encodeURIComponent(store))
+        .then(res => res.json())
+        .then(payload => {
+            if (!payload.status) return;
+            const banner = document.getElementById('storeContextBanner');
+            banner.textContent = `You're creating an account for ${payload.data.site_name}.`;
+            banner.classList.remove('d-none-important');
+        })
+        .catch(() => {});
+})();
 
 function showAlert(type, message) {
     alertBox.className = 'alert alert-' + type;
@@ -260,6 +294,8 @@ registerForm.addEventListener('submit', async function (e) {
         email: form.get('email'),
         password: form.get('password'),
         password_confirmation: form.get('password_confirmation'),
+        referral_code: new URLSearchParams(window.location.search).get('ref') || undefined,
+        store: new URLSearchParams(window.location.search).get('store') || undefined,
     };
 
     try {
@@ -339,7 +375,13 @@ otpForm.addEventListener('submit', async function (e) {
         if (data.success) {
             localStorage.setItem('token', data.token);
             showAlert('success', 'Account verified! Redirecting...');
-            setTimeout(() => window.location = '/dashboard', 800);
+
+            const params = new URLSearchParams(window.location.search);
+            const redirect = params.get('redirect');
+            const store = params.get('store');
+            const destination = redirect || (store ? '/store/' + store : '/');
+
+            setTimeout(() => window.location = destination, 800);
         } else {
             showAlert('danger', data.message || 'Invalid or expired OTP.');
             otpDigits.forEach(input => input.value = '');

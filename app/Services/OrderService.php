@@ -4,10 +4,14 @@ namespace App\Services;
 
 use App\Enums\OrderStatus;
 use App\Models\Customer\CustomerAddress;
+use App\Models\Offer;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductVariant;
 use App\Models\User;
+use App\Notifications\NewOrderPlaced;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\ValidationException;
 
 class OrderService
@@ -18,11 +22,19 @@ class OrderService
 
     /**
      * Place a new order for the given user, validating stock and
-     * snapshotting product details onto the order items.
+     * snapshotting product details onto the order items. The coupon code
+     * (if any) is re-validated here from scratch — the client's quoted
+     * discount is never trusted directly.
      */
-    public function createOrder(User $user, int $addressId, array $items, ?string $notes = null): Order
-    {
-        return DB::transaction(function () use ($user, $addressId, $items, $notes) {
+    public function createOrder(
+        User $user,
+        int $addressId,
+        array $items,
+        ?string $notes = null,
+        ?string $couponCode = null,
+        string $paymentMethod = 'cod',
+    ): Order {
+        return DB::transaction(function () use ($user, $addressId, $items, $notes, $couponCode, $paymentMethod) {
 
             $address = CustomerAddress::where('user_id', $user->id)
                 ->findOrFail($addressId);
@@ -46,18 +58,47 @@ class OrderService
                 // from. The cart is expected to be single-vendor.
                 $adminId ??= $product->owner_id;
 
-                $price = $product->sale_price ?? $product->regular_price ?? 0;
+                $variant = null;
+
+                if (!empty($item['variant_id'])) {
+                    $variant = ProductVariant::where('id', $item['variant_id'])
+                        ->where('product_id', $product->id)
+                        ->lockForUpdate()
+                        ->first();
+
+                    if (!$variant) {
+                        throw ValidationException::withMessages([
+                            'items' => "The selected option for \"{$product->name}\" is no longer available.",
+                        ]);
+                    }
+
+                    if ($variant->stock < $item['quantity']) {
+                        throw ValidationException::withMessages([
+                            'items' => "Only {$variant->stock} left of \"{$product->name}\" ({$variant->unit}).",
+                        ]);
+                    }
+
+                    $variant->decrement('stock', $item['quantity']);
+                }
+
+                $price = $variant
+                    ? ($variant->sale_price ?? $variant->regular_price)
+                    : ($product->sale_price ?? $product->regular_price ?? 0);
                 $lineTotal = $price * $item['quantity'];
                 $subtotal += $lineTotal;
 
                 $orderItemsData[] = [
                     'product_id' => $product->id,
+                    'variant_id' => $variant?->id,
                     'product_name' => $product->name,
                     'price' => $price,
+                    'variant' => $variant?->unit,
                     'quantity' => $item['quantity'],
                     'line_total' => $lineTotal,
                 ];
             }
+
+            [$offer, $discount] = $this->resolveCoupon($couponCode, $subtotal);
 
             $order = Order::create([
                 'user_id' => $user->id,
@@ -65,9 +106,13 @@ class OrderService
                 'address_id' => $address->id,
                 'status' => OrderStatus::PENDING->value,
                 'subtotal' => $subtotal,
+                'discount' => $discount,
+                'coupon_code' => $offer?->code,
+                'offer_id' => $offer?->id,
                 'shipping' => 0,
                 'tax' => 0,
-                'total' => $subtotal,
+                'total' => max($subtotal - $discount, 0),
+                'payment_method' => $paymentMethod,
                 'notes' => $notes,
             ]);
 
@@ -77,8 +122,60 @@ class OrderService
 
             $order->items()->createMany($orderItemsData);
 
-            return $order->load('items.product', 'address');
+            $order->setRelation('user', $user);
+            $this->notifyNewOrder($order);
+
+            return $order->load('items.product', 'address', 'offer');
         });
+    }
+
+    /**
+     * Notify the site's own admin (if the order belongs to one) and every
+     * super_admin — so a super_admin sees every order platform-wide, and
+     * each admin sees orders placed on their own storefront.
+     */
+    private function notifyNewOrder(Order $order): void
+    {
+        $recipients = User::where('role', 'super_admin')->get();
+
+        if ($order->admin_id && ! $recipients->contains('id', $order->admin_id)) {
+            $siteAdmin = User::find($order->admin_id);
+
+            if ($siteAdmin) {
+                $recipients->push($siteAdmin);
+            }
+        }
+
+        Notification::send($recipients, new NewOrderPlaced($order));
+    }
+
+    /**
+     * Re-validate a coupon code against the freshly-computed subtotal.
+     * Returns [Offer|null, discountAmount].
+     */
+    private function resolveCoupon(?string $couponCode, float $subtotal): array
+    {
+        if (! $couponCode) {
+            return [null, 0];
+        }
+
+        $offer = Offer::where('type', 'coupon')
+            ->where('code', strtoupper(trim($couponCode)))
+            ->first();
+
+        if (! $offer || ! $offer->isCurrentlyActive()) {
+            throw ValidationException::withMessages([
+                'coupon_code' => 'This coupon is no longer valid.',
+            ]);
+        }
+
+        if ($offer->min_order_amount && $subtotal < $offer->min_order_amount) {
+            throw ValidationException::withMessages([
+                'coupon_code' => 'This coupon requires a minimum order of ₹' . number_format((float) $offer->min_order_amount, 2) . '.',
+            ]);
+        }
+
+        return [$offer, $offer->calculateDiscount($subtotal)];
     }
 
     /**
@@ -88,7 +185,7 @@ class OrderService
     {
         return Order::where('user_id', $user->id)
             ->when($status, fn ($query) => $query->where('status', $status))
-            ->with('items.product', 'address')
+            ->with('items.product', 'address', 'offer')
             ->latest()
             ->paginate($perPage);
     }
@@ -99,7 +196,7 @@ class OrderService
     public function findForUser(User $user, int $orderId): Order
     {
         return Order::where('user_id', $user->id)
-            ->with('items.product', 'address')
+            ->with('items.product', 'address', 'offer')
             ->findOrFail($orderId);
     }
 
@@ -146,7 +243,7 @@ class OrderService
                         });
                 });
             })
-            ->with('user', 'items.product', 'address')
+            ->with('user', 'admin:id,name', 'items.product', 'address')
             ->latest()
             ->paginate($perPage);
     }
@@ -157,7 +254,7 @@ class OrderService
      */
     public function findAny(int $orderId, ?int $adminId = null): Order
     {
-        return Order::with('user', 'items.product', 'address')
+        return Order::with('user', 'admin:id,name', 'items.product', 'address')
             ->when($adminId, fn ($query) => $query->where('admin_id', $adminId))
             ->findOrFail($orderId);
     }
@@ -232,13 +329,16 @@ class OrderService
     }
 
     /**
-     * Return each item's quantity back to product stock.
-     *
-     * No-op: stock now lives per-variant on product_variants, and order_items
-     * only snapshots a free-text variant label (not a variant_id), so there is
-     * no reliable row left to restock against.
+     * Return each item's quantity back to its variant's stock. Items placed
+     * before variant_id existed (or for products without variants) have
+     * nothing to restock against and are skipped.
      */
     private function restockItems(Order $order): void
     {
+        foreach ($order->items as $item) {
+            if ($item->variant_id) {
+                ProductVariant::whereKey($item->variant_id)->increment('stock', $item->quantity);
+            }
+        }
     }
 }

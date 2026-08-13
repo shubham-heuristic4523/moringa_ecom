@@ -48,6 +48,7 @@
                 <tr>
                     <th>Order #</th>
                     <th>Customer</th>
+                    <th class="sa-only">Admin</th>
                     <th>Date</th>
                     <th>Items</th>
                     <th>Total</th>
@@ -58,7 +59,7 @@
 
             <tbody id="orderTableBody">
                 <tr>
-                    <td colspan="7" class="table-empty">
+                    <td colspan="8" class="table-empty">
                         <i class="fa-solid fa-spinner fa-spin"></i>
                         Loading orders…
                     </td>
@@ -148,9 +149,14 @@
         border-top: 1px solid color-mix(in srgb, var(--color-forest-900) 10%, transparent);
     }
     body[data-theme="dark"] .order-totals-row.is-grand { border-top-color: color-mix(in srgb, var(--color-moringa-200) 10%, transparent); }
+    .order-totals-row.is-discount { color: var(--color-moringa-700); }
+    body[data-theme="dark"] .order-totals-row.is-discount { color: var(--color-moringa-300); }
 
     .order-address-text { font-size: 0.85rem; line-height: 1.5; color: var(--color-forest-900); }
     body[data-theme="dark"] .order-address-text { color: var(--color-moringa-100); }
+
+    .sa-only { display: none; }
+    #orderTable.is-super-admin .sa-only { display: table-cell; }
 </style>
 @endpush
 
@@ -213,7 +219,7 @@
     async function loadOrders(page = 1) {
         currentPage = page;
 
-        tableBody.innerHTML = `<tr><td colspan="7" class="table-empty"><i class="fa-solid fa-spinner fa-spin"></i> Loading orders…</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-spinner fa-spin"></i> Loading orders…</td></tr>`;
 
         const params = new URLSearchParams({ page });
         if (searchInput.value.trim()) params.set('search', searchInput.value.trim());
@@ -224,20 +230,20 @@
             const payload = await response.json();
 
             if (!payload.success) {
-                tableBody.innerHTML = `<tr><td colspan="7" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load orders.</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load orders.</td></tr>`;
                 return;
             }
 
             renderRows(payload.data?.data ?? []);
             renderPagination(payload.data);
         } catch (err) {
-            tableBody.innerHTML = `<tr><td colspan="7" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load orders.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load orders.</td></tr>`;
         }
     }
 
     function renderRows(orders) {
         if (!orders.length) {
-            tableBody.innerHTML = `<tr><td colspan="7" class="table-empty"><i class="fa-solid fa-inbox"></i> No orders found.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-inbox"></i> No orders found.</td></tr>`;
             return;
         }
 
@@ -248,6 +254,7 @@
                     <div class="order-customer-name">${escapeHtml(order.user?.name ?? 'Guest')}</div>
                     <div class="order-customer-email">${escapeHtml(order.user?.email ?? '')}</div>
                 </td>
+                <td class="sa-only">${order.admin?.name ? escapeHtml(order.admin.name) : '—'}</td>
                 <td>${formatDate(order.created_at)}</td>
                 <td>${order.items?.length ?? 0}</td>
                 <td>${formatMoney(order.total)}</td>
@@ -400,6 +407,12 @@
                 <div class="order-customer-email">${escapeHtml(order.user?.email ?? '')}</div>
             </div>
 
+            ${document.getElementById('orderTable').classList.contains('is-super-admin') ? `
+            <div>
+                <p class="order-section-title">Admin</p>
+                <div class="order-customer-name">${order.admin?.name ? escapeHtml(order.admin.name) : '—'}</div>
+            </div>` : ''}
+
             <div>
                 <p class="order-section-title">Shipping Address</p>
                 ${addressHtml}
@@ -413,6 +426,11 @@
             <div>
                 <p class="order-section-title">Totals</p>
                 <div class="order-totals-row"><span>Subtotal</span><span>${formatMoney(order.subtotal)}</span></div>
+                ${parseFloat(order.discount) > 0 ? `
+                <div class="order-totals-row is-discount">
+                    <span>Discount${order.coupon_code ? ' (' + escapeHtml(order.coupon_code) + ')' : ''}</span>
+                    <span>-${formatMoney(order.discount)}</span>
+                </div>` : ''}
                 <div class="order-totals-row"><span>Shipping</span><span>${formatMoney(order.shipping)}</span></div>
                 <div class="order-totals-row"><span>Tax</span><span>${formatMoney(order.tax)}</span></div>
                 <div class="order-totals-row is-grand"><span>Total</span><span>${formatMoney(order.total)}</span></div>
@@ -506,7 +524,27 @@
     });
     statusFilter.addEventListener('change', () => loadOrders(1));
 
-    loadOrders(1);
+    async function markSuperAdmin() {
+        try {
+            const response = await fetch('/api/profile', { headers: authHeaders() });
+            const payload = await response.json();
+            if (payload.user?.role === 'super_admin') {
+                document.getElementById('orderTable').classList.add('is-super-admin');
+            }
+        } catch (err) {
+            // Non-critical — the Admin column just stays hidden.
+        }
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialStatus = urlParams.get('status');
+    if (initialStatus) statusFilter.value = initialStatus;
+
+    markSuperAdmin();
+    loadOrders(1).then(() => {
+        const orderId = urlParams.get('order');
+        if (orderId) openDrawer(orderId);
+    });
 })();
 </script>
 @endpush

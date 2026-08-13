@@ -38,24 +38,20 @@
         <div class="relative" data-dropdown-root>
             <button type="button" class="navbar-icon-btn" data-dropdown-toggle aria-label="Notifications">
                 <i class="fa-solid fa-bell"></i>
-                <span class="navbar-dot has-pulse"></span>
+                <span class="navbar-dot has-pulse hidden" id="notifDot"></span>
             </button>
             <div class="navbar-dropdown" data-dropdown-panel>
-                <p class="px-2 py-1.5 text-xs font-semibold uppercase tracking-wide text-forest-700/60 dark:text-moringa-200/60">
-                    Notifications
-                </p>
-                <a href="#" class="dropdown-item">
-                    <i class="fa-solid fa-box text-moringa-600 dark:text-moringa-300"></i>
-                    <span>New order #1042 placed</span>
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class="fa-solid fa-triangle-exclamation text-gold-500"></i>
-                    <span>Moringa Powder 250g low in stock</span>
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class="fa-solid fa-star text-moringa-600 dark:text-moringa-300"></i>
-                    <span>New 5★ review received</span>
-                </a>
+                <div class="flex items-center justify-between gap-2 px-2 py-1.5">
+                    <p class="text-xs font-semibold uppercase tracking-wide text-forest-700/60 dark:text-moringa-200/60">
+                        Notifications
+                    </p>
+                    <button type="button" id="notifMarkAllBtn" class="text-xs font-medium text-moringa-600 hover:underline dark:text-moringa-300">
+                        Mark all read
+                    </button>
+                </div>
+                <div id="notifList">
+                    <p class="px-2 py-3 text-xs text-forest-700/60 dark:text-moringa-200/60">Loading…</p>
+                </div>
             </div>
         </div>
 
@@ -112,4 +108,91 @@
     window.location.href = '/login';
 
 });
+</script>
+<script>
+(function () {
+    const notifDot = document.getElementById('notifDot');
+    const notifList = document.getElementById('notifList');
+    const notifMarkAllBtn = document.getElementById('notifMarkAllBtn');
+
+    function authHeaders() {
+        const token = localStorage.getItem('token');
+        return token ? { 'Authorization': 'Bearer ' + token } : {};
+    }
+
+    function escapeHtml(value) {
+        const div = document.createElement('div');
+        div.textContent = value ?? '';
+        return div.innerHTML;
+    }
+
+    function timeAgo(value) {
+        const seconds = Math.floor((Date.now() - new Date(value).getTime()) / 1000);
+        if (seconds < 60) return 'just now';
+        const minutes = Math.floor(seconds / 60);
+        if (minutes < 60) return minutes + 'm ago';
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) return hours + 'h ago';
+        return Math.floor(hours / 24) + 'd ago';
+    }
+
+    async function goToOrder(notifId, orderId) {
+        try {
+            await fetch('/api/notifications/' + notifId + '/read', { method: 'POST', headers: authHeaders() });
+        } catch (err) {
+            // Ignore — still navigate to the order regardless.
+        }
+        window.location.href = '/admin/orders?order=' + orderId;
+    }
+
+    async function loadNotifications() {
+        try {
+            const response = await fetch('/api/notifications', { headers: authHeaders() });
+            const payload = await response.json();
+
+            if (!payload.success) return;
+
+            notifDot.classList.toggle('hidden', !payload.unread_count);
+
+            const items = payload.data ?? [];
+
+            if (!items.length) {
+                notifList.innerHTML = `<p class="px-2 py-3 text-xs text-forest-700/60 dark:text-moringa-200/60">No notifications yet.</p>`;
+                return;
+            }
+
+            notifList.innerHTML = items.map(n => `
+                <a href="#" class="dropdown-item" data-notif-id="${n.id}" data-order-id="${n.data.order_id}">
+                    <i class="fa-solid fa-box text-moringa-600 dark:text-moringa-300"></i>
+                    <span>
+                        <span style="display:block; ${n.read_at ? '' : 'font-weight:600;'}">${escapeHtml(n.data.message)}</span>
+                        <span style="display:block; font-weight:400; font-size:0.7rem; opacity:0.65;">${timeAgo(n.created_at)}</span>
+                    </span>
+                </a>
+            `).join('');
+
+            notifList.querySelectorAll('[data-notif-id]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    goToOrder(el.dataset.notifId, el.dataset.orderId);
+                });
+            });
+        } catch (err) {
+            // Non-critical — dropdown just stays on its current state.
+        }
+    }
+
+    notifMarkAllBtn?.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        try {
+            await fetch('/api/notifications/read-all', { method: 'POST', headers: authHeaders() });
+        } catch (err) {
+            // Ignore — next load will just show unread items again.
+        }
+        loadNotifications();
+    });
+
+    loadNotifications();
+    setInterval(loadNotifications, 30000);
+})();
 </script>

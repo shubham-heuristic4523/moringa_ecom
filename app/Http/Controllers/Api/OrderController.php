@@ -41,8 +41,11 @@ class OrderController extends Controller
         $validated = $request->validate([
             'address_id' => 'required|integer',
             'notes' => 'nullable|string|max:1000',
+            'coupon_code' => 'nullable|string|max:50',
+            'payment_method' => 'nullable|in:cod',
             'items' => 'required|array|min:1',
             'items.*.product_id' => 'required|integer',
+            'items.*.variant_id' => 'nullable|integer',
             'items.*.quantity' => 'required|integer|min:1',
         ]);
 
@@ -50,7 +53,9 @@ class OrderController extends Controller
             $request->user(),
             $validated['address_id'],
             $validated['items'],
-            $validated['notes'] ?? null
+            $validated['notes'] ?? null,
+            $validated['coupon_code'] ?? null,
+            $validated['payment_method'] ?? 'cod'
         );
 
         return response()->json([

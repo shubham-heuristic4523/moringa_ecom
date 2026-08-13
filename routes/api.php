@@ -18,6 +18,16 @@ use App\Http\Controllers\Api\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Api\Admin\CustomerController as AdminCustomerController;
 use App\Http\Controllers\Api\Admin\OfferController as AdminOfferController;
 use App\Http\Controllers\Api\Admin\ReferralController as AdminReferralController;
+use App\Http\Controllers\Api\Admin\ReportController as AdminReportController;
+use App\Http\Controllers\Api\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\Admin\SettingController as AdminSettingController;
+use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\FlashSaleController;
+use App\Http\Controllers\Api\Admin\FlashSaleController as AdminFlashSaleController;
+use App\Http\Controllers\Api\CouponController;
+use App\Http\Controllers\Api\ReferralController;
+use App\Http\Controllers\Api\NotificationController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-registration-otp', [OtpController::class, 'verifyRegistrationOtp']);
@@ -29,6 +39,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [AuthController::class, 'profile']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::post('/notifications/{id}/read', [NotificationController::class, 'markRead']);
+    Route::post('/notifications/read-all', [NotificationController::class, 'markAllRead']);
 
 });
 Route::middleware([
@@ -122,15 +136,11 @@ Route::prefix('brands')->group(function () {
 
 });
 
-Route::prefix('wishlists')->group(function () {
+Route::middleware('auth:sanctum')->prefix('wishlists')->group(function () {
 
     Route::get('/', [WishlistController::class, 'index']);
 
     Route::post('/', [WishlistController::class, 'store']);
-
-    Route::get('/{id}', [WishlistController::class, 'show']);
-
-    Route::put('/{id}', [WishlistController::class, 'update']);
 
     Route::delete('/{id}', [WishlistController::class, 'destroy']);
 
@@ -169,6 +179,9 @@ Route::middleware('auth:sanctum')->prefix('orders')->group(function () {
     Route::post('/{id}/cancel', [OrderController::class, 'cancel']);
 
 });
+
+Route::middleware('auth:sanctum')->post('/coupons/validate', [CouponController::class, 'validate']);
+Route::middleware('auth:sanctum')->get('/my-referrals', [ReferralController::class, 'myReferrals']);
 
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin/orders')->group(function () {
 
@@ -215,4 +228,32 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin/referrals')->gr
 
     Route::get('/{id}', [AdminReferralController::class, 'show']);
 
+});
+
+Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin/flash-sales')->group(function () {
+
+    Route::get('/', [AdminFlashSaleController::class, 'index']);
+
+    Route::post('/', [AdminFlashSaleController::class, 'store']);
+
+    Route::get('/{id}', [AdminFlashSaleController::class, 'show']);
+
+    Route::put('/{id}', [AdminFlashSaleController::class, 'update']);
+
+    Route::delete('/{id}', [AdminFlashSaleController::class, 'destroy']);
+
+});
+
+Route::get('/settings', [SettingController::class, 'show']);
+Route::get('/offers/active', [OfferController::class, 'active']);
+Route::get('/flash-sales/active', [FlashSaleController::class, 'active']);
+
+Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+    Route::get('/admin/settings', [AdminSettingController::class, 'show']);
+    Route::put('/admin/settings', [AdminSettingController::class, 'update']);
+    Route::get('/admin/dashboard/stats', [AdminDashboardController::class, 'stats']);
+});
+
+Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin/reports')->group(function () {
+    Route::get('/best-sellers', [AdminReportController::class, 'bestSellers']);
 });

@@ -48,10 +48,11 @@
                 <tr>
                     <th width="60">Image</th>
                     <th>Product</th>
+                    <th class="sa-only">Admin</th>
                     <th>Category</th>
                     <th>Brand</th>
                     <th>Price</th>
-                    <th>Variants</th>
+                    <th>Stock</th>
                     <th>Status</th>
                     <th width="140">Action</th>
                 </tr>
@@ -59,7 +60,7 @@
 
             <tbody id="productTableBody">
                 <tr>
-                    <td colspan="8" class="table-empty">
+                    <td colspan="9" class="table-empty">
                         <i class="fa-solid fa-spinner fa-spin"></i>
                         Loading products…
                     </td>
@@ -108,6 +109,9 @@
     .price-sale { font-weight: 700; color: var(--color-forest-950); }
     body[data-theme="dark"] .price-sale { color: var(--color-cream-50); }
     .price-regular { text-decoration: line-through; font-size: 0.75rem; color: color-mix(in srgb, var(--color-forest-700) 55%, transparent); margin-left: 0.35rem; }
+
+    .sa-only { display: none; }
+    #productTable.is-super-admin .sa-only { display: table-cell; }
 </style>
 @endpush
 
@@ -151,6 +155,21 @@
             : '<span class="badge badge-neutral">Inactive</span>';
     }
 
+    function stockCell(product) {
+        const variants = product.variants ?? [];
+
+        if (!variants.length) {
+            return `<span class="form-help" style="margin:0;">Not tracked</span>`;
+        }
+
+        const total = variants.reduce((sum, v) => sum + (v.stock ?? 0), 0);
+        const cls = total === 0 ? 'badge-danger' : total <= 10 ? 'badge-warning' : 'badge-success';
+        const label = total === 0 ? 'Out of stock' : `${total} in stock`;
+        const unitCount = variants.length > 1 ? ` <span class="form-help" style="margin:0;">(${variants.length} options)</span>` : '';
+
+        return `<span class="badge ${cls}">${label}</span>${unitCount}`;
+    }
+
     async function loadCategories() {
         try {
             const response = await fetch('/api/categories', { headers: authHeaders() });
@@ -169,7 +188,7 @@
     async function loadProducts(page = 1) {
         currentPage = page;
 
-        tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-spinner fa-spin"></i> Loading products…</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="9" class="table-empty"><i class="fa-solid fa-spinner fa-spin"></i> Loading products…</td></tr>`;
 
         const params = new URLSearchParams({ page });
         if (searchInput.value.trim()) params.set('search', searchInput.value.trim());
@@ -184,13 +203,13 @@
             renderRows(products);
             renderPagination(payload.data);
         } catch (err) {
-            tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load products.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="9" class="table-empty"><i class="fa-solid fa-triangle-exclamation"></i> Could not load products.</td></tr>`;
         }
     }
 
     function renderRows(products) {
         if (!products.length) {
-            tableBody.innerHTML = `<tr><td colspan="8" class="table-empty"><i class="fa-solid fa-box-open"></i> No products yet.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="9" class="table-empty"><i class="fa-solid fa-box-open"></i> No products yet.</td></tr>`;
             return;
         }
 
@@ -205,10 +224,11 @@
                     <div class="product-name">${escapeHtml(product.name)}</div>
                     ${product.sku ? `<div class="product-sku">SKU: ${escapeHtml(product.sku)}</div>` : ''}
                 </td>
+                <td class="sa-only">${product.owner?.name ? escapeHtml(product.owner.name) : '—'}</td>
                 <td>${product.category ? escapeHtml(product.category.name) : '—'}</td>
                 <td>${product.brand ? escapeHtml(product.brand.name) : '—'}</td>
                 <td>${formatPrice(product)}</td>
-                <td>${product.variants_count ? product.variants_count + ' variant' + (product.variants_count > 1 ? 's' : '') : '—'}</td>
+                <td>${stockCell(product)}</td>
                 <td>${statusBadge(product.status)}</td>
                 <td>
                     <div class="table-actions">
@@ -288,6 +308,19 @@
     categoryFilter.addEventListener('change', () => loadProducts(1));
     statusFilter.addEventListener('change', () => loadProducts(1));
 
+    async function markSuperAdmin() {
+        try {
+            const response = await fetch('/api/profile', { headers: authHeaders() });
+            const payload = await response.json();
+            if (payload.user?.role === 'super_admin') {
+                document.getElementById('productTable').classList.add('is-super-admin');
+            }
+        } catch (err) {
+            // Non-critical — the Admin column just stays hidden.
+        }
+    }
+
+    markSuperAdmin();
     loadCategories();
     loadProducts(1);
 })();

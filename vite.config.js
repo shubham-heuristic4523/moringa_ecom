@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/css/admin.css',
                 'resources/js/sidebar.js',
                 'resources/js/navbar.js',
+                'resources/css/storefront.css',
             ],
             refresh: true,
         }),

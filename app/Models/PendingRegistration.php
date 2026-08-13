@@ -11,5 +11,6 @@ class PendingRegistration extends Model
         'email',
         'password',
         'referrer_id',
+        'admin_id',
     ];
 }
